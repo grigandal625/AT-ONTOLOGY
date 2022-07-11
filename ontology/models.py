@@ -6,6 +6,8 @@ from ontology_model.models import ReflexivityChoices, SymmetryChoices, Transitiv
 
 
 class File(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Имя")
+    extension = models.CharField(max_length=255, verbose_name="Расширение")
     content = models.FileField(verbose_name='Содержимое')
 
     class Meta:
