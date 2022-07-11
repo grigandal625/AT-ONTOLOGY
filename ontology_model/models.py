@@ -12,6 +12,9 @@ class ElementType(models.Model):
         verbose_name = 'Тип элемента'
         verbose_name_plural = 'Типы элементов'
 
+    def __str__(self):
+        return self.name
+
 
 class ReflexivityChoices(models.IntegerChoices):
     reflexive = 1, _('Рефлексивно')
@@ -45,3 +48,6 @@ class RelationType(models.Model):
     class Meta:
         verbose_name = 'Тип связи'
         verbose_name_plural = 'Типы связей'
+
+    def __str__(self):
+        return self.name

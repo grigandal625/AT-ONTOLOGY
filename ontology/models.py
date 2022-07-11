@@ -14,6 +14,9 @@ class File(models.Model):
         verbose_name = 'Файл'
         verbose_name_plural = 'Файлы'
 
+    def __str__(self):
+        return f'{self.name}.{self.extension}'
+
 
 class Element(models.Model):
     name = models.CharField(max_length=255, verbose_name="Имя")
@@ -28,6 +31,9 @@ class Element(models.Model):
     class Meta:
         verbose_name = 'Элемент'
         verbose_name_plural = 'Элементы'
+
+    def __str__(self):
+        return f'{self.name} ({self.type})'
 
 
 class CustomReflexivityChoices(models.IntegerChoices):
@@ -74,3 +80,8 @@ class Relation(models.Model):
     class Meta:
         verbose_name = 'Связь'
         verbose_name_plural = 'Связи'
+
+    def __str__(self):
+        if self.name:
+            return f'{self.name} - {self.type}'
+        return str(self.type)
