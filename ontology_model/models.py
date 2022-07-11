@@ -17,20 +17,20 @@ class ElementType(models.Model):
 
 
 class ReflexivityChoices(models.IntegerChoices):
-    reflexive = 1, _('Рефлексивно')
-    antireflexive = 2, _('Антирефлексивно')
+    reflexive = 1, _('Рефлексивная')
+    antireflexive = 2, _('Антирефлексивная')
     __empty__ = _('Не указано')
 
 
 class SymmetryChoices(models.IntegerChoices):
-    symmetric = 1, _('Симментрично')
-    antisymmetric = 2, _('Антисиметрично')
+    symmetric = 1, _('Симментричная')
+    antisymmetric = 2, _('Антисиметричная')
     __empty__ = _('Не указано')
 
 
 class TransitivityChoices(models.IntegerChoices):
-    transitive = 1, _('Транзитивно')
-    intransitive = 2, _('Интранзитивно')
+    transitive = 1, _('Транзитивная')
+    intransitive = 2, _('Интранзитивная')
 
 
 class RelationType(models.Model):

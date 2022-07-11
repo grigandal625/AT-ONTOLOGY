@@ -3,6 +3,10 @@ from ontology.models import Element, Relation, File
 
 # Register your models here.
 
+@admin.register(File)
+class FileAdmin(admin.ModelAdmin):
+    list_display = 'name', 'extension'
+    search_fields = 'name', 'extension'
 
 @admin.register(Element)
 class ElementAdmin(admin.ModelAdmin):

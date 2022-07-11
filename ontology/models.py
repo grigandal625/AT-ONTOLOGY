@@ -25,8 +25,8 @@ class Element(models.Model):
     type = models.ForeignKey(
         ElementType, on_delete=models.RESTRICT, verbose_name="Тип элемента")
     data = models.JSONField(null=True, blank=True,
-                            verbose_name="Описание элемента")
-    files = models.ManyToManyField(File, verbose_name="Файлы")
+                            verbose_name="Содержимое")
+    files = models.ManyToManyField(File, verbose_name="Файлы", blank=True)
 
     class Meta:
         verbose_name = 'Элемент'
@@ -67,7 +67,8 @@ class Relation(models.Model):
                             blank=True, verbose_name="Имя")
     description = models.TextField(
         null=True, blank=True, verbose_name="Описание")
-
+    data = models.JSONField(null=True, blank=True,
+                            verbose_name="Содержимое")
     reflexivity = models.IntegerField(
         null=True, blank=True, default=CustomReflexivityChoices.default,
         choices=CustomReflexivityChoices.choices, verbose_name="Антирефлексивность")
@@ -75,7 +76,7 @@ class Relation(models.Model):
         null=True, blank=True, default=CustomSymmetryChoices.default,
         choices=CustomSymmetryChoices.choices, verbose_name="Симметричность")
     transitivity = models.IntegerField(
-        default=CustomTransitivityChoices.default, verbose_name="Транзитивность")
+        default=CustomTransitivityChoices.default, choices=CustomTransitivityChoices.choices, verbose_name="Транзитивность")
 
     class Meta:
         verbose_name = 'Связь'
