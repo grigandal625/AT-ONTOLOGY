@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 django = "*"
+pika = "*"
+environs = "*"
 
 [dev-packages]
 autopep8 = "*"
