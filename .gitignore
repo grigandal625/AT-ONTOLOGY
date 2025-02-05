@@ -1,5 +1,5 @@
 db.sqlite3
-Pipfile.lock
+poetry.lock
 .vscode
 __pycache__
 .env
