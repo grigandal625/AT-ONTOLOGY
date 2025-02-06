@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "at-ontology-instruments"
+name = "at-ontology"
 version = "0.1.0"
 description = ""
 authors = ["grigandal625"]

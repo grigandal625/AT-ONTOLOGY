@@ -9,7 +9,7 @@ class PostInstallCommand(install):
     def run(self):
         install.run(self)
 
-        base_server_path = os.path.join(os.path.dirname(__file__), "at_ontology_instruments", "base_server")
+        base_server_path = os.path.join(os.path.dirname(__file__), "at_ontology", "base_server")
 
         if "base_server" in self.distribution.extras_require:
             dest = os.path.join(os.getcwd(), "base_server")

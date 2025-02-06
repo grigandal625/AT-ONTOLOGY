@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from at_ontology_instruments.apps.ontology.models import File
-from at_ontology_instruments.apps.ontology.models import Relationship
-from at_ontology_instruments.apps.ontology.models import RelationshipPropertyAssignments
-from at_ontology_instruments.apps.ontology.models import Vertex
-from at_ontology_instruments.apps.ontology.models import VertexPropertyAssignments
+from at_ontology.apps.ontology.models import File
+from at_ontology.apps.ontology.models import Relationship
+from at_ontology.apps.ontology.models import RelationshipPropertyAssignments
+from at_ontology.apps.ontology.models import Vertex
+from at_ontology.apps.ontology.models import VertexPropertyAssignments
 
 # Register your models here.
 

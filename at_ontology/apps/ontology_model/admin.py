@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from at_ontology_instruments.apps.ontology_model.models import DataType
-from at_ontology_instruments.apps.ontology_model.models import RelationshipType
-from at_ontology_instruments.apps.ontology_model.models import RelationshipTypePropertyDefinition
-from at_ontology_instruments.apps.ontology_model.models import VertexType
-from at_ontology_instruments.apps.ontology_model.models import VertexTypePropertyDefinition
+from at_ontology.apps.ontology_model.models import DataType
+from at_ontology.apps.ontology_model.models import RelationshipType
+from at_ontology.apps.ontology_model.models import RelationshipTypePropertyDefinition
+from at_ontology.apps.ontology_model.models import VertexType
+from at_ontology.apps.ontology_model.models import VertexTypePropertyDefinition
 
 # Register your models here.
 

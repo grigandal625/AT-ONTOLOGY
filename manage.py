@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "at_ontology_instruments.base_server.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "at_ontology.base_server.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

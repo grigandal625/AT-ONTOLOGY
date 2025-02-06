@@ -10,6 +10,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "at_ontology_instruments.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "at_ontology.settings")
 
 application = get_asgi_application()
