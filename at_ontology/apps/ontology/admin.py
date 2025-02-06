@@ -1,12 +1,19 @@
 from django.contrib import admin
 
 from at_ontology.apps.ontology.models import File
+from at_ontology.apps.ontology.models import Ontology
 from at_ontology.apps.ontology.models import Relationship
-from at_ontology.apps.ontology.models import RelationshipPropertyAssignments
+from at_ontology.apps.ontology.models import RelationshipPropertyAssignment
 from at_ontology.apps.ontology.models import Vertex
-from at_ontology.apps.ontology.models import VertexPropertyAssignments
+from at_ontology.apps.ontology.models import VertexPropertyAssignment
 
 # Register your models here.
+
+
+@admin.register(Ontology)
+class OntologyAdmin(admin.ModelAdmin):
+    list_display = ("name", "description")
+    search_fields = ("name", "description")
 
 
 @admin.register(File)
@@ -22,7 +29,7 @@ class VertexAdmin(admin.ModelAdmin):
 
 
 @admin.register(Relationship)
-class RelationAdmin(admin.ModelAdmin):
+class RelationshipAdmin(admin.ModelAdmin):
     list_display = (
         "type",
         "source",
@@ -46,13 +53,13 @@ class RelationAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(VertexPropertyAssignments)
+@admin.register(VertexPropertyAssignment)
 class VertexPropertyAssignmentsAdmin(admin.ModelAdmin):
-    list_display = "vertex", "property", "value"
-    search_fields = ("vertex__name", "vertex__description", "property__name", "property__description")
+    list_display = "object", "property", "value"
+    search_fields = ("object__name", "object__description", "property__name", "property__description")
 
 
-@admin.register(RelationshipPropertyAssignments)
+@admin.register(RelationshipPropertyAssignment)
 class RelationshipPropertyAssignmentsAdmin(admin.ModelAdmin):
-    list_display = "relationship", "property", "value"
-    search_fields = ("relationship__name", "relationship__description", "property__name", "property__description")
+    list_display = "object", "property", "value"
+    search_fields = ("object__name", "object__description", "property__name", "property__description")

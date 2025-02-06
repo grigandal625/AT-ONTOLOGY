@@ -29,19 +29,19 @@ class RelationshipTypeAdmin(admin.ModelAdmin):
 
 @admin.register(VertexTypePropertyDefinition)
 class VertexTypePropertyDefinitionAdmin(admin.ModelAdmin):
-    list_display = "name", "description", "data_type", "vertex_type", "required", "allows_multiple"
-    search_fields = "name", "description", "vertex_type__name", "vertex_type__description"
+    list_display = "name", "description", "data_type", "object_type", "required", "allows_multiple"
+    search_fields = "name", "description", "object_type__name", "object_type__description"
     list_filter = "required", "allows_multiple"
 
 
 @admin.register(RelationshipTypePropertyDefinition)
 class RelationshipTypePropertyDefinitionAdmin(admin.ModelAdmin):
-    list_display = "name", "description", "data_type", "relationship_type", "required", "allows_multiple"
+    list_display = "name", "description", "data_type", "object_type", "required", "allows_multiple"
     search_fields = (
         "name",
         "description",
         "data_type__name",
-        "relationship_type__name",
-        "relationship_type__description",
+        "object_type__name",
+        "object_type__description",
     )
     list_filter = "required", "allows_multiple"
