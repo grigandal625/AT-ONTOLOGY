@@ -9,6 +9,7 @@ from django.contrib import admin
 
 from at_ontology.apps.ontology.models import Vertex
 from at_ontology.apps.ontology.models import Relationship
+from at_ontology.apps.ontology.models import Ontology
 from at_ontology.apps.ontology_model.models import VertexType
 # Register your models here.
 
@@ -97,7 +98,7 @@ class RelationshipAdmin(admin.ModelAdmin):
         "target__type__description",
     )
 
-# @admin.register(VertexType)
-# class VertexTypeAdmin(admin.ModelAdmin):
-#     list_display = "name", "description"
+@admin.register(Ontology)
+class OntologyAdmin(admin.ModelAdmin):
+    list_display = "name", "description"
 

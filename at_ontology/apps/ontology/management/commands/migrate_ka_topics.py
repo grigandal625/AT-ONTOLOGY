@@ -10,7 +10,7 @@ from at_ontology.apps.ontology_model.models import VertexType
 import sqlite3
 
 class Command(BaseCommand):
-    help = "Перенос"
+    help = "Перенос тем/подтем"
 
     def handle(self, *args, **options):
         vt, created = VertexType.objects.get_or_create(

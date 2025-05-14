@@ -207,7 +207,13 @@ class Definition(OntologyEntity):
         verbose_name_plural = "сущности",
         abstract = True
 class VertexType(Instancable):
-    pass
+    ontology_model: "OntologyModel" = models.ForeignKey(
+        "OntologyModel",
+        on_delete=models.CASCADE,
+        related_name="vertex_types",
+        blank=True,
+        null=True
+    )
 
     class Meta:
         verbose_name = "тип вершины"
@@ -228,9 +234,17 @@ class RelationshipType(Instancable):
         verbose_name="возможные типы дочерних вершин",
     )
 
+    ontology_model: "OntologyModel" = models.ForeignKey(
+        "OntologyModel",
+        on_delete=models.CASCADE,
+        related_name="relationship_types",
+        blank=True,
+        null=True
+    )
+
     class Meta:
-        verbose_name = "новый тип связи"
-        verbose_name_plural = "новые типы связей"
+        verbose_name = "тип связи"
+        verbose_name_plural = "типы связей"
 
     def __str__(self):
         return self.name
@@ -345,51 +359,7 @@ class ArtifactAssignment(OntologyBase):
     # ХЗ как сделать
     # content: "IOBase" = field(repr=False, init=False)
 
-# class VertexArtifactAssignment(ArtifactAssignment):
-#
-#     definition: "VertexTypeArtifactDefinition" = models.ForeignKey(
-#         "VertexTypeArtifactDefinition",
-#         on_delete=models.CASCADE,
-#         related_name='usable_artifact_definition',
-#         help_text='Используемый ArtifactDefinition'
-#     )
-#
-#     vertex: "Vertex" = models.ForeignKey(
-#         "ontology.Vertex",
-#         on_delete=models.CASCADE,
-#         related_name='artifact_assignments'
-#     )
-#
-#     vertex_type: "VertexType" = models.ForeignKey(
-#         "VertexType",
-#         on_delete=models.CASCADE,
-#         related_name='vertex_type_artifact_assigments'
-#     )
-#     class Meta:
-#         verbose_name = 'артефакт вершины'
-#         verbose_name_plural = 'артефакты вершины'
-# class RelationshipArtifactAssignment(ArtifactAssignment):
-#     definition: "RelationshipTypeArtifactDefinition" = models.ForeignKey(
-#         "RelationshipTypeArtifactDefinition",
-#         on_delete=models.CASCADE,
-#         related_name='usable_artifact_definition',
-#         help_text='Используемый ArtifactDefinition'
-#     )
-#
-#     relationship: "Relationship" = models.ForeignKey(
-#         "ontology.Relationship",
-#         on_delete=models.CASCADE,
-#         related_name='artifact_assignments'
-#     )
-#
-#     relationship_type: "RelationshipType" = models.ForeignKey(
-#         "RelationshipType",
-#         on_delete=models.CASCADE,
-#         related_name='relationship_type_artifact_assigments'
-#     )
-#     class Meta:
-#         verbose_name = 'артефакт связи'
-#         verbose_name_plural = 'артефакты связей'
+
 
 
 # ------- PropertytDefinitions and PropertyAssignments ------------
@@ -483,7 +453,27 @@ class ImportDefinition(OntologyBase):
         verbose_name_plural = "Определения импорта"
 
 
+class DataType(Derivable):
+    ontology_model: "OntologyModel" = models.ForeignKey(
+        "OntologyModel",
+        on_delete=models.CASCADE,
+        related_name="data_types",
+        blank=True,
+        null=True
+    )
+    class Meta:
+        verbose_name = 'тип данных'
+        verbose_name_plural = 'типы данных'
+
 class OntologyModel(OntologyEntity):
+    imports = models.ManyToManyField(
+        "ImportDefinition",
+        related_name="import_definitions",
+        blank=True,
+        verbose_name="Импорты"
+    )
+
+    #  schema_definitions: Optional[Dict[str, Any]] = field(default_factory=dict, repr=False)
 
     class Meta:
         verbose_name = "модель онтологии"
