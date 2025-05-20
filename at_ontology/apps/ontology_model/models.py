@@ -1,6 +1,7 @@
 import uuid
-
+from django.core.serializers.json import DjangoJSONEncoder
 from django.core.exceptions import ValidationError
+
 from django.db import models
 from jsonschema import Draft7Validator
 from jsonschema import exceptions
@@ -210,9 +211,7 @@ class VertexType(Instancable):
     ontology_model: "OntologyModel" = models.ForeignKey(
         "OntologyModel",
         on_delete=models.CASCADE,
-        related_name="vertex_types",
-        blank=True,
-        null=True
+        related_name="vertex_types"
     )
 
     class Meta:
@@ -237,9 +236,7 @@ class RelationshipType(Instancable):
     ontology_model: "OntologyModel" = models.ForeignKey(
         "OntologyModel",
         on_delete=models.CASCADE,
-        related_name="relationship_types",
-        blank=True,
-        null=True
+        related_name="relationship_types"
     )
 
     class Meta:
@@ -331,33 +328,19 @@ class ArtifactAssignment(OntologyBase):
         editable=False
     )
 
-    # definition: "ArtifactDefinition" = models.ForeignKey(
-    #     "ArtifactDefinition",
-    #     on_delete=models.CASCADE,
-    #     related_name='usable_artifact_definition',
-    #     help_text='Используемый ArtifactDefinition'
-    # )
-    #
-    # instance: "Instance" = models.ForeignKey(
-    #     "Instance",
-    #     on_delete=models.CASCADE,
-    #     related_name='artifact_assignments'
-    # )
-    #
-    # instancable: "Instancable" = models.ForeignKey(
-    #     "Instancable",
-    #     on_delete=models.CASCADE,
-    #     related_name='artifact_assignments'
-    # )
 
     path = models.CharField(max_length=255, blank=True, null=True)
 
+    content = models.BinaryField(
+        null=True,
+        blank=True
+    )
     class Meta:
         verbose_name = 'артефакт'
         verbose_name_plural = 'артефакты'
         abstract = True
-    # ХЗ как сделать
-    # content: "IOBase" = field(repr=False, init=False)
+
+
 
 
 
@@ -367,13 +350,7 @@ class ArtifactAssignment(OntologyBase):
 class PropertyDefinition(Definition):
 
     # Не написан DataType
-    # type: # "DataType" = models.ForeignKey(
-    #     'DataType',
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    #     related_name='property_definitions',
-    # )
+
     required = models.BooleanField(
         default=False,
         help_text="Обязательное ли это свойство"
@@ -415,6 +392,7 @@ class PropertyAssignment(OntologyBase):
     )
     value = models.JSONField(
         help_text="Произвольное значение свойства"
+
     )
 
     class Meta:
@@ -423,12 +401,42 @@ class PropertyAssignment(OntologyBase):
         abstract = True
 
 class VertexTypePropertyDefinition(PropertyDefinition):
+    ontology_model: "OntologyModel" = models.ForeignKey(
+        "OntologyModel",
+        on_delete=models.CASCADE,
+        related_name="vertex_types_property_definitions",
+        null=True,
+        blank=True
+    )
 
+    type: "DataType" = models.ForeignKey(
+        'DataType',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='vertex_types_property_definitions',
+    )
     class Meta:
         verbose_name = "vertex type property definition"  # руский аналог не придуман
         verbose_name_plural = "vertex type property definitions" # руский аналог не придуман
 
 class RelationshipTypePropertyDefinition(PropertyDefinition):
+
+    ontology_model: "OntologyModel" = models.ForeignKey(
+        "OntologyModel",
+        on_delete=models.CASCADE,
+        related_name="relationship_types_property_definitions",
+        null=True,
+        blank=True
+    )
+
+    type: "DataType" = models.ForeignKey(
+        'DataType',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='relationship_types_property_definitions',
+    )
 
     class Meta:
         verbose_name = "relationship type property definition"  # руский аналог не придуман
@@ -460,6 +468,12 @@ class DataType(Derivable):
         related_name="data_types",
         blank=True,
         null=True
+    )
+
+    object_schema = models.JSONField(
+        null=True,
+        blank=True,
+        help_text="Raw schema as JSON string"
     )
     class Meta:
         verbose_name = 'тип данных'

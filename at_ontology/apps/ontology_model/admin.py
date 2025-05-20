@@ -58,4 +58,4 @@ class RelationTypeNewAdmin(admin.ModelAdmin):
 
 @admin.register(OntologyModel)
 class OntologyModelAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description')
+    list_display = 'id', 'name', 'description'

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "$question": {
+      "type": "object",
+      "required": ["question", "answers"],
+      "properties": {
+        "question": {
+          "type": "string"
+        },
+        "difficulty": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["answer", "correct"],
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "correct": {
+                "type": "boolean"
+              }
+            }
+          },
+          "contains": {
+            "allOf": [
+              {
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "correct": { "const": true }
+                  },
+                  "required": ["correct"]
+                }
+              },
+              {
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "correct": { "const": false }
+                  },
+                  "required": ["correct"]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
