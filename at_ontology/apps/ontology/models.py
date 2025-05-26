@@ -179,6 +179,13 @@ class RelationshipPropertyAssignment(PropertyAssignment):
 
 
 class Ontology(OntologyEntity):
+
+    imports = models.ManyToManyField(
+        "OntologyModel",
+        related_name="import_definitions",
+        blank=True,
+        verbose_name="Импорты"
+    )
     class Meta:
         verbose_name = "онтология"
         verbose_name_plural = "онтологии"
