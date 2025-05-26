@@ -191,9 +191,6 @@ class Instancable(Derivable):
         blank=True,
         help_text="Дополнительные данные (metadata) в виде словаря"
     )
-    # Как переписать это в модель
-    # properties: Optional[Dict[str, "PropertyDefinition"]] = field(default_factory=dict)
-    # artifacts: Optional[Dict[str, "ArtifactDefinition"]] = field(default_factory=dict)
 
 
     class Meta:
@@ -417,8 +414,8 @@ class VertexTypePropertyDefinition(PropertyDefinition):
         related_name='vertex_types_property_definitions',
     )
     class Meta:
-        verbose_name = "vertex type property definition"  # руский аналог не придуман
-        verbose_name_plural = "vertex type property definitions" # руский аналог не придуман
+        verbose_name = "vertex type property definition"
+        verbose_name_plural = "vertex type property definitions"
 
 class RelationshipTypePropertyDefinition(PropertyDefinition):
 
@@ -487,7 +484,6 @@ class OntologyModel(OntologyEntity):
         verbose_name="Импорты"
     )
 
-    #  schema_definitions: Optional[Dict[str, Any]] = field(default_factory=dict, repr=False)
 
     class Meta:
         verbose_name = "модель онтологии"

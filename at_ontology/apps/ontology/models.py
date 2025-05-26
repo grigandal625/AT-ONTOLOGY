@@ -27,7 +27,6 @@ if TYPE_CHECKING:
 
 
 class Vertex(Instance):
-    # type: #"OntologyReference[VertexType]"
 
     ontology: "Ontology" = models.ForeignKey(
         'Ontology',
