@@ -61,11 +61,7 @@ class VertexArtifactAssignment(ArtifactAssignment):
         related_name='artifact_assignments'
     )
 
-    vertex_type: "VertexType" = models.ForeignKey(
-        "ontology_model.VertexType",
-        on_delete=models.CASCADE,
-        related_name='vertex_type_artifact_assignments'
-    )
+
 
     class Meta:
         verbose_name = 'артефакт вершины'
@@ -86,11 +82,7 @@ class VertexPropertyAssignment(PropertyAssignment):
         related_name='property_assignments'
     )
 
-    vertex_type: "VertexType" = models.ForeignKey(
-        "ontology_model.VertexType",
-        on_delete=models.CASCADE,
-        related_name='vertex_type_property_assigments'
-    )
+
 
     class Meta:
         verbose_name = 'свойство вершины'
@@ -142,11 +134,7 @@ class RelationshipArtifactAssignment(ArtifactAssignment):
         related_name='relationship_artifact_assignments'
     )
 
-    relationship_type: "RelationshipType" = models.ForeignKey(
-        "ontology_model.RelationshipType",
-        on_delete=models.CASCADE,
-        related_name='relationship_type_artifact_assigments'
-    )
+
 
     class Meta:
         verbose_name = 'артефакт связи'
@@ -167,11 +155,7 @@ class RelationshipPropertyAssignment(PropertyAssignment):
         related_name='artifact_assignments'
     )
 
-    relationship_type: "RelationshipType" = models.ForeignKey(
-        "ontology_model.RelationshipType",
-        on_delete=models.CASCADE,
-        related_name='relationship_type_property_assigments'
-    )
+
 
     class Meta:
         verbose_name = 'свойство связи'
