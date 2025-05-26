@@ -15,14 +15,7 @@ from jsonschema import exceptions
 
 
 class OntologyBase(models.Model):
-    owner = models.ForeignKey(
-        'self',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='children'  # может надо поменять название
-    )
-    _built = models.BooleanField(default=False)
+
 
     class Meta:
         abstract = True
