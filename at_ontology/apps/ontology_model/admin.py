@@ -1,13 +1,14 @@
 from django.contrib import admin
 
+from at_ontology.apps.ontology_model.models import OntologyModel
+from at_ontology.apps.ontology_model.models import RelationshipType
+from at_ontology.apps.ontology_model.models import VertexType
+
 # from at_ontology.apps.ontology_model.models import DataType
 # from at_ontology.apps.ontology_model.models import RelationshipType
 # from at_ontology.apps.ontology_model.models import RelationshipTypePropertyDefinition
 # from at_ontology.apps.ontology_model.models import VertexType
 # from at_ontology.apps.ontology_model.models import VertexTypePropertyDefinition
-from at_ontology.apps.ontology_model.models import VertexType
-from at_ontology.apps.ontology_model.models import RelationshipType
-from at_ontology.apps.ontology_model.models import OntologyModel
 # Register your models here.
 
 
@@ -48,14 +49,17 @@ from at_ontology.apps.ontology_model.models import OntologyModel
 #     )
 #     list_filter = "required", "allows_multiple"
 
+
 @admin.register(VertexType)
 class VertexTypeNewAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'owner', 'derived_from', '_built')
+    list_display = ("id", "name", "derived_from", "_built")
+
 
 @admin.register(RelationshipType)
 class RelationTypeNewAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'owner', 'derived_from')
+    list_display = ("id", "name", "derived_from")
+
 
 @admin.register(OntologyModel)
 class OntologyModelAdmin(admin.ModelAdmin):
-    list_display = 'id', 'name', 'description'
+    list_display = "id", "name", "description"

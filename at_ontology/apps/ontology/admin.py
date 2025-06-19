@@ -1,16 +1,15 @@
 from django.contrib import admin
 
+from at_ontology.apps.ontology.models import Ontology
+from at_ontology.apps.ontology.models import Relationship
+from at_ontology.apps.ontology.models import Vertex
+
 # from at_ontology.apps.ontology.models import File
 # from at_ontology.apps.ontology.models import Ontology
 # from at_ontology.apps.ontology.models import Relationship
 # from at_ontology.apps.ontology.models import RelationshipPropertyAssignment
 # from at_ontology.apps.ontology.models import Vertex
 # from at_ontology.apps.ontology.models import VertexPropertyAssignment
-
-from at_ontology.apps.ontology.models import Vertex
-from at_ontology.apps.ontology.models import Relationship
-from at_ontology.apps.ontology.models import Ontology
-from at_ontology.apps.ontology_model.models import VertexType
 # Register your models here.
 
 
@@ -74,6 +73,7 @@ class VertexAdmin(admin.ModelAdmin):
     list_display = "name", "description", "type"
     search_fields = "name", "description", "type__name", "type__description"
 
+
 @admin.register(Relationship)
 class RelationshipAdmin(admin.ModelAdmin):
     list_display = (
@@ -98,7 +98,7 @@ class RelationshipAdmin(admin.ModelAdmin):
         "target__type__description",
     )
 
+
 @admin.register(Ontology)
 class OntologyAdmin(admin.ModelAdmin):
     list_display = "name", "description"
-

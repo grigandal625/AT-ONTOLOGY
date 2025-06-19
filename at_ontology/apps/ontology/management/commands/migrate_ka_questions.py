@@ -1,13 +1,15 @@
+import json
+import sqlite3
+
 from django.core.management.base import BaseCommand
-from at_ontology.apps.ontology_model.models import VertexType
-from at_ontology.apps.ontology_model.models import OntologyModel
-from at_ontology.apps.ontology_model.models import DataType
-from at_ontology.apps.ontology_model.models import VertexTypePropertyDefinition
+
 from at_ontology.apps.ontology.models import Ontology
 from at_ontology.apps.ontology.models import Vertex
 from at_ontology.apps.ontology.models import VertexPropertyAssignment
-import sqlite3
-import json
+from at_ontology.apps.ontology_model.models import DataType
+from at_ontology.apps.ontology_model.models import OntologyModel
+from at_ontology.apps.ontology_model.models import VertexType
+from at_ontology.apps.ontology_model.models import VertexTypePropertyDefinition
 
 
 class Command(BaseCommand):
@@ -15,46 +17,33 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # Получаем нужную модель онтологии и саму онтологию
-        ontology_model = OntologyModel.objects.get(
-            name="Прикладная онтология курса/дисциплины"
-        )
-        ontology = Ontology.objects.get(
-            name="Введение в интеллектуальные системы"
-        )
+        ontology_model = OntologyModel.objects.get(name="Прикладная онтология курса/дисциплины")
+        Ontology.objects.get(name="Введение в интеллектуальные системы")
 
-        topic_type = VertexType.objects.get(name='Тема')
+        topic_type = VertexType.objects.get(name="Тема")
         # Создаём или получаем DataType для типа вопроса
-        with open(
-            'at_ontology/apps/ontology/management/commands/question_schema.json',
-            'r', encoding='utf-8'
-        ) as f:
+        with open("at_ontology/apps/ontology/management/commands/question_schema.json", "r", encoding="utf-8") as f:
             schema = json.load(f)
 
         question_type, created = DataType.objects.get_or_create(
-            name="Тип вопроса",
-            ontology_model=ontology_model,
-            object_schema=schema
+            name="Тип вопроса", ontology_model=ontology_model, object_schema=schema
         )
         if created:
-            self.stdout.write(self.style.SUCCESS(
-                f"Создан DataType: {question_type.name} (id={question_type.id})"
-            ))
+            self.stdout.write(self.style.SUCCESS(f"Создан DataType: {question_type.name} (id={question_type.id})"))
         else:
-            self.stdout.write(
-                f"DataType уже существует: {question_type.name} (id={question_type.id})"
-            )
+            self.stdout.write(f"DataType уже существует: {question_type.name} (id={question_type.id})")
 
         # Создаём или получаем определение свойства для типа вопроса
         question_type_definition, created = VertexTypePropertyDefinition.objects.get_or_create(
-            name='Дефинишн вопроса',
-            ontology_model=ontology_model,
-            type=question_type
+            name="Дефинишн вопроса", ontology_model=ontology_model, type=question_type
         )
         if created:
-            self.stdout.write(self.style.SUCCESS(
-                f"Создано определение свойства: {question_type_definition.name} "
-                f"(id={question_type_definition.id})"
-            ))
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f"Создано определение свойства: {question_type_definition.name} "
+                    f"(id={question_type_definition.id})"
+                )
+            )
         else:
             self.stdout.write(
                 f"Определение свойства уже существует: "
@@ -62,9 +51,10 @@ class Command(BaseCommand):
             )
 
         # Читаем вопросы из SQLite
-        conn = sqlite3.connect('development.sqlite3')
+        conn = sqlite3.connect("development.sqlite3")
         cursor = conn.cursor()
-        cursor.execute("""
+        cursor.execute(
+            """
             SELECT
                 q.text        AS question_text,
                 q.difficulty,
@@ -78,7 +68,8 @@ class Command(BaseCommand):
               ON a.ka_question_id = q.id
             WHERE q.disable = 0
             ORDER BY q.id, a.id;
-        """)
+        """
+        )
         rows = cursor.fetchall()
         conn.close()
 
@@ -95,21 +86,13 @@ class Command(BaseCommand):
                 self.stdout.write(f"Несколько вершин для темы: {topic_text}")
                 topic_vertex = Vertex.objects.filter(name=topic_text).first()
                 self.stdout.write(
-                    f"Выбрана первая вершина: {topic_vertex.name} "
-                    f"(онтология: {topic_vertex.ontology.name})"
+                    f"Выбрана первая вершина: {topic_vertex.name} " f"(онтология: {topic_vertex.ontology.name})"
                 )
 
             key = (topic_text, question_text)
             if key not in questions_by_topic:
-                questions_by_topic[key] = {
-                    "question": question_text,
-                    "difficulty": difficulty,
-                    "answers": []
-                }
-            questions_by_topic[key]["answers"].append({
-                "answer": answer_text,
-                "correct": bool(is_correct)
-            })
+                questions_by_topic[key] = {"question": question_text, "difficulty": difficulty, "answers": []}
+            questions_by_topic[key]["answers"].append({"answer": answer_text, "correct": bool(is_correct)})
 
         # Собираем итоговый список пар [тема, объект_вопроса]
         output_list = []
@@ -127,19 +110,8 @@ class Command(BaseCommand):
                 self.stdout.write(f"Несколько вершин для темы: {topic_text}")
                 topic_vertex = Vertex.objects.filter(name=topic_text).first()
                 self.stdout.write(
-                    f"Выбрана первая вершина: {topic_vertex.name} "
-                    f"(онтология: {topic_vertex.ontology.name})"
+                    f"Выбрана первая вершина: {topic_vertex.name} " f"(онтология: {topic_vertex.ontology.name})"
                 )
             VertexPropertyAssignment.objects.get_or_create(
-                definition=question_type_definition,
-                vertex=topic_vertex,
-                vertex_type=topic_type,
-                value=question_obj
+                definition=question_type_definition, vertex=topic_vertex, vertex_type=topic_type, value=question_obj
             )
-
-
-
-
-
-
-

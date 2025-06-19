@@ -1,14 +1,20 @@
 import json
 from pathlib import Path
+
 from django.core.management.base import BaseCommand
-from at_ontology.apps.ontology.models import Vertex, Relationship, Ontology
-from at_ontology.apps.ontology_model.models import OntologyModel, VertexType, RelationshipType
-import sqlite3
+
+from at_ontology.apps.ontology.models import Ontology
+from at_ontology.apps.ontology.models import Relationship
+from at_ontology.apps.ontology.models import Vertex
+from at_ontology.apps.ontology_model.models import OntologyModel
+from at_ontology.apps.ontology_model.models import RelationshipType
+from at_ontology.apps.ontology_model.models import VertexType
+
 
 class Command(BaseCommand):
     help = "Перенос ДИС из JSON"
-    def handle(self, *args, **options):
 
+    def handle(self, *args, **options):
         json_path = Path("at_ontology/apps/ontology/management/commands/DIS.json")
 
         if not json_path.exists():
@@ -28,9 +34,7 @@ class Command(BaseCommand):
         def create_vertex_hierarchy(structure, parent=None, depth=0):
             for name, children in structure.items():
                 vertex, created = Vertex.objects.get_or_create(
-                    name=name,
-                    ontology=ontology,
-                    defaults={"type": topic_type if depth == 0 else subtopic_type}
+                    name=name, ontology=ontology, defaults={"type": topic_type if depth == 0 else subtopic_type}
                 )
                 if not created:
                     self.stdout.write(f"Пропущено (уже существует): {vertex.name}")
@@ -40,7 +44,7 @@ class Command(BaseCommand):
                         ontology=ontology,
                         type=relationship_type,
                         source=parent,
-                        target=vertex
+                        target=vertex,
                     )
                 create_vertex_hierarchy(children, parent=vertex, depth=depth + 1)
 
@@ -48,21 +52,15 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS("Структура курса успешно загружена из JSON."))
 
-
-
-    def create_vertex_type(self, name: str, ontology_model: OntologyModel, derived_from: VertexType = None) -> VertexType:
+    def create_vertex_type(
+        self, name: str, ontology_model: OntologyModel, derived_from: VertexType = None
+    ) -> VertexType:
         vt, created = VertexType.objects.get_or_create(
-            name=name,
-            ontology_model=ontology_model,
-            derived_from=derived_from
+            name=name, ontology_model=ontology_model, derived_from=derived_from
         )
         if created:
-            self.stdout.write(self.style.SUCCESS(
-                f"Created VertexType: {vt.name} (id={vt.id})"
-            ))
+            self.stdout.write(self.style.SUCCESS(f"Created VertexType: {vt.name} (id={vt.id})"))
         else:
-            self.stdout.write(
-                f"VertexType already exists: {vt.name} (id={vt.id})"
-            )
+            self.stdout.write(f"VertexType already exists: {vt.name} (id={vt.id})")
 
         return vt
