@@ -9,10 +9,12 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+CWD = Path(os.getcwd()).resolve()
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,6 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "adrf",
+    "drf_spectacular",
     "at_ontology.apps.ontology_model",
     "at_ontology.apps.ontology",
 ]
@@ -75,12 +80,33 @@ WSGI_APPLICATION = "at_ontology.base_server.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+sqlite_db_name_str = os.getenv("DB_NAME", str(CWD / "db.sqlite3"))
+if not sqlite_db_name_str.endswith(".db") and not sqlite_db_name_str.endswith(".sqlite3"):
+    sqlite_db_name_str += ".sqlite3"
+
+sqlite_db_name = Path(sqlite_db_name_str)
+if not sqlite_db_name.is_absolute():
+    sqlite_db_name = CWD / sqlite_db_name
+
+SQLITE_CONFIG = {
+    "ENGINE": "django.db.backends.sqlite3",
+    "NAME": sqlite_db_name,
 }
+
+POSTGRES_CONFIG = {
+    "ENGINE": "django.db.backends.postgresql",
+    "NAME": os.getenv("DB_NAME", "at_krl_editor"),
+    "USER": os.getenv("DB_USER", "at_krl"),
+    "PASSWORD": os.getenv("DB_PASS"),
+    "HOST": os.getenv("DB_HOST", "postgres"),
+    "PORT": os.getenv("DB_PORT", "5432"),
+}
+
+db_engine = os.getenv("DB_ENGINE")
+
+default_db = {"postgres": POSTGRES_CONFIG, "sqlite": SQLITE_CONFIG}[db_engine]
+
+DATABASES = {"default": default_db}
 
 
 # Password validation
@@ -100,6 +126,17 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "at_ontology.base_server.autoschema.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "AT_ONTOLOGY",
+    "DESCRIPTION": "AT-TECHNOLOGY ontology base server",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
 
 
 # Internationalization
