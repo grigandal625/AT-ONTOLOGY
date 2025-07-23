@@ -8,11 +8,16 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^5.1.6"
-setuptools = "^75.8.0"
+psycopg2-binary = "^2.9.10"
+psycopg2 = "^2.9.10"
 jsonschema = "^4.23.0"
-
-[tool.poetry.scripts]
-post-install = "setup:PostInstallCommand"
+drf-spectacular = "^0.28.0"
+drf-nested-routers = "^0.94.1"
+at-queue = {git = "https://github.com/grigandal625/AT_QUEUE.git", rev = "master"}
+django-cors-headers = "^4.7.0"
+adrf = {git = "https://github.com/grigandal625/adrf.git", rev = "main"}
+uvicorn = "^0.35.0"
+whitenoise = "^6.9.0"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.1.0"

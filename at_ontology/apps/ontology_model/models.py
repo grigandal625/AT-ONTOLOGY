@@ -146,7 +146,7 @@ class RelationshipTypeArtifactDefinition(ArtifactDefinition):
 
 
 class ArtifactAssignment(OntologyBase):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4(), editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     path = models.CharField(max_length=255, blank=True, null=True)
 
@@ -245,7 +245,7 @@ class DataType(Derivable):
 
 class OntologyModel(OntologyEntity):
     imports = models.ManyToManyField(
-        "OntologyModel", related_name="import_definitions", blank=True, verbose_name="Импорты"
+        "self", related_name="ontology_model_importers", blank=True, verbose_name="Импорты"
     )
 
     class Meta:

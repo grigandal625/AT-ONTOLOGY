@@ -5,6 +5,7 @@ from django.db import models
 from at_ontology.apps.ontology_model.models import ArtifactAssignment
 from at_ontology.apps.ontology_model.models import Instance
 from at_ontology.apps.ontology_model.models import OntologyEntity
+from at_ontology.apps.ontology_model.models import OntologyModel
 from at_ontology.apps.ontology_model.models import PropertyAssignment
 
 if TYPE_CHECKING:
@@ -116,7 +117,7 @@ class RelationshipPropertyAssignment(PropertyAssignment):
 
 class Ontology(OntologyEntity):
     imports = models.ManyToManyField(
-        "OntologyModel", related_name="import_definitions", blank=True, verbose_name="Импорты"
+        OntologyModel, related_name="ontology_importers", blank=True, verbose_name="Импорты"
     )
 
     class Meta:

@@ -51,8 +51,8 @@ from at_ontology.apps.ontology_model.models import VertexType
 
 
 @admin.register(VertexType)
-class VertexTypeNewAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "derived_from", "_built")
+class VertexTypeAdmin(admin.ModelAdmin):
+    list_display = ("id", "name", "derived_from")
 
 
 @admin.register(RelationshipType)
