@@ -1,65 +1,173 @@
 from django.contrib import admin
-
-from at_ontology.apps.ontology_model.models import OntologyModel
-from at_ontology.apps.ontology_model.models import RelationshipType
-from at_ontology.apps.ontology_model.models import VertexType
-
-# from at_ontology.apps.ontology_model.models import DataType
-# from at_ontology.apps.ontology_model.models import RelationshipType
-# from at_ontology.apps.ontology_model.models import RelationshipTypePropertyDefinition
-# from at_ontology.apps.ontology_model.models import VertexType
-# from at_ontology.apps.ontology_model.models import VertexTypePropertyDefinition
-# Register your models here.
+from django.utils.translation import gettext_lazy as _
+from at_ontology.apps.ontology_model import models
 
 
-# @admin.register(DataType)
-# class DataTypeAdmin(admin.ModelAdmin):
-#     list_display = "name", "description", "derived_from"
-#     search_fields = "name", "description"
-#
-#
-# @admin.register(VertexType)
-# class VertexTypeAdmin(admin.ModelAdmin):
-#     list_display = "name", "description", "derived_from"
-#     search_fields = "name", "description"
-#
-#
-# @admin.register(RelationshipType)
-# class RelationshipTypeAdmin(admin.ModelAdmin):
-#     list_display = "name", "description", "derived_from"
-#     search_fields = "name", "description"
-#
-#
-# @admin.register(VertexTypePropertyDefinition)
-# class VertexTypePropertyDefinitionAdmin(admin.ModelAdmin):
-#     list_display = "name", "description", "data_type", "object_type", "required", "allows_multiple"
-#     search_fields = "name", "description", "object_type__name", "object_type__description"
-#     list_filter = "required", "allows_multiple"
-#
-#
-# @admin.register(RelationshipTypePropertyDefinition)
-# class RelationshipTypePropertyDefinitionAdmin(admin.ModelAdmin):
-#     list_display = "name", "description", "data_type", "object_type", "required", "allows_multiple"
-#     search_fields = (
-#         "name",
-#         "description",
-#         "data_type__name",
-#         "object_type__name",
-#         "object_type__description",
-#     )
-#     list_filter = "required", "allows_multiple"
+# =========================================================
+# Base admin mixins
+# =========================================================
+
+class NameSearchAdmin(admin.ModelAdmin):
+    search_fields = ("name", "label", "description")
+    list_display = ("name", "label")
+    ordering = ("name",)
 
 
-@admin.register(VertexType)
-class VertexTypeAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "derived_from")
+class OntologyModelScopedAdmin(NameSearchAdmin):
+    list_filter = ("ontology_model",)
+    autocomplete_fields = ("ontology_model",)
 
 
-@admin.register(RelationshipType)
-class RelationTypeNewAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "derived_from")
+# =========================================================
+# OntologyModel
+# =========================================================
+
+@admin.register(models.OntologyModel)
+class OntologyModelAdmin(NameSearchAdmin):
+    list_display = ("name", "label")
+    search_fields = ("name", "label", "description")
+    filter_horizontal = ("imports",)
 
 
-@admin.register(OntologyModel)
-class OntologyModelAdmin(admin.ModelAdmin):
-    list_display = "id", "name", "description"
+# =========================================================
+# VertexType
+# =========================================================
+
+class VertexTypeArtifactInline(admin.TabularInline):
+    model = models.VertexTypeArtifactDefinition
+    extra = 0
+
+
+class VertexTypePropertyInline(admin.TabularInline):
+    model = models.VertexTypePropertyDefinition
+    extra = 0
+
+
+@admin.register(models.VertexType)
+class VertexTypeAdmin(OntologyModelScopedAdmin):
+    list_display = ("name", "ontology_model", "derived_from")
+    list_filter = ("ontology_model",)
+    autocomplete_fields = ("ontology_model", "derived_from")
+    inlines = (
+        VertexTypeArtifactInline,
+        VertexTypePropertyInline,
+    )
+
+
+# =========================================================
+# RelationshipType
+# =========================================================
+
+class RelationshipTypeArtifactInline(admin.TabularInline):
+    model = models.RelationshipTypeArtifactDefinition
+    extra = 0
+
+
+class RelationshipTypePropertyInline(admin.TabularInline):
+    model = models.RelationshipTypePropertyDefinition
+    extra = 0
+
+
+@admin.register(models.RelationshipType)
+class RelationshipTypeAdmin(OntologyModelScopedAdmin):
+    list_display = ("name", "ontology_model")
+    list_filter = ("ontology_model",)
+    autocomplete_fields = ("ontology_model",)
+    filter_horizontal = (
+        "valid_source_types",
+        "valid_target_types",
+    )
+    inlines = (
+        RelationshipTypeArtifactInline,
+        RelationshipTypePropertyInline,
+    )
+
+
+# =========================================================
+# DataType + Constraints
+# =========================================================
+
+class ConstraintInline(admin.TabularInline):
+    model = models.ConstraintDefinition
+    extra = 0
+
+
+@admin.register(models.DataType)
+class DataTypeAdmin(OntologyModelScopedAdmin):
+    list_display = ("name", "ontology_model", "derived_from")
+    autocomplete_fields = ("ontology_model", "derived_from")
+    inlines = (ConstraintInline,)
+
+
+# =========================================================
+# Artifact Definitions
+# =========================================================
+
+@admin.register(models.VertexTypeArtifactDefinition)
+class VertexTypeArtifactDefinitionAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "vertex_type",
+        "required",
+        "allows_multiple",
+    )
+    list_filter = ("required", "allows_multiple")
+    search_fields = ("name", "label")
+    autocomplete_fields = ("vertex_type",)
+
+
+@admin.register(models.RelationshipTypeArtifactDefinition)
+class RelationshipTypeArtifactDefinitionAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "relationship_type",
+        "required",
+        "allows_multiple",
+    )
+    list_filter = ("required", "allows_multiple")
+    search_fields = ("name", "label")
+    autocomplete_fields = ("relationship_type",)
+
+
+# =========================================================
+# Property Definitions
+# =========================================================
+
+@admin.register(models.VertexTypePropertyDefinition)
+class VertexTypePropertyDefinitionAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "vertex_type",
+        "type",
+        "required",
+        "initializable",
+    )
+    list_filter = ("required", "initializable", "allows_multiple")
+    search_fields = ("name", "label")
+    autocomplete_fields = ("vertex_type", "type")
+
+
+@admin.register(models.RelationshipTypePropertyDefinition)
+class RelationshipTypePropertyDefinitionAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "relationship_type",
+        "type",
+        "required",
+        "initializable",
+    )
+    list_filter = ("required", "initializable", "allows_multiple")
+    search_fields = ("name", "label")
+    autocomplete_fields = ("relationship_type", "type")
+
+
+# =========================================================
+# ConstraintDefinition (standalone admin)
+# =========================================================
+
+@admin.register(models.ConstraintDefinition)
+class ConstraintDefinitionAdmin(admin.ModelAdmin):
+    list_display = ("data_type", "name")
+    list_filter = ("name",)
+    search_fields = ("data_type__name",)
+    autocomplete_fields = ("data_type",)

@@ -1,0 +1,353 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-23 16:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: at_ontology/apps/ontology/models.py:28
+#: at_ontology/apps/ontology/models.py:90
+#: at_ontology/apps/ontology/models.py:171
+msgid "ontology"
+msgstr "ontology"
+
+#: at_ontology/apps/ontology/models.py:35
+#: at_ontology/apps/ontology_model/models.py:63
+#: at_ontology/apps/ontology_model/models.py:140
+#: at_ontology/apps/ontology_model/models.py:226
+msgid "vertex_type"
+msgstr "vertex type"
+
+#: at_ontology/apps/ontology/models.py:39
+#: at_ontology/apps/ontology/models.py:56
+#: at_ontology/apps/ontology/models.py:77
+msgid "vertex"
+msgstr "vertex"
+
+#: at_ontology/apps/ontology/models.py:40
+msgid "vertices"
+msgstr "vertices"
+
+#: at_ontology/apps/ontology/models.py:48
+#: at_ontology/apps/ontology/models.py:125
+#: at_ontology/apps/ontology_model/models.py:128
+msgid "artifact_definition"
+msgstr "artifact definition"
+
+#: at_ontology/apps/ontology/models.py:49
+#: at_ontology/apps/ontology/models.py:126
+msgid "artifact_definition_used"
+msgstr "corresponding artifact definition"
+
+#: at_ontology/apps/ontology/models.py:60
+msgid "vertex_artifact_assignment"
+msgstr "vertex artifact assignment"
+
+#: at_ontology/apps/ontology/models.py:61
+msgid "vertex_artifact_assignments"
+msgstr "vertices artifacts"
+
+#: at_ontology/apps/ontology/models.py:69
+#: at_ontology/apps/ontology/models.py:146
+#: at_ontology/apps/ontology_model/models.py:191
+msgid "property_definition"
+msgstr "property definition"
+
+#: at_ontology/apps/ontology/models.py:70
+#: at_ontology/apps/ontology/models.py:147
+msgid "property_definition_used"
+msgstr "corresponding property definition"
+
+#: at_ontology/apps/ontology/models.py:81
+msgid "vertex_property_assignment"
+msgstr "vertex property"
+
+#: at_ontology/apps/ontology/models.py:82
+msgid "vertex_property_assignments"
+msgstr "vertices properties"
+
+#: at_ontology/apps/ontology/models.py:97
+#: at_ontology/apps/ontology_model/models.py:89
+#: at_ontology/apps/ontology_model/models.py:155
+#: at_ontology/apps/ontology_model/models.py:250
+msgid "relationship_type"
+msgstr "relationship type"
+
+#: at_ontology/apps/ontology/models.py:104
+msgid "source_vertex"
+msgstr "source vertex"
+
+#: at_ontology/apps/ontology/models.py:111
+msgid "target_vertex"
+msgstr "target vertex"
+
+#: at_ontology/apps/ontology/models.py:115
+#: at_ontology/apps/ontology/models.py:133
+#: at_ontology/apps/ontology/models.py:154
+msgid "relationship"
+msgstr "relationship"
+
+#: at_ontology/apps/ontology/models.py:116
+msgid "relationships"
+msgstr "relationships"
+
+#: at_ontology/apps/ontology/models.py:137
+msgid "relationship_artifact_assignment"
+msgstr "relationship artifact"
+
+#: at_ontology/apps/ontology/models.py:138
+msgid "relationship_artifact_assignments"
+msgstr "relationships artifacts"
+
+#: at_ontology/apps/ontology/models.py:158
+msgid "relationship_property_assignment"
+msgstr "relationship property"
+
+#: at_ontology/apps/ontology/models.py:159
+msgid "relationship_property_assignments"
+msgstr "relationship properties"
+
+#: at_ontology/apps/ontology/models.py:167
+#: at_ontology/apps/ontology_model/models.py:286
+msgid "imports"
+msgstr "imports"
+
+#: at_ontology/apps/ontology/models.py:172
+msgid "ontologies"
+msgstr "ontologies"
+
+#: at_ontology/apps/ontology_model/models.py:16
+msgid "name"
+msgstr "name"
+
+#: at_ontology/apps/ontology_model/models.py:17
+msgid "label"
+msgstr "label"
+
+#: at_ontology/apps/ontology_model/models.py:18
+msgid "description"
+msgstr "description"
+
+#: at_ontology/apps/ontology_model/models.py:31
+msgid "derived_from"
+msgstr "derived from"
+
+#: at_ontology/apps/ontology_model/models.py:39
+#: at_ontology/apps/ontology_model/models.py:103
+msgid "metadata"
+msgstr "metadata"
+
+#: at_ontology/apps/ontology_model/models.py:43
+msgid "instantiable_entity"
+msgstr "instantiable entitie"
+
+#: at_ontology/apps/ontology_model/models.py:44
+msgid "instantiable_entities"
+msgstr "instantiable entities"
+
+#: at_ontology/apps/ontology_model/models.py:49
+msgid "definition"
+msgstr "definition"
+
+#: at_ontology/apps/ontology_model/models.py:50
+msgid "definitions"
+msgstr "definitions"
+
+#: at_ontology/apps/ontology_model/models.py:59
+#: at_ontology/apps/ontology_model/models.py:85
+#: at_ontology/apps/ontology_model/models.py:267
+#: at_ontology/apps/ontology_model/models.py:290
+msgid "ontology_model"
+msgstr "ontology model"
+
+#: at_ontology/apps/ontology_model/models.py:64
+msgid "vertex_types"
+msgstr "vertex types"
+
+#: at_ontology/apps/ontology_model/models.py:72
+msgid "valid_source_types"
+msgstr "valid source vertex types"
+
+#: at_ontology/apps/ontology_model/models.py:78
+msgid "valid_target_types"
+msgstr "valid target vertex types"
+
+#: at_ontology/apps/ontology_model/models.py:90
+msgid "relationship_types"
+msgstr "relationship types"
+
+#: at_ontology/apps/ontology_model/models.py:101
+msgid "instance_type"
+msgstr "instance type"
+
+#: at_ontology/apps/ontology_model/models.py:106
+msgid "instance"
+msgstr "instance"
+
+#: at_ontology/apps/ontology_model/models.py:107
+msgid "instances"
+msgstr "instances"
+
+#: at_ontology/apps/ontology_model/models.py:115
+msgid "default_path"
+msgstr "default path"
+
+#: at_ontology/apps/ontology_model/models.py:120
+msgid "mime_type"
+msgstr "MIME type"
+
+#: at_ontology/apps/ontology_model/models.py:122
+#: at_ontology/apps/ontology_model/models.py:182
+msgid "required"
+msgstr "required"
+
+#: at_ontology/apps/ontology_model/models.py:123
+#: at_ontology/apps/ontology_model/models.py:185
+msgid "allows_multiple"
+msgstr "allows multiple"
+
+#: at_ontology/apps/ontology_model/models.py:124
+#: at_ontology/apps/ontology_model/models.py:186
+msgid "min_assignments"
+msgstr "minimum number of assignments"
+
+#: at_ontology/apps/ontology_model/models.py:125
+#: at_ontology/apps/ontology_model/models.py:187
+msgid "max_assignments"
+msgstr "maximum number of assignments"
+
+#: at_ontology/apps/ontology_model/models.py:129
+msgid "artifact_definitions"
+msgstr "artifact definitions"
+
+#: at_ontology/apps/ontology_model/models.py:144
+msgid "vertex_type_artifact_definition"
+msgstr "vertex artifact definition"
+
+#: at_ontology/apps/ontology_model/models.py:145
+msgid "vertex_type_artifact_definitions"
+msgstr "vertex artifact definitions"
+
+#: at_ontology/apps/ontology_model/models.py:159
+msgid "relationship_type_artifact_definition"
+msgstr "relationship artifact definition"
+
+#: at_ontology/apps/ontology_model/models.py:160
+msgid "relationship_type_artifact_definitions"
+msgstr "relationship artifact definitions"
+
+#: at_ontology/apps/ontology_model/models.py:168
+#: at_ontology/apps/ontology_model/models.py:200
+msgid "id"
+msgstr "id"
+
+#: at_ontology/apps/ontology_model/models.py:170
+msgid "path"
+msgstr "path"
+
+#: at_ontology/apps/ontology_model/models.py:171
+msgid "content"
+msgstr "content"
+
+#: at_ontology/apps/ontology_model/models.py:174
+msgid "artifact"
+msgstr "artifact"
+
+#: at_ontology/apps/ontology_model/models.py:175
+msgid "artifacts"
+msgstr "artifacts"
+
+#: at_ontology/apps/ontology_model/models.py:183
+msgid "default_value"
+msgstr "default value"
+
+#: at_ontology/apps/ontology_model/models.py:184
+msgid "initializable"
+msgstr "initializable"
+
+#: at_ontology/apps/ontology_model/models.py:192
+msgid "property_definitions"
+msgstr "property definitions"
+
+#: at_ontology/apps/ontology_model/models.py:202
+msgid "value"
+msgstr "value"
+
+#: at_ontology/apps/ontology_model/models.py:205
+msgid "property_assignment"
+msgstr "property"
+
+#: at_ontology/apps/ontology_model/models.py:206
+msgid "property_assignments"
+msgstr "properties"
+
+#: at_ontology/apps/ontology_model/models.py:217
+#: at_ontology/apps/ontology_model/models.py:241
+#: at_ontology/apps/ontology_model/models.py:277
+#: at_ontology/apps/ontology_model/models.py:306
+msgid "data_type"
+msgstr "data type"
+
+#: at_ontology/apps/ontology_model/models.py:230
+msgid "vertex_type_property_definition"
+msgstr "vertex property definition"
+
+#: at_ontology/apps/ontology_model/models.py:231
+msgid "vertex_type_property_definitions"
+msgstr "vertex property definitions"
+
+#: at_ontology/apps/ontology_model/models.py:254
+msgid "relationship_type_property_definition"
+msgstr "relationship property definition"
+
+#: at_ontology/apps/ontology_model/models.py:255
+msgid "relationship_type_property_definitions"
+msgstr "relationship property definitions"
+
+#: at_ontology/apps/ontology_model/models.py:273
+msgid "object_schema"
+msgstr "object schema"
+
+#: at_ontology/apps/ontology_model/models.py:278
+msgid "data_types"
+msgstr "data types"
+
+#: at_ontology/apps/ontology_model/models.py:291
+msgid "ontology_models"
+msgstr "ontology models"
+
+#: at_ontology/apps/ontology_model/models.py:296
+msgid "constraint_single_key_required"
+msgstr "expected only one key for constraint data"
+
+#: at_ontology/apps/ontology_model/models.py:298
+msgid "constraint_invalid_key"
+msgstr "unexpected constraint type {key}"
+
+#: at_ontology/apps/ontology_model/models.py:309
+msgid "constraint_type"
+msgstr "constraint type"
+
+#: at_ontology/apps/ontology_model/models.py:313
+msgid "constraint_data"
+msgstr "constraint data"
+
+#: at_ontology/apps/ontology_model/models.py:318
+msgid "constraint_definition"
+msgstr "constraint"
+
+#: at_ontology/apps/ontology_model/models.py:319
+msgid "constraint_definitions"
+msgstr "constraints"

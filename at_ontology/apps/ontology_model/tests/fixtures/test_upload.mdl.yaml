@@ -1,0 +1,113 @@
+name: normative-types
+description: Базовые типы данных, вершин и связей, от которых должны наследоваться любые другие
+
+data_types:
+  ATOntology.data_types.Root:
+    label: Базовый абстрактный тип данных
+    description: Базовый тип данных, от которого должны наследоваться остальные
+    abstract: true
+  ATOntology.data_types.String:
+    label: Строка
+    description: Тип данных для представления строковой информации
+    derived_from: ATOntology.data_types.Root
+    object_schema: $string
+  ATOntology.data_types.Integer:
+    label: Целое число
+    description: Тип данных для представления целочисленных значений
+    derived_from: ATOntology.data_types.Root
+    object_schema:
+      type: integer
+  ATOntology.data_types.Float:
+    label: Вещественное число
+    description: Тип данных для представления вещественных чисел
+    derived_from: ATOntology.data_types.Root
+    object_schema:
+      type: number
+  ATOntology.data_types.Boolean:
+    label: Логический тип
+    description: Тип данных для представления логических значений
+    derived_from: ATOntology.data_types.Root
+    object_schema:
+      type: boolean
+  ATOntology.data_types.Timestamp:
+    label: Временная метка
+    description: Тип данных для представления временных меток
+    derived_from: ATOntology.data_types.Integer
+  ATOntology.data_types.List:
+    label: Список
+    description: Тип данных для представления списков
+    derived_from: ATOntology.data_types.Root
+    object_schema: $list
+  ATOntology.data_types.Map:
+    label: Объект
+    description: Тип данных для хранения пар "ключ-значение"
+    derived_from: ATOntology.data_types.Root
+    object_schema: $map
+
+  ATOntology.data_types.Reflexivity:
+    derived_from: ATOntology.data_types.String
+    label: Рефлексивность
+    description: Тип даных для хранения значения рефлексивности связи
+    constraints:
+      - included: 
+        - reflexive
+        - non-reflexive
+        - anti-reflexive
+  ATOntology.data_types.Symmetry:
+    derived_from: ATOntology.data_types.String
+    label: Симметричность
+    description: Тип даных для хранения значения симметричности связи
+    constraints:
+      - included: 
+        - symmetric
+        - non-symmetric
+        - anti-symmetric
+  ATOntology.data_types.Transitivity:
+    derived_from: ATOntology.data_types.String
+    label: Транзитивность
+    description: Тип даных для хранения значения транзитивности связи
+    constraints:
+      - included: 
+        - transitive
+        - non-transitive
+        - anti-transitive
+
+vertex_types:
+  ATOntology.vertex_types.Root:
+    label: Базовый абстрактный тип вершины
+    description: Базовый тип вершины, от которого должны наследоваться остальные
+    abstract: true
+
+relationship_types:
+  ATOntology.relationship_types.Root:
+    label: Базовый абстрактный тип связи
+    description: Базовый тип связи, от которого должны наследоваться остальные
+    abstract: true
+    properties:
+      reflexivity:
+        type: ATOntology.data_types.Reflexivity
+        description: Свойство рефлексивности связи
+        initializable: false
+        default: non-reflexive
+        allows_multiple: false
+      symmetry:
+        type: ATOntology.data_types.Symmetry
+        description: Свойство симметричности связи
+        initializable: false
+        default: non-symmetric
+        allows_multiple: false
+      transitivity:
+        type: ATOntology.data_types.Transitivity
+        description: Свойство транзитивности связи
+        initializable: false
+        default: non-transitive
+        allows_multiple: false
+
+schema_definitions:
+  $string:
+    type: string
+  $list:
+    type: array
+  $map:
+    type: object
+  

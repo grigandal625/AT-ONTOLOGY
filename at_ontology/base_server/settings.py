@@ -28,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+LOCALE_PATHS = [
+    Path(__file__).resolve().parent.parent / "locale",
+]
+
 
 # Application definition
 
@@ -49,6 +53,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -102,7 +107,7 @@ POSTGRES_CONFIG = {
     "PORT": os.getenv("DB_PORT", "5432"),
 }
 
-db_engine = os.getenv("DB_ENGINE")
+db_engine = os.getenv("DB_ENGINE", default="sqlite")
 
 default_db = {"postgres": POSTGRES_CONFIG, "sqlite": SQLITE_CONFIG}[db_engine]
 

@@ -6,7 +6,7 @@ authors = ["grigandal625"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.12"
 django = "^5.1.6"
 psycopg2-binary = "^2.9.10"
 psycopg2 = "^2.9.10"
@@ -18,6 +18,7 @@ django-cors-headers = "^4.7.0"
 adrf = {git = "https://github.com/grigandal625/adrf.git", rev = "main"}
 uvicorn = "^0.35.0"
 whitenoise = "^6.9.0"
+at-ontology-parser = {git = "https://github.com/grigandal625/AT_ONTOLOGY_PARSER.git", rev = "master"}
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.1.0"
