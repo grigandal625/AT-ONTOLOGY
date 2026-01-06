@@ -36,12 +36,15 @@ LOCALE_PATHS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "jet.dashboard",
+    "jet",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_extensions",
     "rest_framework",
     "adrf",
     "drf_spectacular",
@@ -60,6 +63,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+STATIC_ROOT = CWD / "static"
 
 ROOT_URLCONF = "at_ontology.base_server.urls"
 

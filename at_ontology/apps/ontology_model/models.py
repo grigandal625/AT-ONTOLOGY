@@ -1,9 +1,8 @@
-from typing import Any
 import uuid
 
-from django.db import models
 from at_ontology_parser.model.definitions.constraint_definition import ONTOLOGY_CONSTRAINTS
 from django.core.exceptions import ValidationError
+from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
@@ -19,6 +18,9 @@ class OntologyEntity(OntologyBase):
 
     class Meta:
         abstract = True
+
+    def __str__(self):
+        return self.label or self.name
 
 
 class Derivable(OntologyEntity):
@@ -110,10 +112,9 @@ class Instance(OntologyEntity):
 
 # ------- Artifact Definitions and Assignments ------------
 
+
 class ArtifactDefinition(Definition):
-    default_path = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=_("default_path")
-    )
+    default_path = models.CharField(max_length=255, null=True, blank=True, verbose_name=_("default_path"))
     default_content = models.BinaryField(null=True, blank=True, verbose_name=_("default_content"), default=None)
     mime_type = models.CharField(
         max_length=255,
@@ -176,8 +177,12 @@ class ArtifactAssignment(OntologyBase):
         verbose_name_plural = _("artifacts")
         abstract = True
 
+    def __str__(self):
+        return self.path
+
 
 # ------- Property Definitions and Assignments ------------
+
 
 class PropertyDefinition(Definition):
     required = models.BooleanField(default=False, verbose_name=_("required"))
@@ -258,6 +263,7 @@ class RelationshipTypePropertyDefinition(PropertyDefinition):
 
 # ------- DataType ------------
 
+
 class DataType(Derivable):
     ontology_model: "OntologyModel" = models.ForeignKey(
         "OntologyModel",
@@ -297,7 +303,7 @@ def validate_constraint_data(data: dict) -> None:
         raise ValidationError(_("constraint_invalid_data"))
     if len(data.keys()) != 1:
         raise ValidationError(_("constraint_single_key_required"))
-    key=next(iter(data.keys()))
+    key = next(iter(data.keys()))
     if key not in ONTOLOGY_CONSTRAINTS.mapping():
         raise ValidationError(_("constraint_invalid_key{key}".format(key=key)))
 
