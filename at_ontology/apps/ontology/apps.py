@@ -1,8 +1,9 @@
 from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
 class OntologyConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "at_ontology.apps.ontology"
     label = "ontology"
-    verbose_name = "Онтологии"
+    verbose_name = _("ontology")

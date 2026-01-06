@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "at-ontology"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["grigandal625"]
 readme = "README.md"
@@ -11,11 +11,8 @@ django = "^5.1.6"
 psycopg2-binary = "^2.9.10"
 psycopg2 = "^2.9.10"
 jsonschema = "^4.23.0"
-drf-spectacular = "^0.28.0"
-drf-nested-routers = "^0.94.1"
 at-queue = {git = "https://github.com/grigandal625/AT_QUEUE.git", rev = "master"}
 django-cors-headers = "^4.7.0"
-adrf = {git = "https://github.com/grigandal625/adrf.git", rev = "main"}
 uvicorn = "^0.35.0"
 whitenoise = "^6.9.0"
 at-ontology-parser = {git = "https://github.com/grigandal625/AT_ONTOLOGY_PARSER.git", rev = "master"}
