@@ -17,11 +17,8 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-from at_ontology.base_server import api_urls
-
 urlpatterns = [
     path("jet/", include("jet.urls", "jet")),  # Django JET URLS
     path("jet/dashboard/", include("jet.dashboard.urls", "jet-dashboard")),  # Django JET dashboard URLS
     path("admin/", admin.site.urls),
-    path("api/", include(api_urls)),
 ]

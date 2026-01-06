@@ -45,9 +45,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
-    "rest_framework",
-    "adrf",
-    "drf_spectacular",
     "at_ontology.apps.ontology_model",
     "at_ontology.apps.ontology",
 ]
@@ -137,18 +134,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
-REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "at_ontology.base_server.autoschema.AutoSchema",
-}
-
-SPECTACULAR_SETTINGS = {
-    "TITLE": "AT_ONTOLOGY",
-    "DESCRIPTION": "AT-TECHNOLOGY ontology base server",
-    "VERSION": "1.0.0",
-    "SERVE_INCLUDE_SCHEMA": False,
-}
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/

@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "at-ontology"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["grigandal625"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-django = "^5.1.6"
+django = "^6.0"
 psycopg2-binary = "^2.9.10"
 psycopg2 = "^2.9.10"
 jsonschema = "^4.23.0"
