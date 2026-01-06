@@ -65,6 +65,13 @@ class VertexType(Instancable):
         verbose_name = _("vertex_type")
         verbose_name_plural = _("vertex_types")
 
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name", "ontology_model"],
+                name="unique_vertex_type_in_model",
+            )
+        ]
+
 
 class RelationshipType(Instancable):
     valid_source_types = models.ManyToManyField(
@@ -90,6 +97,13 @@ class RelationshipType(Instancable):
     class Meta:
         verbose_name = _("relationship_type")
         verbose_name_plural = _("relationship_types")
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name", "ontology_model"],
+                name="unique_relationship_type_in_model",
+            )
+        ]
 
     def __str__(self):
         return self.name
@@ -284,6 +298,8 @@ class DataType(Derivable):
         verbose_name = _("data_type")
         verbose_name_plural = _("data_types")
 
+        constraints = [models.UniqueConstraint(fields=["name", "ontology_model"], name="unique_data_type_in_model")]
+
 
 class OntologyModel(OntologyEntity):
     imports = models.ManyToManyField(
@@ -296,6 +312,12 @@ class OntologyModel(OntologyEntity):
     class Meta:
         verbose_name = _("ontology_model")
         verbose_name_plural = _("ontology_models")
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name"],
+                name="unique_ontology_model",
+            )
+        ]
 
 
 def validate_constraint_data(data: dict) -> None:

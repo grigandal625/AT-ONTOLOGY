@@ -39,6 +39,13 @@ class Vertex(Instance):
         verbose_name = _("vertex")
         verbose_name_plural = _("vertices")
 
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name", "ontology"],
+                name="unique_vertex_in_ontology",
+            )
+        ]
+
 
 class VertexArtifactAssignment(ArtifactAssignment):
     definition: "VertexTypeArtifactDefinition" = models.ForeignKey(
@@ -116,6 +123,16 @@ class Relationship(Instance):
         verbose_name_plural = _("relationships")
         ordering = ["type"]
 
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name", "ontology"],
+                name="unique_relationship_in_ontology",
+            )
+        ]
+
+    def __str__(self):
+        return self.name
+
 
 class RelationshipArtifactAssignment(ArtifactAssignment):
     definition: "RelationshipTypeArtifactDefinition" = models.ForeignKey(
@@ -170,3 +187,10 @@ class Ontology(OntologyEntity):
     class Meta:
         verbose_name = _("ontology")
         verbose_name_plural = _("ontologies")
+
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name"],
+                name="unique_ontology",
+            )
+        ]
