@@ -9,7 +9,7 @@ from at_ontology_parser.ontology.handler import Ontology
 from at_ontology_parser.ontology.instances import Relationship
 from at_ontology_parser.ontology.instances import Vertex
 from at_ontology_parser.parsing.parser import OntologyModule
-from at_ontology_parser.parsing.parser import Parser
+from at_ontology_parser.parsing.parser import Parser, ModelModule
 from at_ontology_parser.reference import OntologyReference
 from django.core import exceptions
 from django.db.transaction import atomic
@@ -134,13 +134,12 @@ class OntologyService(object):
             label=ontology.label,
         )
 
-        for imp in ontology.imports:
+        for resolved in ontology._resolved_imports:
+            imported_module = resolved[2]
             try:
-                imported = OntologyModelService.get_imported_model(imp)
-            except exceptions.ObjectDoesNotExist:
-                raise CreateOntologyException(_("ontology_model_not_exists{name}").format(name=imported.alias))
-            except exceptions.MultipleObjectsReturned:
-                raise BrokenOntologyException(_("ontology_model_multiple{name}").format(name=imported.alias))
+                imported: models.OntologyModel = imported_module._meta["ontology_model"]
+            except KeyError:
+                raise CreateOntologyException(_("recursive_module_load_unsupported{name}").format(name=imported_module.orig_name))
             result.imports.add(imported)
 
         for vertex in ontology.vertices.values():

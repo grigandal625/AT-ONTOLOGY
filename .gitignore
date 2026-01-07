@@ -4,6 +4,6 @@ __pycache__
 .env
 poetry.lock
 .idea
-development.sqlite3
+/development.sqlite3
 at_ontology.sqlite3
 static

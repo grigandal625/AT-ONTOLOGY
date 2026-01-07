@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING
 from typing import Union
 
 from at_ontology_parser.model.definitions import ArtifactDefinition
-from at_ontology_parser.model.definitions import ConstraintDefinition
+from at_ontology_parser.model.definitions import ConstraintDefinition, ImportDefinition
 from at_ontology_parser.model.definitions import PropertyDefinition
 from at_ontology_parser.model.handler import OntologyModel
 from at_ontology_parser.model.types import DataType
@@ -123,8 +123,8 @@ class OntologyModelService:
             "label": relationship_type.label,
             "metadata": relationship_type.metadata,
             "derived_from": relationship_type.derived_from.name if relationship_type.derived_from else None,
-            "valid_source_vertex_types": [t.name for t in relationship_type.valid_source_types.all()],
-            "valid_target_vertex_types": [t.name for t in relationship_type.valid_target_types.all()],
+            "valid_source_types": [t.name for t in relationship_type.valid_source_types.all()],
+            "valid_target_types": [t.name for t in relationship_type.valid_target_types.all()],
             "properties": OntologyModelService.properties_source_from_db(relationship_type.properties.all()),
             "artifacts": OntologyModelService.artifacts_source_from_db(relationship_type.artifacts.all()),
         }
@@ -234,13 +234,13 @@ class OntologyModelService:
             metadata=vertex_type.metadata,
         )
 
-        for property in vertex_type.properties:
+        for property in vertex_type.properties.values():
             with atomic():
-                OntologyModelService.vertex_type_property_definition_to_db(property, result)
+                OntologyModelService.vertex_type_property_definition_to_db(property, result, ontology_model)
 
-        for artifact in vertex_type.artifacts:
+        for artifact in vertex_type.artifacts.values():
             with atomic():
-                OntologyModelService.vertex_type_artifact_definition_to_db(artifact, result)
+                OntologyModelService.vertex_type_artifact_definition_to_db(artifact, result, ontology_model)
 
         return result
 
@@ -359,14 +359,14 @@ class OntologyModelService:
 
         if relationship_type.valid_source_types:
             result.valid_source_types.add(
-                OntologyModelService.get_vertex_types_queryset(
+                *OntologyModelService.get_vertex_types_queryset(
                     names=[ref.alias for ref in relationship_type.valid_source_types], ontology_model=ontology_model
                 )
             )
 
         if relationship_type.valid_target_types:
             result.valid_target_types.add(
-                OntologyModelService.get_vertex_types_queryset(
+                *OntologyModelService.get_vertex_types_queryset(
                     names=[ref.alias for ref in relationship_type.valid_target_types], ontology_model=ontology_model
                 )
             )
@@ -449,13 +449,16 @@ class OntologyModelService:
             description=ontology_model.description,
         )
 
-        for imp in ontology_model.imports:
+        for resolved in ontology_model._resolved_imports:
+            imported_module = resolved[2]
             try:
-                imported = OntologyModelService.get_imported_model(imp)
-            except exceptions.ObjectDoesNotExist:
-                raise CreateModelException(_("ontology_model_not_exists{name}").format(name=imported.alias))
-            except exceptions.MultipleObjectsReturned:
-                raise BrokenModelException(_("ontology_model_multiple{name}").format(name=imported.alias))
+                imported: models.OntologyModel = imported_module._meta["ontology_model"]
+            except KeyError:
+                raise CreateModelException(_("recursive_module_load_unsupported{name}").format(name=imported_module.orig_name))
+            
+            if not isinstance(imported, models.OntologyModel):
+                raise CreateModelException(_("unexpected_import_type{name}").format(name=imported_module.orig_name))
+
             result.imports.add(imported)
 
         for data_type in ontology_model.data_types.values():
@@ -517,8 +520,8 @@ class OntologyModelService:
         return artifact_definition
 
     @staticmethod
-    def get_imported_model(imported: OntologyReference[OntologyModel]) -> models.OntologyModel:
-        return models.OntologyModel.objects.get(name=imported.alias)
+    def get_imported_model(imported: ImportDefinition) -> models.OntologyModel:
+        return models.OntologyModel.objects.get(name=imported.file)
 
     @staticmethod
     def get_vertex_type(

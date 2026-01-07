@@ -19,11 +19,11 @@ class RelationshipTypeTest(TestCase):
     def test_add_valid_source_vertex_types(self):
         """Тест добавления допустимых типов родительских вершин."""
         relationship_type = RelationshipType.objects.create(name="TestRelation")
-        relationship_type.valid_source_vertex_types.add(self.object_type1)
-        self.assertIn(self.object_type1, relationship_type.valid_source_vertex_types.all())
+        relationship_type.valid_source_types.add(self.object_type1)
+        self.assertIn(self.object_type1, relationship_type.valid_source_types.all())
 
     def test_add_valid_target_vertex_types(self):
         """Тест добавления допустимых типов дочерних вершин."""
         relationship_type = RelationshipType.objects.create(name="TestRelation")
-        relationship_type.valid_target_vertex_types.add(self.object_type2)
-        self.assertIn(self.object_type2, relationship_type.valid_target_vertex_types.all())
+        relationship_type.valid_target_types.add(self.object_type2)
+        self.assertIn(self.object_type2, relationship_type.valid_target_types.all())

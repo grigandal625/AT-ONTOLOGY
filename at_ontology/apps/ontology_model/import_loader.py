@@ -26,13 +26,13 @@ class DBLoader(ImportLoader):
         import_path = import_def.file
 
         if not import_path.startswith("<") and not import_path.endswith(">"):
-            raise ImportException(_("unsupported_import_definition{import_path}").format(import_path), context=context)
+            raise ImportException(_("unsupported_import_definition{import_path}").format(import_path=import_path), context=context)
 
         model_name = import_path[1:-1]
 
         ontology_model = OntologyModel.objects.filter(name=model_name).first()
         if not ontology_model:
-            raise ImportException(_("ontology_model_not_exists{model_name}").format(model_name), context=context)
+            raise ImportException(_("ontology_model_not_exists{model_name}").format(model_name=model_name), context=context)
 
         ontology_model_source = OntologyModelService.ontology_model_source_from_db(ontology_model)
         model = source_module.parser.load_ontology_model_data(

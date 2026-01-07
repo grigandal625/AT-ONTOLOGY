@@ -13,8 +13,8 @@ class RelationshipTest(TestCase):
         self.source_type = VertexType.objects.create(name="SourceType")
         self.target_type = VertexType.objects.create(name="TargetType")
         self.relationship_type = RelationshipType.objects.create(name="TestRelation")
-        self.relationship_type.valid_source_vertex_types.add(self.source_type)
-        self.relationship_type.valid_target_vertex_types.add(self.target_type)
+        self.relationship_type.valid_source_types.add(self.source_type)
+        self.relationship_type.valid_target_types.add(self.target_type)
         self.source_vertex = Vertex.objects.create(name="SourceVertex", type=self.source_type, ontology=self.ontology)
         self.target_vertex = Vertex.objects.create(name="TargetVertex", type=self.target_type, ontology=self.ontology)
 
