@@ -8,6 +8,8 @@ from at_ontology.apps.ontology.service import OntologyService
 from at_ontology_parser.parsing.parser import Parser
 from at_ontology.apps.ontology_model.import_loader import DBLoader
 
+import time
+
 COURSE_ELEMENT = 'CourceDiscipline.vertex_types.CourseElement'
 COMPETENCE = 'CourceDiscipline.vertex_types.Competence'
 
@@ -363,7 +365,8 @@ class LegacyService:
                 for relation in self.get_output_relations(ka_topic):
                     target_name_and_vertex = find_vertex_by_id(relation.related_topic_id, vertices, COURSE_ELEMENT)
                     if target_name_and_vertex is None:
-                        raise RuntimeError(f'Cannot find target vertex for {vertex_name}')
+                        # print(f'Cannot find target vertex for relation {relation} from {vertex_name}')
+                        continue
                     
                     target = target_name_and_vertex[0]
 
@@ -444,14 +447,44 @@ class Command(BaseCommand):
 
         for root_topic in service.root_ka_topics():
             print(f'Generating ontology for {root_topic.text}')
+
+            print('Loading source')
+
+            start = time.perf_counter()
             
             ontology_source = service.get_ontology_source(root_topic)
+
+            end = time.perf_counter()
+            print(f'Loaded in {end - start:.2f} seconds')
 
             parser = Parser()
             parser.import_loaders.append(DBLoader())
 
+            print('Parsing ontology')
+
+            start = time.perf_counter()
+
             ontology = parser.load_ontology_data(ontology_source, '<ontology>', 'ontology')
+
+            end = time.perf_counter()
+            print(f'Parsed in {end - start:.2f} seconds')
+
+            print('Validating references')
+
+            start = time.perf_counter()
+
             parser.finalize_references()
 
+            end = time.perf_counter()
+            print(f'Validated in {end - start:.2f} seconds')
+
+            print('Saving ontology')
+
+            start = time.perf_counter()
+
             OntologyService.ontology_to_db(ontology)
+
+            end = time.perf_counter()
+            print(f'Saved in {end - start:.2f} seconds')
+
         

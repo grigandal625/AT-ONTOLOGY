@@ -8,7 +8,7 @@ from at_ontology.apps.ontology_model.service import OntologyModelService
 
 FIXTURES_DIR = Path(__file__).resolve().parent / "fixtures"
 
-
+# at_ontology.apps.ontology_model.tests.test_service.OntologyModelServiceTest
 class OntologyModelServiceTest(TestCase):
     def setUp(self):
         pass
@@ -43,3 +43,7 @@ class OntologyModelServiceTest(TestCase):
         parser.finalize_references()
 
         print(applied_mdl)
+
+        db_applied_model = OntologyModelService.ontology_model_to_db(applied_mdl)
+
+        print(db_applied_model)

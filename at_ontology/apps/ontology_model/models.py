@@ -1,3 +1,4 @@
+from typing import Self
 import uuid
 
 from at_ontology_parser.model.definitions.constraint_definition import ONTOLOGY_CONSTRAINTS
@@ -7,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class OntologyBase(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, verbose_name=_("id"), editable=False)
     class Meta:
         abstract = True
 
@@ -104,9 +106,6 @@ class RelationshipType(Instancable):
                 name="unique_relationship_type_in_model",
             )
         ]
-
-    def __str__(self):
-        return self.name
 
 
 class Instance(OntologyEntity):

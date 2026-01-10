@@ -1,7 +1,7 @@
 from io import BytesIO
 from io import IOBase
 from pathlib import Path
-from typing import Iterable
+from typing import Callable, Iterable
 
 from at_ontology_parser.ontology.assignments import ArtifactAssignment
 from at_ontology_parser.ontology.assignments import PropertyAssignment
@@ -12,6 +12,7 @@ from at_ontology_parser.parsing.parser import OntologyModule
 from at_ontology_parser.parsing.parser import Parser, ModelModule
 from at_ontology_parser.reference import OntologyReference
 from django.core import exceptions
+from django.db import IntegrityError, connection
 from django.db.transaction import atomic
 from django.utils.translation import gettext_lazy as _
 
@@ -34,12 +35,12 @@ class BrokenOntologyException(OntologyException):
 
 class OntologyService(object):
     @staticmethod
-    def vertices_source_from_db(vertices: Iterable[models.Vertex]) -> dict:
-        return {vertex.name: OntologyService.vertex_source_from_db(vertex) for vertex in vertices}
+    def vertices_source_from_db(vertices: Iterable[models.Vertex], with_id: bool = True) -> dict:
+        return {vertex.name: OntologyService.vertex_source_from_db(vertex, with_id=with_id) for vertex in vertices}
 
     @staticmethod
-    def vertex_source_from_db(vertex: models.Vertex) -> dict:
-        return {
+    def vertex_source_from_db(vertex: models.Vertex, with_id: bool = True) -> dict:
+        result = {
             "label": vertex.label,
             "description": vertex.description,
             "type": vertex.type.name,
@@ -48,9 +49,14 @@ class OntologyService(object):
             "artifacts": OntologyService.artifacts_source_from_db(vertex.artifacts.all()),
         }
 
+        if with_id:
+            result["_uuid"] = str(vertex.id)
+        return result
+
     @staticmethod
     def properties_source_from_db(
         properties: Iterable[models.VertexPropertyAssignment | models.RelationshipPropertyAssignment],
+        with_id: bool = True,
     ) -> dict:
         result = {}
         for prop in properties:
@@ -66,6 +72,7 @@ class OntologyService(object):
     @staticmethod
     def artifacts_source_from_db(
         artifacts: Iterable[models.VertexArtifactAssignment | models.RelationshipArtifactAssignment],
+        with_id: bool = True,
     ) -> dict:
         result = {}
         for artifact in artifacts:
@@ -79,15 +86,15 @@ class OntologyService(object):
         return result
 
     @staticmethod
-    def relationships_source_from_db(relationships: Iterable[models.Relationship]) -> dict:
+    def relationships_source_from_db(relationships: Iterable[models.Relationship], with_id: bool = True) -> dict:
         return {
-            relationship.name: OntologyService.relationship_source_from_db(relationship)
+            relationship.name: OntologyService.relationship_source_from_db(relationship, with_id=with_id)
             for relationship in relationships
         }
 
     @staticmethod
-    def relationship_source_from_db(relationship: models.Relationship) -> dict:
-        return {
+    def relationship_source_from_db(relationship: models.Relationship, with_id: bool = True) -> dict:
+        result = {
             "label": relationship.label,
             "description": relationship.description,
             "type": relationship.type.name,
@@ -97,31 +104,292 @@ class OntologyService(object):
             "properties": OntologyService.properties_source_from_db(relationship.properties.all()),
             "artifacts": OntologyService.artifacts_source_from_db(relationship.artifacts.all()),
         }
+        if with_id:
+            result["_uuid"] = str(relationship.id)
+        return result
 
     @staticmethod
-    def ontology_source_from_db(ontology: models.Ontology) -> dict:
+    def ontology_source_from_db(ontology: models.Ontology, with_id: bool = True) -> dict:
         return {
             "name": ontology.name,
             "description": ontology.description,
             "label": ontology.label,
             "imports": [f"<{imp.name}>" for imp in ontology.imports.all()],
-            "vertices": OntologyService.vertices_source_from_db(ontology.vertices.all()),
-            "relationships": OntologyService.relationships_source_from_db(ontology.relationships.all()),
+            "vertices": OntologyService.vertices_source_from_db(ontology.vertices.all(), with_id=with_id),
+            "relationships": OntologyService.relationships_source_from_db(ontology.relationships.all(), with_id=with_id),
         }
 
+    
     @staticmethod
-    def artifact_assignments_from_db(ontology: models.Ontology) -> dict[Path, IOBase]:
-        result = {}
+    @atomic
+    def vertices_to_db_bulk(
+        vertices: Iterable[Vertex], 
+        ontology: models.Ontology,
+        content_getter: Callable[[str], bytes | None],
+    ) -> list[models.Vertex]:
 
-        for vertex in ontology.vertices.all():
-            for artifact_assignment in vertex.artifacts.all():
-                artifact_assignment: models.ArtifactAssignment
-                result[artifact_assignment.path] = BytesIO(artifact_assignment.content)
+        def get_vertex_source(vertex: Vertex) -> dict:
+            if not vertex.type.fulfilled:
+                raise CreateOntologyException(_("type_not_fulfilled{alias}{entity}{name}").format(
+                    alias=vertex.type.alias,
+                    entity=vertex.__class__.__name__,
+                    name=vertex.name,
+                ))
+            
+            return {
+                "id": vertex._uuid,
+                "name": vertex.name,
+                "label": vertex.label,
+                "description": vertex.description,
+                "type_id": vertex.type.value._uuid,
+                "metadata": vertex.metadata,
+                "ontology_id": ontology.id,
+            }
 
-        for relationship in ontology.relationships.all():
-            for artifact_assignment in relationship.artifacts.all():
-                artifact_assignment: models.ArtifactAssignment
-                result[artifact_assignment.path] = BytesIO(artifact_assignment.content)
+        source = [get_vertex_source(vertex) for vertex in vertices]
+        result = models.Vertex.objects.bulk_create([models.Vertex(**vertex) for vertex in source])
+
+        properties = []
+        artifacts = []
+
+        for vertex in vertices:
+            if vertex.properties:
+                properties.extend(vertex.properties)
+            if vertex.artifacts:
+                artifacts.extend(vertex.artifacts)
+
+        OntologyService.vertex_properties_to_db_bulk(properties)
+        OntologyService.vertex_artifacts_to_db_bulk(artifacts, content_getter=content_getter)
+
+        try:
+            connection.check_constraints()
+        except IntegrityError as e:
+            raise CreateOntologyException(str(e))
+
+        return result
+    
+    @staticmethod
+    @atomic
+    def vertex_properties_to_db_bulk(properties: Iterable[PropertyAssignment]) -> list[models.VertexPropertyAssignment]:
+        
+        def get_property_source(property: PropertyAssignment) -> dict:
+            if not isinstance(property.owner, Vertex):
+                raise CreateOntologyException(_("owner_wrong_type{entity}{name}{expected}").format(
+                    entity=property.__class__.__name__, 
+                    name=property.definition.alias,
+                    expected=Vertex.__name__
+                ))
+
+            if not property.definition.fulfilled:
+                raise CreateOntologyException(_("definition_not_fulfilled{alias}{entity}{owner}{owner_entity}").format(
+                    alias=property.definition.alias,
+                    entity=property.__class__.__name__,
+                    name=property.definition.alias,
+                    owner=property.owner.name,
+                    owner_entity=property.owner.__class__.__name__,
+                ))
+            
+            return {
+                "id": property._uuid,
+                "vertex_id": property.owner._uuid,
+                "definition_id": property.definition.value._uuid,
+                "value": property.value,
+            }
+
+        source = [get_property_source(property) for property in properties]
+        result = models.VertexPropertyAssignment.objects.bulk_create([models.VertexPropertyAssignment(**property) for property in source])
+
+        try:
+            connection.check_constraints()
+        except IntegrityError as e:
+            raise CreateOntologyException(str(e))
+
+        return result
+    
+    @staticmethod
+    @atomic
+    def vertex_artifacts_to_db_bulk(
+        artifacts: Iterable[ArtifactAssignment],
+        content_getter: Callable[[str], bytes | None],
+    ) -> list[models.VertexArtifactAssignment]:
+        
+        def get_artifact_source(artifact: ArtifactAssignment) -> dict:
+            if not isinstance(artifact.owner, Vertex):
+                raise CreateOntologyException(_("owner_wrong_type{entity}{name}{expected}").format(
+                    entity=artifact.__class__.__name__, 
+                    name=artifact.definition.alias,
+                    expected=Vertex.__name__,
+                ))
+
+            if not artifact.definition.fulfilled:
+                raise CreateOntologyException(_("definition_not_fulfilled{alias}{entity}{owner}{owner_entity}").format(
+                    alias=artifact.definition.alias,
+                    entity=artifact.__class__.__name__,
+                    name=artifact.definition.alias,
+                    owner=artifact.owner.name,
+                    owner_entity=artifact.owner.__class__.__name__,
+                ))
+            
+            return {
+                "id": artifact._uuid,
+                "vertex_id": artifact.owner._uuid,
+                "definition_id": artifact.definition.value._uuid,
+                "content": content_getter(artifact.path) if artifact.path else None,
+                "path": artifact.path,
+            }
+        
+        source = [get_artifact_source(artifact) for artifact in artifacts]
+        result = models.VertexArtifactAssignment.objects.bulk_create([models.VertexArtifactAssignment(**artifact) for artifact in source])
+
+        try:
+            connection.check_constraints()
+        except IntegrityError as e:
+            raise CreateOntologyException(str(e))
+
+        return result
+    
+    @staticmethod
+    @atomic
+    def relationships_to_db_bulk(
+        relationships: Iterable[Relationship], 
+        ontology: models.Ontology,
+        content_getter: Callable[[str], bytes | None],
+
+    ) -> list[models.Relationship]:
+        
+        def get_relationship_source(relationship: Relationship) -> dict:
+            if not relationship.type.fulfilled:
+                raise CreateOntologyException(_("type_not_fulfilled{alias}{entity}{name}").format(
+                    alias=relationship.type.alias,
+                    entity=relationship.__class__.__name__,
+                    name=relationship.name
+                ))
+            
+            if not relationship.source.fulfilled:
+                raise CreateOntologyException(_("source_not_fulfilled{alias}{entity}{name}").format(
+                    alias=relationship.type.alias,
+                    entity=relationship.__class__.__name__,
+                    name=relationship.name
+                ))
+            
+            if not relationship.target.fulfilled:
+                raise CreateOntologyException(_("target_not_fulfilled{alias}{entity}{name}").format(
+                    alias=relationship.type.alias,
+                    entity=relationship.__class__.__name__,
+                    name=relationship.name
+                ))
+            
+            return {
+                "id": relationship._uuid,
+                "name": relationship.name,
+                "label": relationship.label,
+                "description": relationship.description,
+                "type_id": relationship.type.value._uuid,
+                "source_id": relationship.source.value._uuid,
+                "target_id": relationship.target.value._uuid,
+                "metadata": relationship.metadata,
+                "ontology_id": ontology.id,
+            }
+        
+        source = [get_relationship_source(relationship) for relationship in relationships]
+        result = models.Relationship.objects.bulk_create([models.Relationship(**relationship) for relationship in source])
+
+        properties = []
+        artifacts = []
+
+        for relationship in relationships:
+            if relationship.properties:
+                properties.extend(relationship.properties)
+            if relationship.artifacts:
+                artifacts.extend(relationship.artifacts)
+
+        OntologyService.relationship_properties_to_db_bulk(properties)
+        OntologyService.relationship_artifacts_to_db_bulk(artifacts, content_getter=content_getter)
+
+        try:
+            connection.check_constraints()
+        except IntegrityError as e:
+            raise CreateOntologyException(str(e))
+
+        return result
+    
+    @staticmethod
+    @atomic
+    def relationship_properties_to_db_bulk(properties: Iterable[PropertyAssignment]) -> list[models.RelationshipPropertyAssignment]:
+        
+        def get_property_source(property: PropertyAssignment) -> dict:
+           
+            if not isinstance(property.owner, Relationship):
+                raise CreateOntologyException(_("owner_wrong_type{entity}{name}{expected}").format(
+                    entity=property.__class__.__name__, 
+                    name=property.definition.alias,
+                    expected=Relationship.__name__,
+                ))
+
+            if not property.definition.fulfilled:
+                raise CreateOntologyException(_("definition_not_fulfilled{alias}{entity}{owner}{owner_entity}").format(
+                    alias=property.definition.alias,
+                    entity=property.__class__.__name__,
+                    owner=property.owner.name,
+                    owner_entity=property.owner.__class__.__name__,
+                ))
+            
+            return {
+                "id": property._uuid,
+                "relationship_id": property.owner._uuid,
+                "definition_id": property.definition.value._uuid,
+                "value": property.value,
+            }
+        
+        source = [get_property_source(property) for property in properties]
+        result = models.RelationshipPropertyAssignment.objects.bulk_create([models.RelationshipPropertyAssignment(**property) for property in source])
+
+        try:
+            connection.check_constraints()
+        except IntegrityError as e:
+            raise CreateOntologyException(str(e))
+
+        return result
+    
+    @staticmethod
+    @atomic
+    def relationship_artifacts_to_db_bulk(
+        artifacts: Iterable[ArtifactAssignment],
+        content_getter: Callable[[str], bytes | None],
+    ) -> list[models.RelationshipArtifactAssignment]:
+        
+        def get_artifact_source(artifact: ArtifactAssignment) -> dict:
+            if not isinstance(artifact.owner, Relationship):
+                raise CreateOntologyException(_("owner_wrong_type{entity}{name}{expected}").format(
+                    entity=artifact.__class__.__name__, 
+                    name=artifact.definition.alias,
+                    expected=Relationship.__name__,
+                ))
+
+            if not artifact.definition.fulfilled:
+                raise CreateOntologyException(_("definition_not_fulfilled{alias}{entity}{owner}{owner_entity}").format(
+                    alias=artifact.definition.alias,
+                    entity=artifact.__class__.__name__,
+                    name=artifact.definition.alias,
+                    owner=artifact.owner.name,
+                    owner_entity=artifact.owner.__class__.__name__,
+                ))
+            
+            return {
+                "id": artifact._uuid,
+                "relationship_id": artifact.owner._uuid,
+                "definition_id": artifact.definition.value._uuid,
+                "content": content_getter(artifact.path) if artifact.path else None,
+                "path": artifact.path,
+            }
+        
+        source = [get_artifact_source(artifact) for artifact in artifacts]
+        result = models.RelationshipArtifactAssignment.objects.bulk_create([models.RelationshipArtifactAssignment(**artifact) for artifact in source])
+
+        try:
+            connection.check_constraints()
+        except IntegrityError as e:
+            raise CreateOntologyException(str(e))
 
         return result
 
@@ -130,8 +398,8 @@ class OntologyService(object):
     def ontology_to_db(ontology: Ontology) -> models.Ontology:
         result = models.Ontology.objects.create(
             name=ontology.name,
-            description=ontology.description,
             label=ontology.label,
+            description=ontology.description,
         )
 
         for resolved in ontology._resolved_imports:
@@ -140,168 +408,38 @@ class OntologyService(object):
                 imported: models.OntologyModel = imported_module._meta["ontology_model"]
             except KeyError:
                 raise CreateOntologyException(_("recursive_module_load_unsupported{name}").format(name=imported_module.orig_name))
+            
+            if not isinstance(imported, models.OntologyModel):
+                raise CreateOntologyException(_("unexpected_import_type{name}").format(name=imported_module.orig_name))
+
             result.imports.add(imported)
 
-        for vertex in ontology.vertices.values():
-            OntologyService.vertex_to_db(vertex, result)
-
-        for relationship in ontology.relationships.values():
-            OntologyService.relationship_to_db(relationship, result)
-
-        OntologyService.artifact_contents_to_db(ontology, result)
+        content_getter = OntologyService.get_content_getter(ontology)
+        OntologyService.vertices_to_db_bulk(ontology.vertices.values(), result, content_getter=content_getter)
+        OntologyService.relationships_to_db_bulk(ontology.relationships.values(), result, content_getter=content_getter)
 
         return result
 
     @staticmethod
-    @atomic
-    def vertex_to_db(vertex: Vertex, ontology: models.Ontology) -> models.Vertex:
-        try:
-            vertex_type = OntologyModelService.get_vertex_type(vertex.type, ontology)
-        except exceptions.ObjectDoesNotExist:
-            raise CreateOntologyException(_("ontology_model_not_exists{name}").format(name=vertex_type.alias))
-        except exceptions.MultipleObjectsReturned:
-            raise BrokenOntologyException(_("ontology_model_multiple{name}").format(name=vertex_type.alias))
+    def get_content_getter(ontology: Ontology) -> Callable[[str], bytes | None]:
+        def default_content_getter(path: str) -> bytes | None:
+            if not isinstance(ontology.owner, ModelModule):
+                raise CreateOntologyException(_("owner_wrong_type{entity}{name}{expected}").format(
+                    entity=ontology.owner.__class__.__name__, 
+                    name=ontology.owner, 
+                    expected=ModelModule.__name__
+                ))
+            
+            data = ontology.owner.artifacts.get(path).read()
 
-        result = models.Vertex.objects.create(
-            ontology=ontology,
-            name=vertex.name,
-            label=vertex.label,
-            description=vertex.description,
-            type=vertex_type,
-        )
+            if isinstance(data, str):
+                data = data.encode('utf-8')
 
-        for artifact in vertex.artifacts:
-            OntologyService.vertex_artifact_to_db(artifact, result)
+            if not isinstance(data, bytes):
+                raise CreateOntologyException(_("artifact_not_binary{path}").format(
+                    path=path
+                ))
+            return data
+        
+        return default_content_getter
 
-        for property in vertex.properties:
-            OntologyService.vertex_property_to_db(property, result)
-
-        return result
-
-    @staticmethod
-    @atomic
-    def vertex_artifact_to_db(artifact: ArtifactAssignment, vertex: models.Vertex) -> models.VertexArtifactAssignment:
-        result = models.VertexArtifactAssignment.objects.create(
-            definition=OntologyModelService.get_vertex_artifact_definition(artifact.artifact, vertex),
-            vertex=vertex,
-            path=artifact.path,
-        )
-        return result
-
-    @staticmethod
-    @atomic
-    def vertex_property_to_db(property: PropertyAssignment, vertex: models.Vertex) -> models.VertexPropertyAssignment:
-        result = models.VertexPropertyAssignment.objects.create(
-            definition=OntologyModelService.get_vertex_property_definition(property.property, vertex),
-            vertex=vertex,
-            value=property.value,
-        )
-        return result
-
-    @staticmethod
-    @atomic
-    def relationship_to_db(relationship: Relationship, ontology: models.Ontology) -> models.Relationship:
-        try:
-            relationship_type = OntologyModelService.get_relationship_type(relationship.type, ontology)
-        except exceptions.ObjectDoesNotExist:
-            raise CreateOntologyException(_("ontology_model_not_exists{name}").format(name=relationship_type.alias))
-        except exceptions.MultipleObjectsReturned:
-            raise BrokenOntologyException(_("ontology_model_multiple{name}").format(name=relationship_type.alias))
-
-        result = models.Relationship.objects.create(
-            ontology=ontology,
-            name=relationship.name,
-            label=relationship.label,
-            description=relationship.description,
-            type=relationship_type,
-            source=OntologyService.get_vertex(relationship.source, ontology),
-            target=OntologyService.get_vertex(relationship.target, ontology),
-        )
-
-        for artifact in relationship.artifacts:
-            OntologyService.relationship_artifact_to_db(artifact, result)
-
-        for property in relationship.properties:
-            OntologyService.relationship_property_to_db(property, result)
-
-        return result
-
-    @staticmethod
-    @atomic
-    def relationship_artifact_to_db(
-        artifact: ArtifactAssignment, relationship: models.Relationship
-    ) -> models.RelationshipArtifactAssignment:
-        result = models.RelationshipArtifactAssignment.objects.create(
-            definition=OntologyModelService.get_relationship_artifact_definition(artifact.artifact, relationship),
-            relationship=relationship,
-            path=artifact.path,
-        )
-        return result
-
-    @staticmethod
-    @atomic
-    def relationship_property_to_db(
-        property: PropertyAssignment, relationship: models.Relationship
-    ) -> models.RelationshipPropertyAssignment:
-        result = models.RelationshipPropertyAssignment.objects.create(
-            definition=OntologyModelService.get_relationship_property_definition(property.property, relationship),
-            relationship=relationship,
-            value=property.value,
-        )
-        return result
-
-    @staticmethod
-    def get_vertex(vertex: OntologyReference[Vertex], ontology: models.Ontology) -> models.Vertex:
-        return models.Vertex.objects.get(
-            ontology=ontology,
-            name=vertex.alias,
-        )
-
-    @staticmethod
-    @atomic
-    def artifact_contents_to_db(ontology: Ontology, ontology_db: models.Ontology) -> None:
-        module: OntologyModule = ontology.owner
-        if module is None or not isinstance(module, OntologyModule):
-            raise CreateOntologyException(_("unexpected_module_type"))
-
-        for vertex in ontology_db.vertices.all():
-            for artifact_assignment in vertex.artifacts.all():
-                OntologyService.artifact_content_to_db(artifact_assignment, module)
-
-        for relationship in ontology_db.relationships.all():
-            for artifact_assignment in relationship.artifacts.all():
-                OntologyService.artifact_content_to_db(artifact_assignment, module)
-
-    @staticmethod
-    @atomic
-    def artifact_content_to_db(
-        artifact_assignment: models.VertexArtifactAssignment | models.RelationshipArtifactAssignment,
-        module: OntologyModule,
-    ) -> models.VertexArtifactAssignment | models.RelationshipArtifactAssignment:
-        artifact = module.artifacts.get(artifact_assignment.path)
-
-        if not artifact:
-            raise CreateOntologyException(_("artifact_not_found{artifact}").format(artifact=artifact_assignment.path))
-
-        content = artifact.read()
-        if isinstance(content, str):
-            content = content.encode(encoding="utf-8")
-
-        if not isinstance(content, bytes):
-            raise CreateOntologyException(
-                _("artifact_content_not_bytes{artifact}").format(artifact=artifact_assignment.path)
-            )
-
-        artifact_assignment.content = content
-        artifact_assignment.save()
-        return artifact_assignment
-
-    @staticmethod
-    def ontology_archive_from_db(ontology: models.Ontology) -> Path:
-        ontology_source = OntologyService.ontology_source_from_db(ontology)
-        parser = Parser()
-        parser.import_loaders.append(DBLoader())
-
-        ont = parser.load_ontology_data(ontology_source, f"<{ontology.name}>", ontology.name)
-
-        return parser.build_archive(ont)
