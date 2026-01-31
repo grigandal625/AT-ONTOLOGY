@@ -126,7 +126,7 @@ class OntologyService(object):
         if vertex_query_exclude:
             vertices = vertices.exclude(vertex_query_exclude)
         
-        relationships = ontology.relationships.all()
+        relationships = ontology.relationships.filter(source__in=vertices, target__in=vertices)
         if relationship_query:
             relationships = relationships.filter(relationship_query)
         if relationship_query_exclude:
