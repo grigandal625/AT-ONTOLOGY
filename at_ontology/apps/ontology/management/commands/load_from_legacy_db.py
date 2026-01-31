@@ -328,13 +328,13 @@ class LegacyService:
 
         for vertex_name, vertex in vertices.items():
             if vertex['type'] == COURSE_ELEMENT and vertex['metadata']['parent_id'] is not None:
-                source = vertex_name
+                target = vertex_name
 
-                target_name_and_vertex = find_vertex_by_id(vertex['metadata']['parent_id'], vertices, COURSE_ELEMENT)
-                if target_name_and_vertex is None:
+                source_name_and_vertex = find_vertex_by_id(vertex['metadata']['parent_id'], vertices, COURSE_ELEMENT)
+                if source_name_and_vertex is None:
                     raise RuntimeError(f'Cannot find parent vertex for {vertex_name}')
                 
-                target = target_name_and_vertex[0]
+                source = source_name_and_vertex[0]
 
                 relationships[f'Hierarchy_{index}'] = {
                     'source': source,
