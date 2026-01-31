@@ -14,6 +14,7 @@ from at_ontology_parser.reference import OntologyReference
 from django.core import exceptions
 from django.db import IntegrityError, connection
 from django.db.transaction import atomic
+from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from at_ontology.apps.ontology import models
@@ -109,14 +110,35 @@ class OntologyService(object):
         return result
 
     @staticmethod
-    def ontology_source_from_db(ontology: models.Ontology, with_id: bool = True) -> dict:
+    def ontology_source_from_db(
+        ontology: models.Ontology, 
+        with_id: bool = True,
+        vertex_query: Q = None,
+        vertex_query_exclude: Q = None,
+        relationship_query: Q = None,
+        relationship_query_exclude: Q = None,
+
+    ) -> dict:
+        
+        vertices = ontology.vertices.all()
+        if vertex_query:
+            vertices = vertices.filter(vertex_query)
+        if vertex_query_exclude:
+            vertices = vertices.exclude(vertex_query_exclude)
+        
+        relationships = ontology.relationships.all()
+        if relationship_query:
+            relationships = relationships.filter(relationship_query)
+        if relationship_query_exclude:
+            relationships = relationships.exclude(relationship_query_exclude)
+
         return {
             "name": ontology.name,
             "description": ontology.description,
             "label": ontology.label,
             "imports": [f"<{imp.name}>" for imp in ontology.imports.all()],
-            "vertices": OntologyService.vertices_source_from_db(ontology.vertices.all(), with_id=with_id),
-            "relationships": OntologyService.relationships_source_from_db(ontology.relationships.all(), with_id=with_id),
+            "vertices": OntologyService.vertices_source_from_db(vertices, with_id=with_id),
+            "relationships": OntologyService.relationships_source_from_db(relationships, with_id=with_id),
         }
 
     
