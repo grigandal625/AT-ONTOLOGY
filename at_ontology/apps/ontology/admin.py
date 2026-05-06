@@ -39,7 +39,7 @@ class RelationshipInline(admin.TabularInline):
 class OntologyAdmin(admin.ModelAdmin):
     list_display = "name", "description"
     search_fields = "name", "description"
-    inlines = [VertexInline, RelationshipInline]
+    # inlines = [VertexInline, RelationshipInline]
 
 
 class VertexPropertyAssignmentInline(admin.TabularInline):
@@ -55,6 +55,7 @@ class VertexPropertyAssignmentInline(admin.TabularInline):
 class VertexAdmin(admin.ModelAdmin):
     list_display = "name", "description", "type"
     search_fields = "name", "description", "type__name", "type__description"
+    list_filter = "ontology",
 
 
 @admin.register(Relationship)
@@ -80,3 +81,4 @@ class RelationshipAdmin(admin.ModelAdmin):
         "target__type__name",
         "target__type__description",
     )
+    list_filter = "ontology",

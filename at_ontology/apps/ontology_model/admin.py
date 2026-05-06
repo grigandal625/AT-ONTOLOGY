@@ -83,10 +83,10 @@ class VertexTypeAdmin(OntologyModelScopedAdmin):
     list_display = ("name", "ontology_model", "derived_from")
     list_filter = ("ontology_model",)
     # autocomplete_fields = ("ontology_model", "derived_from")
-    inlines = (
-        VertexTypeArtifactInline,
-        VertexTypePropertyInline,
-    )
+    # inlines = (
+    #     VertexTypeArtifactInline,
+    #     VertexTypePropertyInline,
+    # )
 
 
 # =========================================================
@@ -121,29 +121,29 @@ class RelationshipTypePropertyInline(admin.TabularInline):
     model = models.RelationshipTypePropertyDefinition
     extra = 0
 
-    fields = ("name", "label", "type", "edit_link")
+    fields = ("name", "label", "type")
 
-    readonly_fields = ("edit_link",)
+    # readonly_fields = ("edit_link",)
 
-    def edit_link(self, obj: models.RelationshipTypePropertyDefinition):
-        if obj.pk:  # Only show link if object exists
-            url = reverse("admin:ontology_model_relationshiptypepropertydefinition_change", args=[obj.pk])
-            label = _("Change")
-            res = format_html(
-                '<a style="cursor:pointer;" onclick="window._showPopup(\'{url}?_popup=1\');">{label}</a>',
-                url=url,
-                label=label,
-            )
-            return res
-        return ""
+    # def edit_link(self, obj: models.RelationshipTypePropertyDefinition):
+    #     if obj.pk:  # Only show link if object exists
+    #         url = reverse("admin:ontology_model_relationshiptypepropertydefinition_change", args=[obj.pk])
+    #         label = _("Change")
+    #         res = format_html(
+    #             '<a style="cursor:pointer;" onclick="window._showPopup(\'{url}?_popup=1\');">{label}</a>',
+    #             url=url,
+    #             label=label,
+    #         )
+    #         return res
+    #     return ""
 
-    edit_link.short_description = _("Change")
+    # edit_link.short_description = _("Change")
 
-    def has_change_permission(self, request, obj=None):
-        return False  # запрет редактирования существующих
+    # def has_change_permission(self, request, obj=None):
+    #     return False  # запрет редактирования существующих
 
-    def has_add_permission(self, request, obj=None):
-        return True
+    # def has_add_permission(self, request, obj=None):
+    #     return True
 
 
 @admin.register(models.RelationshipType)
@@ -155,10 +155,10 @@ class RelationshipTypeAdmin(OntologyModelScopedAdmin):
         "valid_source_types",
         "valid_target_types",
     )
-    inlines = (
-        RelationshipTypePropertyInline,
-        RelationshipTypeArtifactInline,
-    )
+    # inlines = (
+    #     RelationshipTypePropertyInline,
+    #     RelationshipTypeArtifactInline,
+    # )
 
     class Media:
         js = ("ontology_model/admin/showPopup.js",)
