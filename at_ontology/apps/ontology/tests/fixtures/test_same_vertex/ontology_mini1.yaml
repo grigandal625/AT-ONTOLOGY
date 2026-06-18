@@ -1,0 +1,1183 @@
+name: Введение в интеллектуальные системы
+label: Введение в интеллектуальные системы
+imports:
+  - ./imports/course_types.yaml
+vertices:
+  Topic_0:
+    label: Введение в интеллектуальные системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 2
+      parent_id: null
+  Topic_1:
+    label: Общее представление человека об окружающем мире
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 3
+      parent_id: '2'
+  Topic_2:
+    label: Основные направления исследований в области искусственного интеллекта
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 4
+      parent_id: '2'
+  Topic_3:
+    label: 'Искусственный интеллект: исторический аспект'
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 5
+      parent_id: '4'
+  Topic_4:
+    label: 'Искусственный интеллект: современные направления и разработки'
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 6
+      parent_id: '4'
+  Topic_5:
+    label: Архитектуры интеллектуальных систем и их эволюция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 7
+      parent_id: '2'
+  Topic_6:
+    label: Два подхода к процессу решения задач
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 8
+      parent_id: '7'
+  Topic_7:
+    label: Эволюция основных целей разработчиков интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 9
+      parent_id: '7'
+  Topic_8:
+    label: Блок схема ранней СИИ (взгляд 70-х гг.)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 10
+      parent_id: '7'
+  Topic_9:
+    label: Классификации прикладных интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 11
+      parent_id: '7'
+  Topic_10:
+    label: Архитектура статической и динамической СОЗ(ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 12
+      parent_id: '7'
+  Topic_11:
+    label: Основные понятия и определения
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 13
+      parent_id: '2'
+  Topic_12:
+    label: Отличия знаний от данных
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 14
+      parent_id: '2'
+  Topic_13:
+    label: Сравнение СОЗ (ЭС) и обычных программных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 15
+      parent_id: '2'
+  Topic_14:
+    label: Общие сведения о представлении знаний в интеллектуальных системах
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 16
+      parent_id: '2'
+  Topic_15:
+    label: Уровни представления знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 18
+      parent_id: '16'
+  Topic_16:
+    label: Выбор формализма для представления знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 19
+      parent_id: '16'
+  Topic_17:
+    label: Обработка знаний в интеллектуальных системах
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 20
+      parent_id: '2'
+  Topic_18:
+    label: Формальные основы СОЗ(ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 21
+      parent_id: '20'
+  Topic_19:
+    label: Машина вывода
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 22
+      parent_id: '20'
+  Topic_20:
+    label: 'Сетевые модели представления знаний: семантические сети'
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 24
+      parent_id: '2'
+  Topic_21:
+    label: 'Сетевые модели представления знаний: фреймы'
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 25
+      parent_id: '2'
+  Topic_22:
+    label: Получение и структурирование знаний в интеллектуальных системах
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 26
+      parent_id: '2'
+  Topic_23:
+    label: Основные понятия и определения
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 27
+      parent_id: '26'
+  Topic_24:
+    label: НЕ-факторы знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 28
+      parent_id: '26'
+  Topic_25:
+    label: Методы и модели получения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 29
+      parent_id: '2'
+  Topic_26:
+    label: Основные понятия и определения
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 30
+      parent_id: '29'
+  Topic_27:
+    label: Классификация методов получения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 31
+      parent_id: '29'
+  Topic_28:
+    label: Модели приобретения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 32
+      parent_id: '29'
+  Topic_29:
+    label: Выбор идеального эксперта и инженера по знаниям
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 33
+      parent_id: '37'
+  Topic_30:
+    label: Критерии для выявления идеального инженера по знаниям
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 34
+      parent_id: '33'
+  Topic_31:
+    label: Средства автоматизированного приобретения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 35
+      parent_id: '2'
+  Topic_32:
+    label: Методология и технология разработки интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 36
+      parent_id: '2'
+  Topic_33:
+    label: Системный анализ проблемной области на применимость технологии СОЗ (ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 37
+      parent_id: '2'
+  Topic_34:
+    label: Выбор инструментальных средств
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 40
+      parent_id: '37'
+  Topic_35:
+    label: Интегрированные интеллектуальные системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 42
+      parent_id: '2'
+  Topic_36:
+    label: Взаимосвязь способов интеграции компонентов ИЭС с необходимостью гибридизации
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 44
+      parent_id: '42'
+  Topic_37:
+    label: Определение искусственного интеллекта
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 452
+      parent_id: '3'
+  Topic_38:
+    label: Процесс моделирования восприятия человеком окружающего мира
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 453
+      parent_id: '3'
+  Topic_39:
+    label: Понятие эвристики
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 454
+      parent_id: '3'
+  Topic_40:
+    label: Понятие проблемной области
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 455
+      parent_id: '3'
+  Topic_41:
+    label: Понятие предметной области
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 456
+      parent_id: '3'
+  Topic_42:
+    label: Понятийная структура предметной области
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 457
+      parent_id: '3'
+  Topic_43:
+    label: Наука когнитология
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 458
+      parent_id: '3'
+  Topic_44:
+    label: 3 типа источников знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 459
+      parent_id: '3'
+  Topic_45:
+    label: Понятие базы знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 460
+      parent_id: '3'
+  Topic_46:
+    label: Понятие интеллектуальной системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 461
+      parent_id: '3'
+  Topic_47:
+    label: Онтология
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 462
+      parent_id: '3'
+  Topic_48:
+    label: Онтологический инжиниринг
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 463
+      parent_id: '3'
+  Topic_49:
+    label: Традиционный подход к решению задач
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 464
+      parent_id: '8'
+  Topic_50:
+    label: Поход решения задач с помощью интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 465
+      parent_id: '8'
+  Topic_51:
+    label: Логическая парадигма ИИ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 466
+      parent_id: '9'
+  Topic_52:
+    label: Квазилогическая парадигма ИИ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 467
+      parent_id: '9'
+  Topic_53:
+    label: Семиотическая парадигма ИИ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 468
+      parent_id: '9'
+  Topic_54:
+    label: Классификация систем, основанных на знаниях
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 469
+      parent_id: '7'
+  Topic_55:
+    label: По типу предметной области
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 470
+      parent_id: '469'
+  Topic_56:
+    label: По степени реализации
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 471
+      parent_id: '469'
+  Topic_57:
+    label: По степени сложности
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 472
+      parent_id: '469'
+  Topic_58:
+    label: По степени интеграции с другими программными системами
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 473
+      parent_id: '469'
+  Topic_59:
+    label: По типу решаемых задач
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 474
+      parent_id: '469'
+  Topic_60:
+    label: Определение динамической интеллектуальной системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 475
+      parent_id: '12'
+  Topic_61:
+    label: Архитектура статической СОЗ(ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 476
+      parent_id: '12'
+  Topic_62:
+    label: Архитектура динамической СОЗ(ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 477
+      parent_id: '12'
+  Topic_63:
+    label: Два класса интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 478
+      parent_id: '13'
+  Topic_64:
+    label: Предметная область
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 479
+      parent_id: '13'
+  Topic_65:
+    label: Проблемная область
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 480
+      parent_id: '13'
+  Topic_66:
+    label: Хорошо структурированная проблемная область
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 481
+      parent_id: '480'
+  Topic_67:
+    label: Среднеструктурированная проблемная область
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 482
+      parent_id: '480'
+  Topic_68:
+    label: Слабоструктурированная проблемная область
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 483
+      parent_id: '480'
+  Topic_69:
+    label: Интеллектуальная система
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 484
+      parent_id: '13'
+  Topic_70:
+    label: Система, основанная на знаниях (экспертная система)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 485
+      parent_id: '13'
+  Topic_71:
+    label: Неформализованная задача
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 486
+      parent_id: '13'
+  Topic_72:
+    label: Перечень типовых неформализованных задач
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 487
+      parent_id: '13'
+  Topic_73:
+    label: Конечный пользователь
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 488
+      parent_id: '13'
+  Topic_74:
+    label: Инженер по знаниям
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 489
+      parent_id: '13'
+  Topic_75:
+    label: Эксперт
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 490
+      parent_id: '13'
+  Topic_76:
+    label: Интерфейс пользователя
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 491
+      parent_id: '13'
+  Topic_77:
+    label: База знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 492
+      parent_id: '13'
+  Topic_78:
+    label: Решатель
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 493
+      parent_id: '13'
+  Topic_79:
+    label: Подсистема объяснений
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 494
+      parent_id: '13'
+  Topic_80:
+    label: Технология интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 495
+      parent_id: '13'
+  Topic_81:
+    label: Понятийная структура проблемной области
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 496
+      parent_id: '13'
+  Topic_82:
+    label: Простое понятие
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 497
+      parent_id: '496'
+  Topic_83:
+    label: Интенсионал понятия
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 498
+      parent_id: '497'
+  Topic_84:
+    label: Экстенсионал понятия
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 499
+      parent_id: '497'
+  Topic_85:
+    label: Сложное понятие
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 500
+      parent_id: '496'
+  Topic_86:
+    label: Способы рассуждений на понятиях
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 501
+      parent_id: '496'
+  Topic_87:
+    label: Дедуктивный способ рассуждений
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 502
+      parent_id: '501'
+  Topic_88:
+    label: Индуктивный способ рассуждений
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 503
+      parent_id: '501'
+  Topic_89:
+    label: Способ рассуждений по аналогии
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 504
+      parent_id: '501'
+  Topic_90:
+    label: Способ рассуждений посредством выдвижения гипотез
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 505
+      parent_id: '501'
+  Topic_91:
+    label: Формы существования знаний и данных
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 506
+      parent_id: '14'
+  Topic_92:
+    label: Отличия знаний от данных
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 507
+      parent_id: '14'
+  Topic_93:
+    label: Классификация знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 508
+      parent_id: '14'
+  Topic_94:
+    label: Классификация по глубине
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 509
+      parent_id: '508'
+  Topic_95:
+    label: Классификация по жесткости
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 510
+      parent_id: '508'
+  Topic_96:
+    label: Классификация по поддержке функционирования определенных компонентов интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 511
+      parent_id: '508'
+  Topic_97:
+    label: Классическая технология разработки программного обеспечения
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 512
+      parent_id: '15'
+  Topic_98:
+    label: Технология разработки программного обеспечения с использованием СОЗ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 513
+      parent_id: '15'
+  Topic_99:
+    label: Характерные параметры традиционных систем и СОЗ (ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 514
+      parent_id: '15'
+  Topic_100:
+    label: Различие структур обычной программы и программы ИИ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 515
+      parent_id: '15'
+  Topic_101:
+    label: Особенности процесса решения неформализованных задач с помощью интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 516
+      parent_id: '15'
+  Topic_102:
+    label: Модели представления знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 517
+      parent_id: '16'
+  Topic_103:
+    label: Понятие фрейма
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 518
+      parent_id: '16'
+  Topic_104:
+    label: Понятие семантической сети
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 519
+      parent_id: '16'
+  Topic_105:
+    label: Объектно-ориентированная модель
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 520
+      parent_id: '16'
+  Topic_106:
+    label: Система продукций Е.Поста
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 521
+      parent_id: '21'
+  Topic_107:
+    label: Понятие формальной продукционной системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 522
+      parent_id: '21'
+  Topic_108:
+    label: Понятие машины вывода
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 523
+      parent_id: '22'
+  Topic_109:
+    label: Управляющий компонент
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 525
+      parent_id: '20'
+  Topic_110:
+    label: Понятие стратегии вывода
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 526
+      parent_id: '22'
+  Topic_111:
+    label: Цикл работы интерпретатора
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 527
+      parent_id: '22'
+  Topic_112:
+    label: Прямой вывод
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 528
+      parent_id: '526'
+  Topic_113:
+    label: Обратный вывод
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 529
+      parent_id: '526'
+  Topic_114:
+    label: Определение семантической сети
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 530
+      parent_id: '24'
+  Topic_115:
+    label: Типы вершин семантической сети
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 531
+      parent_id: '24'
+  Topic_116:
+    label: Понятие глубинного падежа
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 532
+      parent_id: '533'
+  Topic_117:
+    label: Типы отношений семантической сети
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 533
+      parent_id: '24'
+  Topic_118:
+    label: Определение фрейма
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 534
+      parent_id: '25'
+  Topic_119:
+    label: Теоретико-множественное описание фрейма
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 535
+      parent_id: '25'
+  Topic_120:
+    label: Понятие фрейма-прототипа и фрейма-экземпляра
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 536
+      parent_id: '25'
+  Topic_121:
+    label: Однородные и неоднородные сети фреймов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 537
+      parent_id: '25'
+  Topic_122:
+    label: ЯПЗ, основанные на фреймах
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 538
+      parent_id: '25'
+  Topic_123:
+    label: Функции инженера по знаниям
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 539
+      parent_id: '27'
+  Topic_124:
+    label: Стратегии получения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 540
+      parent_id: '27'
+  Topic_125:
+    label: Фазы процесса приобретения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 544
+      parent_id: '27'
+  Topic_126:
+    label: Основные аспекты извлечения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 545
+      parent_id: '27'
+  Topic_127:
+    label: Процесс передачи знаний в СОЗ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 546
+      parent_id: '27'
+  Topic_128:
+    label: Понятие НЕ-факторов знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 547
+      parent_id: '28'
+  Topic_129:
+    label: Недостоверные знания
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 548
+      parent_id: '28'
+  Topic_130:
+    label: Неопределенность знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 549
+      parent_id: '28'
+  Topic_131:
+    label: Нечеткость знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 550
+      parent_id: '28'
+  Topic_132:
+    label: Неточность знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 551
+      parent_id: '28'
+  Topic_133:
+    label: Неполнота знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 552
+      parent_id: '28'
+  Topic_134:
+    label: Недоопределенность общих знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 553
+      parent_id: '28'
+  Topic_135:
+    label: Недоопределенность конкретных знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 554
+      parent_id: '28'
+  Topic_136:
+    label: Понятие метода получения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 555
+      parent_id: '30'
+  Topic_137:
+    label: Типы экспертов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 556
+      parent_id: '30'
+  Topic_138:
+    label: Последовательность задач, решаемых при приобретении знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 557
+      parent_id: '30'
+  Topic_139:
+    label: Классификация по источникам знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 558
+      parent_id: '31'
+  Topic_140:
+    label: Классификация по активной или пассивной роли участников процесса
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 559
+      parent_id: '31'
+  Topic_141:
+    label: Классификация по использованию индивидуальных или групповых мнений экспертов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 560
+      parent_id: '31'
+  Topic_142:
+    label: Классификация по специфике обработки полученных результатов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 561
+      parent_id: '31'
+  Topic_143:
+    label: Классификация по стратегии навигации по ЕЯ-тексту
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 562
+      parent_id: '31'
+  Topic_144:
+    label: Модель приобретения знаний с помощью инженера по знаниям
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 563
+      parent_id: '32'
+  Topic_145:
+    label: Модель приобретения знаний с помощью интеллектуального редактора
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 565
+      parent_id: '32'
+  Topic_146:
+    label: Модель приобретения знаний с помощью индуктивной программы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 566
+      parent_id: '32'
+  Topic_147:
+    label: Модель приобретения знаний с помощью программы понимания текста
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 567
+      parent_id: '32'
+  Topic_148:
+    label: Модель приобретения знаний с помощью алгоритмов Data Mining
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 568
+      parent_id: '32'
+  Topic_149:
+    label: Критерии для выявления идеального эксперта
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 569
+      parent_id: '33'
+  Topic_150:
+    label: Критерии для определения пары «эксперт-инженер по знаниям»
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 570
+      parent_id: '33'
+  Topic_151:
+    label: Классификация современных ИС приобретения знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 571
+      parent_id: '35'
+  Topic_152:
+    label: Достоинства и недостатки основных подходов к приобретению знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 572
+      parent_id: '35'
+  Topic_153:
+    label: Классификация зарубежных систем приобретения знаний по степени автоматизации
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 573
+      parent_id: '35'
+  Topic_154:
+    label: Стандартная технология разработки СОЗ(ЭС) первого поколения
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 574
+      parent_id: '36'
+  Topic_155:
+    label: Технология создания СОЗ(ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 575
+      parent_id: '36'
+  Topic_156:
+    label: Cовременные Workbench-системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 576
+      parent_id: '36'
+  Topic_157:
+    label: Анализ на уместность применения СОЗ (ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 577
+      parent_id: '37'
+  Topic_158:
+    label: Анализ на оправданность применения СОЗ (ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 578
+      parent_id: '37'
+  Topic_159:
+    label: Анализ на возможность применения СОЗ (ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 579
+      parent_id: '37'
+  Topic_160:
+    label: Подходы к разработке СОЗ(ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 580
+      parent_id: '37'
+  Topic_161:
+    label: Подход на базе поверхностных знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 581
+      parent_id: '580'
+  Topic_162:
+    label: Структурированный подход
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 582
+      parent_id: '580'
+  Topic_163:
+    label: Глубинный подход
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 583
+      parent_id: '580'
+  Topic_164:
+    label: Факторы, влияющие на выбор подхода к разработке СОЗ(ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 584
+      parent_id: '580'
+  Topic_165:
+    label: Определение интегрированной экспертной системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 585
+      parent_id: '42'
+  Topic_166:
+    label: Статические интегрированные экспертные системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 586
+      parent_id: '42'
+  Topic_167:
+    label: Динамические интегрированные экспертные системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 587
+      parent_id: '42'
+  Topic_168:
+    label: Многоуровневая модель интеграции
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 588
+      parent_id: '42'
+  Topic_169:
+    label: Глубинная  интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 589
+      parent_id: '588'
+  Topic_170:
+    label: Поверхностная интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 590
+      parent_id: '588'
+  Topic_171:
+    label: Функциональная интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 591
+      parent_id: '588'
+  Topic_172:
+    label: Структурная интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 592
+      parent_id: '588'
+  Topic_173:
+    label: Концептуальная интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 593
+      parent_id: '588'
+  Topic_174:
+    label: Информационная интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 594
+      parent_id: '588'
+  Topic_175:
+    label: Программная интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 595
+      parent_id: '588'
+  Topic_176:
+    label: Техническая интеграция
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 596
+      parent_id: '588'
+  Topic_177:
+    label: Недостоверные знания (знания с НЕ-факторами знаний)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 704
+      parent_id: '14'
+  Topic_178:
+    label: Понятие продукционной модели
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 705
+      parent_id: '16'
+  Topic_179:
+    label: Вывод на семантических сетях
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 706
+      parent_id: '24'
+  Topic_180:
+    label: Вывод на фреймах
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 707
+      parent_id: '25'
+  Topic_181:
+    label: Извлечение знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 708
+      parent_id: '540'
+  Topic_182:
+    label: Формирование знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 709
+      parent_id: '540'
+  Topic_183:
+    label: Приобретение знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 710
+      parent_id: '540'
+  Topic_184:
+    label: Выбор формализма для представления знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 711
+      parent_id: '37'
+  Topic_185:
+    label: Выбор технологии создания СОЗ (ЭС)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 712
+      parent_id: '37'
+  Topic_186:
+    label: cfvb
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 958
+      parent_id: '529'
+  Topic_187:
+    label: Понятие когнитивной карты
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 987
+      parent_id: '16'
+  Topic_188:
+    label: Понятие графа знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 988
+      parent_id: '16'
+  Topic_189:
+    label: Понятие НЕ-факторов знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 989
+      parent_id: '16'
+  Topic_190:
+    label: Понятие темпоральных знаний
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 990
+      parent_id: '16'
+  Topic_191:
+    label: Понятие онтологии
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 991
+      parent_id: '16'
+  Topic_192:
+    label: Инструментальные средства построения интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1001
+      parent_id: '42'
+  Topic_193:
+    label: Инструментальные средства построения интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1107
+      parent_id: '2'
+  Topic_194:
+    label: Общие сведения о программной инженерии
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1108
+      parent_id: '1107'
+  Topic_195:
+    label: Особенности инструментальных средств для построения ИнСист
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1109
+      parent_id: '1107'

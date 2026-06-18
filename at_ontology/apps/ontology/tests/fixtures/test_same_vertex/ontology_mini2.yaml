@@ -1,0 +1,417 @@
+name: Технология построения динамических интеллектуальных систем
+label: Технология построения динамических интеллектуальных систем
+imports:
+  - ./imports/course_types.yaml
+vertices:
+  Topic_0:
+    label: Технология построения динамических интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 862
+      parent_id: null
+  Topic_1:
+    label: Основы теории, методологии и технологии построения динамических интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 863
+      parent_id: '862'
+  Topic_2:
+    label: Инструментальные средства для поддержки разработки динамических интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 864
+      parent_id: '862'
+  Topic_3:
+    label: Технология построения динамических интеллектуальных систем на примере разработки
+      динамических ИЭС, интеллектуальных агентов и МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 865
+      parent_id: '862'
+  Topic_4:
+    label: Современные направления исследований в области динамических интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 866
+      parent_id: '863'
+  Topic_5:
+    label: Теоретико-методологические основы построения динамических интегрированных
+      экспертных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 868
+      parent_id: '863'
+  Topic_6:
+    label: Методы построения подсистем моделирования внешнего мира в ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 869
+      parent_id: '863'
+  Topic_7:
+    label: 'Построение динамических ИЭС на основе задачно-ориентированной методологии '
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 870
+      parent_id: '863'
+  Topic_8:
+    label: Теоретико-методологические основы построения многоагентных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 871
+      parent_id: '863'
+  Topic_9:
+    label: Онтологии в многоагентных системах
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 872
+      parent_id: '863'
+  Topic_10:
+    label: Инструментальные средства построения динамических интегрированных экспертных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 873
+      parent_id: '864'
+  Topic_11:
+    label: Общие требования к функциональным возможностям инструментальных средств
+      для поддержки разработки динамических интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 874
+      parent_id: '873'
+  Topic_12:
+    label: Инструментальная система G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 875
+      parent_id: '873'
+  Topic_13:
+    label: Общая характеристика проблемно-ориентированных средств на базе G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 876
+      parent_id: '873'
+  Topic_14:
+    label: Характеристика базовых функциональных возможностей и архитектуры инструментального
+      комплекса АТ-ТЕХНОЛОГИЯ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 877
+      parent_id: '873'
+  Topic_15:
+    label: Современные инструментальные средства имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 878
+      parent_id: '873'
+  Topic_16:
+    label: Инструментальные средства проектирования и реализации агентов и многоагентных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 879
+      parent_id: '864'
+  Topic_17:
+    label: Примеры построения демонстрационных прототипов динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 880
+      parent_id: '865'
+  Topic_18:
+    label: Примеры построения прототипов интеллектуальных агентов и МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 881
+      parent_id: '865'
+  Topic_19:
+    label: Анализ направлений исследований в области динамических интегрированных
+      экспертных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 885
+      parent_id: '866'
+  Topic_20:
+    label: Анализ современных исследований в области многоагентных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 886
+      parent_id: '866'
+  Topic_21:
+    label: Основные понятия и определения ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 887
+      parent_id: '868'
+  Topic_22:
+    label: Особенности архитектуры динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 888
+      parent_id: '868'
+  Topic_23:
+    label: Типовые НФ-задачи для динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 889
+      parent_id: '868'
+  Topic_24:
+    label: Требования, предъявляемые к базовым параметрам статических и динамических
+      ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 890
+      parent_id: '868'
+  Topic_25:
+    label: Общие положения имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 891
+      parent_id: '869'
+  Topic_26:
+    label: Подходы к построению имитационной модели
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 892
+      parent_id: '869'
+  Topic_27:
+    label: Интеграция ИМ и ЭС в ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 893
+      parent_id: '869'
+  Topic_28:
+    label: Внешнее и внутреннее описание СТС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 894
+      parent_id: '869'
+  Topic_29:
+    label: Состав имитационной модели СТС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 895
+      parent_id: '869'
+  Topic_30:
+    label: Особенности построения ИМ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 896
+      parent_id: '869'
+  Topic_31:
+    label: РДО-метод интеллектуального имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 897
+      parent_id: '869'
+  Topic_32:
+    label: Особенности проблемы интеграции в ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 898
+      parent_id: '870'
+  Topic_33:
+    label: Построение имитационных моделей СТС для динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 899
+      parent_id: '870'
+  Topic_34:
+    label: Модель интеграции имитационных моделей с ядром экспертной системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 900
+      parent_id: '870'
+  Topic_35:
+    label: Основные подходы и принципы разработки МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 901
+      parent_id: '871'
+  Topic_36:
+    label: Структура МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 902
+      parent_id: '871'
+  Topic_37:
+    label: Определения и классификация агентов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 903
+      parent_id: '871'
+  Topic_38:
+    label: Особенности архитектур интеллектуальных агентов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 904
+      parent_id: '871'
+  Topic_39:
+    label: Пример архитектуры интеллектуального агента
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 905
+      parent_id: '871'
+  Topic_40:
+    label: Основные понятия и определения
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 906
+      parent_id: '872'
+  Topic_41:
+    label: Модель онтологии
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 907
+      parent_id: '872'
+  Topic_42:
+    label: Классификации онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 961
+      parent_id: '872'
+  Topic_43:
+    label: Методы разработки онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 962
+      parent_id: '872'
+  Topic_44:
+    label: Языки описания онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 963
+      parent_id: '872'
+  Topic_45:
+    label: Применение онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 964
+      parent_id: '872'
+  Topic_46:
+    label: Общая характеристика функциональных возможностей системы G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1087
+      parent_id: '875'
+  Topic_47:
+    label: Представление знаний и методы работы со знаниями средствами G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1088
+      parent_id: '875'
+  Topic_48:
+    label: Среда разработчика в системе G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1089
+      parent_id: '875'
+  Topic_49:
+    label: Интерфейс с внешним окружением
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1090
+      parent_id: '875'
+  Topic_50:
+    label: G2 Optegrity
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1091
+      parent_id: '876'
+  Topic_51:
+    label: G2 NeurOn-Line
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1092
+      parent_id: '876'
+  Topic_52:
+    label: G2 ReThink
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1093
+      parent_id: '876'
+  Topic_53:
+    label: Integrity
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1094
+      parent_id: '876'
+  Topic_54:
+    label: Общие сведения о комплексе АТ-ТЕХНОЛОГИЯ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1095
+      parent_id: '877'
+  Topic_55:
+    label: Развитие инструментальной базы комплекса АТ-ТЕХНОЛОГИЯ для построения динамических
+      ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1096
+      parent_id: '877'
+  Topic_56:
+    label: Общая характеристика инструментальных средств имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1097
+      parent_id: '878'
+  Topic_57:
+    label: Анализ текущей версии среды имитационного моделирования RAO-Studio
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1098
+      parent_id: '878'
+  Topic_58:
+    label: Анализ зарубежных инструментальных средств
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1099
+      parent_id: '879'
+  Topic_59:
+    label: Система имитационного моделирования взаимодействия интеллектуальных агентов
+      (ИМВИА)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1100
+      parent_id: '879'
+  Topic_60:
+    label: AgentBuilder
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1101
+      parent_id: '1099'
+  Topic_61:
+    label: Bee-gent
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1102
+      parent_id: '1099'
+  Topic_62:
+    label: Прототип динамической ИЭС управления ядерным реактором «СУЗ ВВЭР-1000»
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1103
+      parent_id: '880'
+  Topic_63:
+    label: Прототип динамической ИЭС управления локальной вычислительной сетью «умного
+      дома»
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1104
+      parent_id: '880'
+  Topic_64:
+    label: Прототип МАС для решения задач контроля состояния  химически опасных объектов
+      города Москвы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1105
+      parent_id: '881'
+  Topic_65:
+    label: Демонстрационный прототип МАС управления  силами и средствами объектовой
+      охраны
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1106
+      parent_id: '881'

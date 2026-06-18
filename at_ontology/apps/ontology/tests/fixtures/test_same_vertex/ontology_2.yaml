@@ -1,0 +1,2779 @@
+name: Технология построения динамических интеллектуальных систем
+label: Технология построения динамических интеллектуальных систем
+imports:
+  - ./imports/course_types.yaml
+vertices:
+  Topic_0:
+    label: Технология построения динамических интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 862
+      parent_id: null
+  Topic_1:
+    label: Основы теории, методологии и технологии построения динамических интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 863
+      parent_id: '862'
+  Topic_2:
+    label: Инструментальные средства для поддержки разработки динамических интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 864
+      parent_id: '862'
+  Topic_3:
+    label: Технология построения динамических интеллектуальных систем на примере разработки
+      динамических ИЭС, интеллектуальных агентов и МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 865
+      parent_id: '862'
+  Topic_4:
+    label: Современные направления исследований в области динамических интеллектуальных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 866
+      parent_id: '863'
+    properties:
+      questions:
+      - question: На какие основные классы разделяют динамических интеллектуальных
+          систем (ДИС)?
+        difficulty: 1
+        answers:
+        - answer: Интегрированные экспертные системы функционирующие в реальном времени
+            (ИЭС РВ)
+          correct: true
+        - answer: Интеллектуальные системы поддержки принятия решений
+          correct: true
+        - answer: Многоагентные системы (MAC)
+          correct: true
+        - answer: Распределенные интеллектуальные системы различного назначения
+          correct: true
+        - answer: Интеллектуальные диалоговые системы (ИДС)
+          correct: false
+        - answer: Расчетно-логические системы (РЛС)
+          correct: false
+        - answer: 'Экспертная система (Система основанная на знаниях (СОЗ)) '
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Что лежит в основе агентно-ориентированных технологий (агентских
+          технологий)?
+        difficulty: 1
+        answers:
+        - answer: задача моделирования поведения
+          correct: true
+        - answer: задача моделирования рассуждений
+          correct: false
+        - answer: задача имитационного моделирования
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_5:
+    label: Теоретико-методологические основы построения динамических интегрированных
+      экспертных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 868
+      parent_id: '863'
+  Topic_6:
+    label: Методы построения подсистем моделирования внешнего мира в ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 869
+      parent_id: '863'
+  Topic_7:
+    label: 'Построение динамических ИЭС на основе задачно-ориентированной методологии '
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 870
+      parent_id: '863'
+  Topic_8:
+    label: Теоретико-методологические основы построения многоагентных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 871
+      parent_id: '863'
+  Topic_9:
+    label: Онтологии в многоагентных системах
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 872
+      parent_id: '863'
+  Topic_10:
+    label: Инструментальные средства построения динамических интегрированных экспертных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 873
+      parent_id: '864'
+  Topic_11:
+    label: Общие требования к функциональным возможностям инструментальных средств
+      для поддержки разработки динамических интеллектуальных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 874
+      parent_id: '873'
+    properties:
+      questions:
+      - question: 'G2 позволяет создавать правила следующих типов:'
+        difficulty: 1
+        answers:
+        - answer: initially – реагируют на активацию родительского РП
+          correct: true
+        - answer: once if – выполняются один раз при выполнении условий
+          correct: false
+        - answer: if – могут вызываться различными способами при выполнении условий
+          correct: true
+        - answer: whenever – реагируют на события
+          correct: true
+        - answer: when – не участвуют ни в прямом, ни в обратном выводе
+          correct: true
+        - answer: case – выполняются только в одной из веток
+          correct: false
+        - answer: unconditionally – выполняют свой список действий каждый раз, когда
+            вызываются
+          correct: true
+        - answer: нет правильного ответа
+          correct: false
+      - question: Какие требования предъявляются к инструментальным средствам для
+          разработки динамических интеллектуальных систем (ДИС), функционирующих в
+          реальном времени?
+        difficulty: 1
+        answers:
+        - answer: Организация обработки параллельных процессов (рассуждений)
+          correct: true
+        - answer: Наличие развитых средств для проведения временного (темпорального)
+            вывода
+          correct: true
+        - answer: Формирование распределенных приложений на базе архитектуры «клиент-сервер»
+          correct: true
+        - answer: Обязательная реализация на языках Lisp или Prolog для обеспечения
+            интеллектуальности
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие из перечисленных критериев являются основными для выбора эффективных
+          инструментальных средств (ИС) для построения динамических интегрированных
+          экспертных систем (ИЭС)?
+        difficulty: 1
+        answers:
+        - answer: Интегрированность (легкая интеграция с другими информационными технологиями)
+          correct: true
+        - answer: Открытость и переносимость
+          correct: true
+        - answer: Использование языков традиционного программирования и рабочих станций
+          correct: true
+        - answer: Обязательное использование специализированных Lisp-машин
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какое из перечисленных требований НЕ является обязательным для инструментальных
+          средств разработки динамических интеллектуальных систем?
+        difficulty: 1
+        answers:
+        - answer: Наличие встроенного текстового процессора для документирования
+          correct: true
+        - answer: Возможность работы в реальном времени
+          correct: false
+        - answer: Поддержка временного (темпорального) вывода
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_12:
+    label: Инструментальная система G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 875
+      parent_id: '873'
+    properties:
+      questions:
+      - question: 'Знания в G2 структурируются следующими способами:'
+        difficulty: 1
+        answers:
+        - answer: иерархия рабочих пространств
+          correct: true
+        - answer: иерархия процедур
+          correct: false
+        - answer: иерархия классов
+          correct: true
+        - answer: иерархия правил
+          correct: false
+        - answer: иерархия объектов
+          correct: false
+        - answer: иерархия модулей
+          correct: true
+        - answer: нет правильного ответа
+          correct: false
+      - question: 'Примерами исполняемых утверждений среди сущностей в БЗ G2 являются:'
+        difficulty: 2
+        answers:
+        - answer: объекты и их классы
+          correct: false
+        - answer: формулы
+          correct: true
+        - answer: процедуры
+          correct: true
+        - answer: связи
+          correct: false
+        - answer: отношения
+          correct: false
+        - answer: правила
+          correct: true
+        - answer: нет правильного ответа
+          correct: false
+      - question: 'G2 может инициировать правило, когда:'
+        difficulty: 3
+        answers:
+        - answer: данные, на которые есть ссылка в консеквенте правила, изменились
+          correct: false
+        - answer: активировано родительское РП для правила типа initially
+          correct: true
+        - answer: БЗ выполнила действие focus или invoke, которое использует имя объекта,
+            класса объекта или категории правил, ассоциированной с правилом
+          correct: true
+        - answer: появился новый объект типа, используемого в общем правиле
+          correct: false
+        - answer: БЗ нуждается в значении для переменной, значение которой присваивается
+            в консеквенте какого-либо правила
+          correct: true
+        - answer: в ходе прямого вывода выполнились условия анцедента правила типа
+            when
+          correct: false
+        - answer: данные, на которые есть ссылка в анцеденте правила, изменились
+          correct: true
+        - answer: G2 определило событие, которое проверяется в анцеденте правила типа
+            whenever
+          correct: true
+        - answer: прошел временной интервал, определенный для правила, инициируемого
+            через сканирование
+          correct: true
+        - answer: нет правильного ответа
+          correct: false
+  Topic_13:
+    label: Общая характеристика проблемно-ориентированных средств на базе G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 876
+      parent_id: '873'
+    properties:
+      questions:
+      - question: Какие проблемно-ориентированные средства на базе G2 разработаны
+          фирмой Gensym Corp.?
+        difficulty: 2
+        answers:
+        - answer: G2 Optegrity
+          correct: true
+        - answer: G2 NeurOn-Line
+          correct: true
+        - answer: G2 ReThink
+          correct: true
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие из перечисленных проблемно-ориентированных расширений G2 предназначены
+          для работы с данными в реальном времени?
+        difficulty: 2
+        answers:
+        - answer: G2 Optegrity для оптимизации бизнес-процессов
+          correct: true
+        - answer: G2 NeurOn-Line для адаптивного управления
+          correct: true
+        - answer: GDA (G2 Diagnostic Assistant) для диагностики
+          correct: true
+        - answer: G2 Visual для анализа данных
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_14:
+    label: Характеристика базовых функциональных возможностей и архитектуры инструментального
+      комплекса АТ-ТЕХНОЛОГИЯ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 877
+      parent_id: '873'
+    properties:
+      questions:
+      - question: Что из себя представляет инструментальный комплекс АТ-ТЕХНОЛОГИЯ?
+        difficulty: 1
+        answers:
+        - answer: Отечественный инструментарий для построения статических и динамических
+            интегрированных экспертных систем (ИЭС)
+          correct: true
+        - answer: Комплекс, развиваемый до уровня современных инструментальных средств
+            (ИС) типа WorkBench
+          correct: true
+        - answer: Зарубежный аналог системы G2 от компании Microsoft
+          correct: false
+        - answer: Специализированная система для проектирования микропроцессоров
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_15:
+    label: Современные инструментальные средства имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 878
+      parent_id: '873'
+  Topic_16:
+    label: Инструментальные средства проектирования и реализации агентов и многоагентных
+      систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 879
+      parent_id: '864'
+    properties:
+      questions:
+      - question: Какие основные подходы к построению агентно-ориентированных систем
+          существуют?
+        difficulty: 2
+        answers:
+        - answer: Реализация единственного автономного агента
+          correct: true
+        - answer: Разработка многоагентных систем (МАС)
+          correct: true
+        - answer: Исключительно реактивный подход без использования знаний
+          correct: false
+        - answer: Подход, основанный только на нейронных сетях
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_17:
+    label: Примеры построения демонстрационных прототипов динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 880
+      parent_id: '865'
+    properties:
+      questions:
+      - question: Какие из перечисленных характеристик относятся к разработанным прототипам
+          многоагентных систем?
+        difficulty: 2
+        answers:
+        - answer: Прототип для контроля химически опасных объектов Москвы
+          correct: true
+        - answer: Прототип для управления силами объектовой охраны
+          correct: true
+        - answer: Использование архитектуры на основе продукционных ИЭС
+          correct: true
+        - answer: Прототип для управления космическими аппаратами
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_18:
+    label: Примеры построения прототипов интеллектуальных агентов и МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 881
+      parent_id: '865'
+    properties:
+      questions:
+      - question: Какие инструменты, согласно разделу 3, использовались для реализации
+          практических прототипов?
+        difficulty: 2
+        answers:
+        - answer: Система G2 (Gensym Corp.)
+          correct: true
+        - answer: Инструментальный комплекс АТ-ТЕХНОЛОГИЯ
+          correct: true
+        - answer: Система RAO-Studio
+          correct: true
+        - answer: Язык программирования Python и фреймворк Django
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_19:
+    label: Анализ направлений исследований в области динамических интегрированных
+      экспертных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 885
+      parent_id: '866'
+    properties:
+      questions:
+      - question: Какие новые требования предъявляются к интегрированным экспертным
+          системам, функционирующим в реальном времени (ИЭС РВ)?
+        difficulty: 2
+        answers:
+        - answer: представление изменяющихся во времени данных, поступающих от внешних
+            источников
+          correct: true
+        - answer: хранение изменяющихся во времени данных, поступающих от внешних
+            источников
+          correct: true
+        - answer: анализ изменяющихся во времени данных, поступающих от внешних источников
+          correct: true
+        - answer: выполнение одновременных временных рассуждений о нескольких различных
+            асинхронных процессах (задачах)
+          correct: true
+        - answer: возможность моделирования внешнего мира и различных его состояний
+          correct: true
+        - answer: предоставление Естественно-языкового интерфейса для общения с системой
+          correct: false
+        - answer: обработка различных типов НЕ-факторов знаний (неопределённых, нечетких)
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+  Topic_20:
+    label: Анализ современных исследований в области многоагентных систем
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 886
+      parent_id: '866'
+    properties:
+      questions:
+      - question: 'Парадигма современных интеллектуальных систем (ИнСист) рассматривает
+          архитектуру как: ... ?'
+        difficulty: 2
+        answers:
+        - answer: децентранизованную
+          correct: true
+        - answer: распределенную
+          correct: true
+        - answer: групповую
+          correct: true
+        - answer: независимую
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: В контексте искусственной жизни выделяются такие области исследований
+          как ...?
+        difficulty: 3
+        answers:
+        - answer: анализ и моделирование основных принципов организации живого
+          correct: true
+        - answer: изучение динамики сложных явлений методами теории клеточных автоматов
+            и теории нелинейных дифференциальных уравнений
+          correct: true
+        - answer: моделирование эволюции популяции с помощью генетических алгоритмов
+            и классификаторов
+          correct: true
+        - answer: разработка автономных агентов, способных к адаптации и действиям
+            в плохо определенной среде
+          correct: true
+        - answer: моделирование эмергентных MAC, возникающих на основе реактивных
+            агентов
+          correct: true
+        - answer: моделирование искусственных экосистем, состоящих только из физических
+            объектов
+          correct: false
+        - answer: разработка биологических организмов с помощью искусственного интеллекта
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: В каких основных направлениях ИИ развиваются современные многоагентные
+          системы(МАС)?
+        difficulty: 2
+        answers:
+        - answer: Искусственной жизни
+          correct: true
+        - answer: Распределенный искусственный интеллект (РИИ)
+          correct: true
+        - answer: Централизованный искусственный интеллект
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_21:
+    label: Основные понятия и определения ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 887
+      parent_id: '868'
+    properties:
+      questions:
+      - question: Динамическиу интеллектуальные системы (ДИС) – это ... ?
+        difficulty: 1
+        answers:
+        - answer: это системы, которые, с одной стороны, удовлетворяют определениям
+            динамической системы, а с другой – состояния Si и функции перехода из
+            одного состояния в другое Pi могут описываться формализмами ИИ
+          correct: true
+        - answer: Это системы, которые изменяются со временем и используют алгоритмы
+            ИИ только для анализа статических данных
+          correct: false
+        - answer: Это системы, которые изменяются со временем, но их состояния фиксированы
+            и не зависят от предыдущих состояний
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: С помощью каких семейств функций задаются состояния динамических
+          интеллектуальных систем (ДИС) при классическом подходе?
+        difficulty: 1
+        answers:
+        - answer: Семейство функций реакций системы
+          correct: true
+        - answer: Семейство функций перехода системы
+          correct: true
+        - answer: Семейство функций обработки информации
+          correct: false
+        - answer: Семейство функций оптимизации
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Что используется для задания функций реакций системы и функций перехода
+          системы при подходе с позиций ИИ?
+        difficulty: 1
+        answers:
+        - answer: База знаний
+          correct: true
+        - answer: Нейронные сети
+          correct: true
+        - answer: Генетические алгоритмы
+          correct: true
+        - answer: Жестко заданные таблицы переходов
+          correct: false
+        - answer: Алгоритмы с фиксированными правилами
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Чем описываются состояния (Si)?
+        difficulty: 1
+        answers:
+        - answer: параметрами и переменными, имеющими символьный характер
+          correct: true
+        - answer: постоянными значениями, которые не изменяются
+          correct: false
+        - answer: списками всех возможных состояний системы
+          correct: false
+        - answer: только числовыми значениями
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Чем описываются функции перехода (Pi)?
+        difficulty: 1
+        answers:
+        - answer: правилами, используемыми в интеллектуальных системах
+          correct: true
+        - answer: постоянными значениями, которые не изменяются
+          correct: false
+        - answer: списками всех возможных состояний системы
+          correct: false
+        - answer: только числовыми значениями
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: 'Сложные технические системы (СТС) - это объекты технической природы
+          (системы, комплексы и др.), которые могут быть представлены в следующем
+          виде:'
+        difficulty: 2
+        answers:
+        - answer: множество непрерывно изменяющихся параметров в реальном времени
+          correct: true
+        - answer: множество функционально и конструктивно связанных компонентов, подсистем,
+            модулей блоков и т.д. (сотни и тысячи)
+          correct: true
+        - answer: процесс функционирования, представляющий сложный технологический
+            процесс, сопровождающийся изобилием нештатных ситуаций, быстрой сменой
+            обстановки и дефицитом времени на принятие решений в нештатных ситуациях
+          correct: true
+        - answer: сложный процесс управления, который может рассматриваться как специфический
+            процесс мониторинга состояния СТС в каждый текущий момент времени (общая
+            задача диагностики) плюс процесс поиска неисправностей (частный случай
+            общей задачи диагностики)
+          correct: true
+        - answer: множество рисков ошибок персонала
+          correct: true
+        - answer: простой процесс, не зависящий от времени и внешних факторов
+          correct: false
+        - answer: набор случайных компонентов, не связанных между собой
+          correct: false
+        - answer: множество дискретных параметров, фиксируемых раз в сутки
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+  Topic_22:
+    label: Особенности архитектуры динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 888
+      parent_id: '868'
+    properties:
+      questions:
+      - question: Какие дополнительные компоненты вводятся в архитектуру динамической
+          системы, основанной на знаниях (СОЗ)?
+        difficulty: 1
+        answers:
+        - answer: подсистема моделирования внешнего мира (окружения)
+          correct: true
+        - answer: подсистема сопряжения с внешним миром
+          correct: true
+        - answer: локальная система (датчики, контроллеры и т.д.)
+          correct: true
+        - answer: средства общения (диалоговый компонент)
+          correct: false
+        - answer: рабочая память (внутренняя БД)
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: 'Какие традиционные компоненты системы, основанной на знаниях (СОЗ)
+          подвергаются изменениям в динамической интегрированной экспертной системе
+          (ИЭС)? '
+        difficulty: 1
+        answers:
+        - answer: Средства общения (диалоговый компонент)
+          correct: true
+        - answer: Рабочая память (внутренняя БД)
+          correct: true
+        - answer: Решатель
+          correct: true
+        - answer: База знаний
+          correct: true
+        - answer: Объяснительный компонент (подсистема объяснений)
+          correct: false
+        - answer: Компонент приобретения знаний
+          correct: false
+        - answer: Локальная система (датчики, контроллеры и т.д)
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Кто традиционно принимает участие в разработке динамической интегрированной
+          экспертной системы (ИЭС)?
+        difficulty: 1
+        answers:
+        - answer: эксперт в ПрО, задачи которой будет решать система
+          correct: true
+        - answer: инженер по знаниям
+          correct: true
+        - answer: программист по разработке инструментальных средств
+          correct: true
+        - answer: бизнес-аналитик
+          correct: false
+        - answer: системный администратор
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Для чего предназначены проблемно-специализированные инструментальные
+          средства (ИС)?
+        difficulty: 1
+        answers:
+        - answer: для построения динамических ИЭС, решающих динамические задачи определенного
+            класса и использующих динамические представления предметной области
+          correct: true
+        - answer: для построения динамических ИЭС, решающих динамические задачи и
+            использующих динамические представления конкретной предметной области
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Для чего предназначены предметно-специализированные инструментальные
+          средства (ИС)?
+        difficulty: 1
+        answers:
+        - answer: для построения динамических ИЭС, решающих динамические задачи и
+            использующих динамические представления конкретной предметной области
+          correct: true
+        - answer: для построения динамических ИЭС, решающих динамические задачи определенного
+            класса и использующих динамические представления предметной области
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+  Topic_23:
+    label: Типовые НФ-задачи для динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 889
+      parent_id: '868'
+    properties:
+      questions:
+      - question: Какие неформализованные задачи (НФ-задачи) относятся к задачам анализа?
+        difficulty: 1
+        answers:
+        - answer: Интерпретация
+          correct: true
+        - answer: Диагностика
+          correct: true
+        - answer: Мониторинг
+          correct: true
+        - answer: Отладка
+          correct: true
+        - answer: Обучение
+          correct: true
+        - answer: Управление
+          correct: true
+        - answer: Прогнозирование
+          correct: false
+        - answer: Планирование
+          correct: false
+        - answer: Проектирование
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие неформализованные задачи (НФ-задачи) относятся к задачам синтеза?
+        difficulty: 1
+        answers:
+        - answer: Прогнозирование
+          correct: true
+        - answer: Планирование
+          correct: true
+        - answer: Проектирование
+          correct: true
+        - answer: Отладка
+          correct: true
+        - answer: Обучение
+          correct: true
+        - answer: Управление
+          correct: true
+        - answer: Интерпретация
+          correct: false
+        - answer: Диагностика
+          correct: false
+        - answer: Мониторинг
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие неформализованные задачи (НФ-задачи) относятся и к задачам
+          анализа, и к задачам синтеза?
+        difficulty: 1
+        answers:
+        - answer: Отладка
+          correct: true
+        - answer: Обучение
+          correct: true
+        - answer: Управление
+          correct: true
+        - answer: Интерпретация
+          correct: false
+        - answer: Диагностика
+          correct: false
+        - answer: Мониторинг
+          correct: false
+        - answer: Прогнозирование
+          correct: false
+        - answer: Планирование
+          correct: false
+        - answer: Проектирование
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие неформализованные задачи (НФ-задачи) используются в динамических
+          ИЭС?
+        difficulty: 1
+        answers:
+        - answer: Диагностика
+          correct: true
+        - answer: Мониторинг
+          correct: true
+        - answer: Прогнозирование
+          correct: true
+        - answer: Планирование
+          correct: true
+        - answer: Проектирование
+          correct: true
+        - answer: Отладка
+          correct: true
+        - answer: Интерпретация
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие неформализованные задачи (НФ-задачи) используются в статических
+          ИЭС?
+        difficulty: 1
+        answers:
+        - answer: Интерпретация
+          correct: true
+        - answer: Диагностика
+          correct: true
+        - answer: Отладка
+          correct: true
+        - answer: Прогнозирование
+          correct: true
+        - answer: Планирование
+          correct: true
+        - answer: Проектирование
+          correct: true
+        - answer: Мониторинг
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Интерпретация - это ...?
+        difficulty: 1
+        answers:
+        - answer: 'процесс определения смысла данных, т.е. построения описаний по
+            наблюдаемым данным '
+          correct: true
+        - answer: процесс обнаружения неисправностей в некоторой системе
+          correct: false
+        - answer: непрерывная интерпретация в реальном масштабе времени и сигнализация
+            о выходах параметров за допустимые пределы
+          correct: false
+        - answer: предсказание будущих событий на базе моделей прошлого и настоящего
+          correct: false
+        - answer: конструирование плана действий
+          correct: false
+        - answer: построение спецификаций на создание объектов с заранее определенными
+            свойствами
+          correct: false
+        - answer: выработка рекомендаций по устранению неисправностей
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Диагностика - это ...?
+        difficulty: 1
+        answers:
+        - answer: процесс обнаружения неисправностей в некоторой системе
+          correct: true
+        - answer: процесс определения смысла данных, т.е. построения описаний по наблюдаемым
+            данным
+          correct: false
+        - answer: непрерывная интерпретация в реальном масштабе времени и сигнализация
+            о выходах параметров за допустимые пределы
+          correct: false
+        - answer: предсказание будущих событий на базе моделей прошлого и настоящего
+          correct: false
+        - answer: конструирование плана действий
+          correct: false
+        - answer: построение спецификаций на создание объектов с заранее определенными
+            свойствами
+          correct: false
+        - answer: выработка рекомендаций по устранению неисправностей
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Мониторинг - это ...?
+        difficulty: 1
+        answers:
+        - answer: непрерывная интерпретация в реальном масштабе времени и сигнализация
+            о выходах параметров за допустимые пределы
+          correct: true
+        - answer: процесс определения смысла данных, т.е. построения описаний по наблюдаемым
+            данным
+          correct: false
+        - answer: процесс обнаружения неисправностей в некоторой системе
+          correct: false
+        - answer: предсказание будущих событий на базе моделей прошлого и настоящего
+          correct: false
+        - answer: конструирование плана действий
+          correct: false
+        - answer: построение спецификаций на создание объектов с заранее определенными
+            свойствами
+          correct: false
+        - answer: выработка рекомендаций по устранению неисправностей
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Прогнозирование - это ...?
+        difficulty: 1
+        answers:
+        - answer: предсказание будущих событий на базе моделей прошлого и настоящего
+          correct: true
+        - answer: процесс определения смысла данных, т.е. построения описаний по наблюдаемым
+            данным
+          correct: false
+        - answer: процесс обнаружения неисправностей в некоторой системе
+          correct: false
+        - answer: непрерывная интерпретация в реальном масштабе времени и сигнализация
+            о выходах параметров за допустимые пределы
+          correct: false
+        - answer: конструирование плана действий
+          correct: false
+        - answer: построение спецификаций на создание объектов с заранее определенными
+            свойствами
+          correct: false
+        - answer: выработка рекомендаций по устранению неисправностей
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Планирование - это ...?
+        difficulty: 1
+        answers:
+        - answer: конструирование плана действий
+          correct: true
+        - answer: составление расписаний в РВ
+          correct: true
+        - answer: ' процесс определения смысла данных, т.е. построения описаний по
+            наблюдаемым данным'
+          correct: false
+        - answer: процесс обнаружения неисправностей в некоторой системе
+          correct: false
+        - answer: непрерывная интерпретация в реальном масштабе времени и сигнализация
+            о выходах параметров за допустимые пределы
+          correct: false
+        - answer: предсказание будущих событий на базе моделей прошлого и настоящего
+          correct: false
+        - answer: построение спецификаций на создание объектов с заранее определенными
+            свойствами
+          correct: false
+        - answer: выработка рекомендаций по устранению неисправностей
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Проектирование - это ...?
+        difficulty: 1
+        answers:
+        - answer: построение спецификаций на создание объектов с заранее определенными
+            свойствами
+          correct: true
+        - answer: процесс определения смысла данных, т.е. построения описаний по наблюдаемым
+            данным
+          correct: false
+        - answer: ' процесс обнаружения неисправностей в некоторой системе'
+          correct: false
+        - answer: непрерывная интерпретация в реальном масштабе времени и сигнализация
+            о выходах параметров за допустимые пределы
+          correct: false
+        - answer: предсказание будущих событий на базе моделей прошлого и настоящего
+          correct: false
+        - answer: конструирование плана действий
+          correct: false
+        - answer: выработка рекомендаций по устранению неисправностей
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Отладка - это ...?
+        difficulty: 1
+        answers:
+        - answer: выработка рекомендаций по устранению неисправностей
+          correct: true
+        - answer: процесс определения смысла данных, т.е. построения описаний по наблюдаемым
+            данным
+          correct: false
+        - answer: процесс обнаружения неисправностей в некоторой системе
+          correct: false
+        - answer: непрерывная интерпретация в реальном масштабе времени и сигнализация
+            о выходах параметров за допустимые пределы
+          correct: false
+        - answer: предсказание будущих событий на базе моделей прошлого и настоящего
+          correct: false
+        - answer: конструирование плана действий
+          correct: false
+        - answer: построение спецификаций на создание объектов с заранее определенными
+            свойствами
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Какие неформализованные задачи (НФ-задачи) включает в себя комбинированная
+          задача обучение?
+        difficulty: 1
+        answers:
+        - answer: Диагностика
+          correct: true
+        - answer: Интерпретация
+          correct: true
+        - answer: Планирование
+          correct: true
+        - answer: Проектирование
+          correct: true
+        - answer: Отладка
+          correct: false
+        - answer: Мониторинг
+          correct: false
+        - answer: Прогнозирование
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Управление - это ...?
+        difficulty: 1
+        answers:
+        - answer: Интерпретация
+          correct: true
+        - answer: Прогнозирование
+          correct: true
+        - answer: Планирование
+          correct: true
+        - answer: Моделирование
+          correct: true
+        - answer: Оптимизация выработанных решений
+          correct: true
+        - answer: Мониторинг
+          correct: true
+        - answer: Диагностика
+          correct: false
+        - answer: Проектирование
+          correct: false
+        - answer: Отладка
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_24:
+    label: Требования, предъявляемые к базовым параметрам статических и динамических
+      ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 890
+      parent_id: '868'
+    properties:
+      questions:
+      - question: Что характеризует динамический тип предметной области?
+        difficulty: 1
+        answers:
+        - answer: входные данные, поступающие от внешних источников, изменяются во
+            времени
+          correct: true
+        - answer: значения данных, не поступающих от внешних источников, изменяются
+            ИЭС или подсистемой моделирования внешнего мира
+          correct: true
+        - answer: входные данные не изменяются во время сеанса работы ИЭС
+          correct: false
+        - answer: значения данных изменяются только самой системой
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Чем характеризуются системы «жесткого» реального времени (РВ)?
+        difficulty: 1
+        answers:
+        - answer: время реакции на событие < 0,1-0,5 сек
+          correct: true
+        - answer: время реакции на событие > 0,1-1 сек
+          correct: false
+        - answer: получают и обрабатывают данные, поступающие от внешних источников
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Чем характеризуются системы «мягкого» реального времени?
+        difficulty: 1
+        answers:
+        - answer: время реакции на событие > 0,1-1 сек
+          correct: true
+        - answer: время реакции на событие < 0,1-0,5 сек
+          correct: false
+        - answer: получают и обрабатывают данные, поступающие от внешних источников
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Чем характеризуются системы «псевдореального» времени?
+        difficulty: 1
+        answers:
+        - answer: получают и обрабатывают данные, поступающие от внешних источников
+          correct: true
+        - answer: время реакции на событие < 0,1-0,5 сек
+          correct: false
+        - answer: время реакции на событие > 0,1-1 сек
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Какие существуют требования к подсистеме моделирования внешнего
+          мира в динамических ИЭС?
+        difficulty: 2
+        answers:
+        - answer: Система моделирования отсутствует
+          correct: true
+        - answer: Существует система моделирования общего назначения, являющаяся частью
+            универсального ИС
+          correct: true
+        - answer: Существует специализированная система моделирования, являющаяся
+            внешней по отношению к ИС, на котором реализуется динамическая ИЭС
+          correct: true
+        - answer: нет правильного ответа
+          correct: false
+      - question: Какие существуют требования к подсистеме сопряжения с внешним миром
+          в динамических ИЭС?
+        difficulty: 2
+        answers:
+        - answer: Требования к средствам сопряжения с внешним миром
+          correct: true
+        - answer: Требования к типам программируемых контроллеров
+          correct: true
+        - answer: Требования к типам систем сбора данных
+          correct: true
+        - answer: Требования к типам концентраторов данных
+          correct: true
+        - answer: нет правильного ответ
+          correct: false
+  Topic_25:
+    label: Общие положения имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 891
+      parent_id: '869'
+    properties:
+      questions:
+      - question: Подсистема моделирования внешнего мира - это ...?
+        difficulty: 1
+        answers:
+        - answer: подсистема, используемая для моделирования поведения реальных объектов
+            и устройств, с которыми работает динамическая ИЭС
+          correct: true
+        - answer: подсистема, используемая для моделирования поведения реальных объектов
+            и устройств, с которыми работает статическая ИЭС
+          correct: false
+        - answer: подсистема, которая моделирует поведение виртуальных объектов, с
+            которыми работает статическая ИЭС
+          correct: false
+        - answer: подсистема, которая моделирует поведение виртуальных объектов, с
+            которыми работает динамическая ИЭС
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Основным подходом (методом) для моделирования поведения реальных
+          объектов типа сложной технической системы (СТС) является имитационное моделирование,
+          которое позволяет ...?
+        difficulty: 2
+        answers:
+        - answer: Сделать выводы о поведении СТС и ее особенностях без построения
+            СТС
+          correct: true
+        - answer: Сделать выводы о поведении СТС и ее особенностях без вмешательства
+            в функционирование СТС
+          correct: true
+        - answer: ' Сделать выводы о поведении СТС и ее особенностях без проведения
+            дорогостоящих экспериментов или разрушения СТС'
+          correct: true
+        - answer: Синтезировать и исследовать стратегии управления
+          correct: true
+        - answer: ' Прогнозировать и планировать функционирования системы в будущем'
+          correct: true
+        - answer: Обучать и тренировать диспечерско-управленческий персонала
+          correct: true
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Имитационное моделирование (в широком смысле) - это ...?
+        difficulty: 1
+        answers:
+        - answer: Процесс конструирования модели реальной системы и постановки экспериментов
+            на этой модели с целью либо понять поведение системы, либо оценить различные
+            стратегии, обеспечивающие функционирование системы
+          correct: true
+        - answer: Представление динамического поведения системы посредством продвижения
+            ее от одного состояния к другому в соответствии с хорошо известными операционными
+            правилами
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Имитационное моделирование (в узком смысле) - это ...?
+        difficulty: 1
+        answers:
+        - answer: Представление динамического поведения системы посредством продвижения
+            ее от одного состояния к другому в соответствии с хорошо известными операционными
+            правилами
+          correct: true
+        - answer: Процесс конструирования модели реальной системы и постановки экспериментов
+            на этой модели с целью либо понять поведение системы, либо оценить различные
+            стратегии, обеспечивающие функционирование системы
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Какими могут быть системы имитационного моделирования в зависимости
+          от способа представления процессов, происходящих в моделируемом объекте?
+        difficulty: 1
+        answers:
+        - answer: дискретными
+          correct: true
+        - answer: непрерывными
+          correct: true
+        - answer: пошаговыми
+          correct: true
+        - answer: событийными
+          correct: true
+        - answer: детерминированными
+          correct: true
+        - answer: стохастическими
+          correct: true
+        - answer: стационарными
+          correct: true
+        - answer: абстрактными
+          correct: false
+        - answer: гибридными
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Приведите стандартные этапы проведения имитационного эксперимента.
+        difficulty: 2
+        answers:
+        - answer: формулировка проблемы и целей имитационного эксперимента
+          correct: true
+        - answer: определение релевантных ресурсов и законов функционирования моделируемой
+            системы
+          correct: true
+        - answer: формализация моделируемой системы
+          correct: true
+        - answer: программирование имитационной модели
+          correct: true
+        - answer: планирование имитационных экспериментов
+          correct: true
+        - answer: определение начальных условий
+          correct: true
+        - answer: получение исходных данных
+          correct: true
+        - answer: проведение имитационных экспериментов
+          correct: true
+        - answer: обработка результатов экспериментов
+          correct: true
+        - answer: интерпретация полученных данных
+          correct: true
+        - answer: проектирование физической модели объекта
+          correct: false
+        - answer: мониторинг состояния системы в реальном времени
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Имитационное моделирование - это ...?
+        difficulty: 1
+        answers:
+        - answer: Процесс конструирования модели реальной системы и постановки экспериментов
+            на этой модели с целью либо понять поведение системы, либо оценить различные
+            стратегии, обеспечивающие функционирование системы
+          correct: true
+        - answer: Представление динамического поведения системы посредством продвижения
+            ее от одного состояния к другому в соответствии с хорошо известными операционными
+            правилами
+          correct: true
+        - answer: Анализ системы в определенный момент времени без учета ее динамики
+          correct: false
+        - answer: Создание абстрактных моделей, которые описывают основные характеристики
+            системы, не привязываясь к конкретным инструментам или численным расчетам
+          correct: false
+        - answer: Описание реальной системы с помощью уравнений и математических зависимостей
+            для анализа и прогнозирования ее поведения
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+  Topic_26:
+    label: Подходы к построению имитационной модели
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 892
+      parent_id: '869'
+    properties:
+      questions:
+      - question: Что может использоваться при описании функционирования сложных дискретных
+          систем, подклассом которых являются, как правило, сложные технические системы
+          (СТС)?
+        difficulty: 1
+        answers:
+        - answer: события
+          correct: true
+        - answer: действия
+          correct: true
+        - answer: процессы
+          correct: true
+        - answer: объекты
+          correct: false
+        - answer: предметы
+          correct: false
+        - answer: реакции
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Какие выделяют альтернативные методологические подходы к построению
+          имитационной модели (ИМ)?
+        difficulty: 1
+        answers:
+        - answer: дискретно-событийный подход
+          correct: true
+        - answer: подход сканирования активностей
+          correct: true
+        - answer: процессно-ориентированный подход
+          correct: true
+        - answer: контекстно-ориентированный подход
+          correct: false
+        - answer: статистический подход
+          correct: false
+        - answer: динамический подход
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+  Topic_27:
+    label: Интеграция ИМ и ЭС в ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 893
+      parent_id: '869'
+    properties:
+      questions:
+      - question: Какие существуют варианты совместного использования имитационного
+          моделирования (ИМ) и экспертных систем (ЭС)?
+        difficulty: 2
+        answers:
+        - answer: 'включение ИМ в ЭС '
+          correct: true
+        - answer: включение ЭС в ИМ
+          correct: true
+        - answer: параллельное использование ИМ и ЭС для решения одной и той же задачи
+          correct: true
+        - answer: ЭС содержит знания о ИМ и области ее применения
+          correct: true
+        - answer: ИМ использует знания экспертов из БЗ ЭС
+          correct: true
+        - answer: интеллектуальный интерфейс пользователя
+          correct: true
+        - answer: интеграция ИМ и ЭС невозможна
+          correct: false
+        - answer: ИМ заменяет полностью всю работу экспертной системы
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+  Topic_28:
+    label: Внешнее и внутреннее описание СТС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 894
+      parent_id: '869'
+    properties:
+      questions:
+      - question: Что считается верным для внешнего описания сложной технической системы
+          (СТС)?
+        difficulty: 1
+        answers:
+        - answer: Внешнее описание рассматривает систему как отношение «вход → выход»
+          correct: true
+        - answer: СТС представлена «черным ящиком» с известными входами и выходами
+          correct: true
+        - answer: Алгоритмы управления неизвестны
+          correct: true
+        - answer: Механизм перевода входов в выходы неизвестен
+          correct: true
+        - answer: Переменные состояния системы скрыты от исследователя
+          correct: true
+        - answer: Содержит полное описание алгоритмов управления системой
+          correct: false
+        - answer: Описывает связи между элементами системы
+          correct: false
+        - answer: Включает все переменные состояния системы
+          correct: false
+        - answer: Механизм перевода входов в выходы полностью описан
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Что считается верным для внутреннего описания сложной технической
+          системы (СТС)?
+        difficulty: 1
+        answers:
+        - answer: Содержит детальное описание элементов СТС
+          correct: true
+        - answer: Содержит связи элементов СТС
+          correct: true
+        - answer: Внутренняя модель СТС порождает ее внешнюю модель
+          correct: true
+        - answer: Представляет систему как «черный ящик» с входами и выходами
+          correct: false
+        - answer: Механизм перевода входов в выходы неизвестен
+          correct: false
+        - answer: Скрывает переменные состояния системы
+          correct: false
+        - answer: ' Не содержит информации о связях между элементами системы'
+          correct: false
+        - answer: Внутренняя модель зависит от внешней модели
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие модели выделяют в имитационных моделях (ИМ) с точки зрения
+          внутреннего описания сложной технической системы (СТС)?
+        difficulty: 1
+        answers:
+        - answer: модель управляемого объекта
+          correct: true
+        - answer: модель системы управления
+          correct: true
+        - answer: модель внутренних случайных возмущений
+          correct: true
+        - answer: модель пользовательских запросов
+          correct: false
+        - answer: модель визуализации процессов системы
+          correct: false
+        - answer: модель обмена данными между системой и внешним окружением
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+  Topic_29:
+    label: Состав имитационной модели СТС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 895
+      parent_id: '869'
+    properties:
+      questions:
+      - question: Что входит в состав имитационной модели (ИМ) сложной технической
+          системы (СТС)?
+        difficulty: 2
+        answers:
+        - answer: модуль преобразования исходных данных
+          correct: true
+        - answer: модель случайных возбуждений
+          correct: true
+        - answer: модель управляемого объекта
+          correct: true
+        - answer: модель системы управления
+          correct: true
+        - answer: модуль сбора и вывода статистической информации
+          correct: true
+        - answer: модуль внешнего взаимодействия с пользователем
+          correct: false
+        - answer: модель внешних воздействий среды
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Что представляет собой имитационная модель (ИМ) сложной технической
+          системы (СТС)?
+        difficulty: 1
+        answers:
+        - answer: модель случайных возбуждений
+          correct: true
+        - answer: модель управляемого объекта
+          correct: true
+        - answer: модель системы управления
+          correct: true
+        - answer: модель визуализации системы
+          correct: false
+        - answer: модель фиксированных состояний системы
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какие группы входов модели управляемого объекта обычно выделяют?
+        difficulty: 1
+        answers:
+        - answer: контролируемые неуправляемые
+          correct: true
+        - answer: контролируемые управляемые
+          correct: true
+        - answer: возмущения
+          correct: true
+        - answer: случайные управляемые
+          correct: false
+        - answer: ' случайные неуправляемые'
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_30:
+    label: Особенности построения ИМ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 896
+      parent_id: '869'
+    properties:
+      questions:
+      - question: Что необходимо учитывать при создании имитационной модели (ИМ)?
+        difficulty: 1
+        answers:
+        - answer: структурную сложность системы
+          correct: true
+        - answer: динамическую сложность системы
+          correct: true
+        - answer: сложность управления
+          correct: true
+        - answer: иерархический аспект управления отдельными подсистемами
+          correct: true
+        - answer: сложность вычислительных операций
+          correct: false
+        - answer: количество ресурсов для хранения данных
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Что является основой для создания имитационной модели?
+        difficulty: 1
+        answers:
+        - answer: использование языка имитационного моделирования
+          correct: true
+        - answer: внутреннее описание модели СТС
+          correct: true
+        - answer: Набор эвристических методов
+          correct: false
+        - answer: Прямое программирование алгоритмов
+          correct: false
+        - answer: Использование статистических данных
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_31:
+    label: РДО-метод интеллектуального имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 897
+      parent_id: '869'
+    properties:
+      questions:
+      - question: Что является верным для описания взаимодействия ресурсов и событий
+          в РДО-методе?
+        difficulty: 2
+        answers:
+        - answer: Ресурсы взаимодействуют друг с другом в соответствии с определенными
+            закономерностями
+          correct: true
+        - answer: Ресурсы выполняют определенные действия
+          correct: true
+        - answer: Событие представляет собой элементарное действие, не имеет протяженности
+            во времени
+          correct: true
+        - answer: Совершение какого-либо события приводит к изменению состояния системы
+          correct: true
+        - answer: События имеют временную протяженность
+          correct: false
+        - answer: Взаимодействие ресурсов не влияет на их состояние
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какие виды ресурсов определяются в РДО-методе?
+        difficulty: 1
+        answers:
+        - answer: Постоянные и временные
+          correct: true
+        - answer: Ресурсы, состояние которых описывается набором параметров
+          correct: true
+        - answer: Управляемые и неуправляемые
+          correct: false
+        - answer: ' Основные и вспомогательные'
+          correct: false
+        - answer: Ресурсы длительного действия и быстрого реагирования
+          correct: false
+        - answer: ' нет правильного ответ'
+          correct: false
+  Topic_32:
+    label: Особенности проблемы интеграции в ДИС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 898
+      parent_id: '870'
+    properties:
+      questions:
+      - question: Что изменяется при создании динамических ИЭС по сравнению с статическими?
+        difficulty: 1
+        answers:
+        - answer: Архитектура динамических ИЭС изменяется за счет добавления новых
+            подсистем
+          correct: true
+        - answer: Включение подсистем моделирования внешнего мира и сопряжения с реальным
+            оборудованием
+          correct: true
+        - answer: Технология создания динамических ИЭС, которая определяется используемыми
+            ИС
+          correct: false
+        - answer: Динамические ИЭС используют только математические методы, исключая
+            экспертные
+          correct: false
+        - answer: Динамические ИЭС не требуют учета временного фактора
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какие задачи должна поддерживать ИЭС РВ для диагностики и управления
+          СТС
+        difficulty: 2
+        answers:
+        - answer: Динамическое моделирование процессов функционирования СТС
+          correct: true
+        - answer: Контроль работы СТС, регистрация отклонений, сигнализация о предаварийных
+            и нестандартных ситуациях
+          correct: true
+        - answer: Изучение действий операторов по управлению СТС
+          correct: true
+        - answer: Удобный графический интерфейс пользователя для наблюдения за изменениями
+            основных параметров, характеризующих работу СТС
+          correct: true
+        - answer: Программирование алгоритмов для динамических процессов
+          correct: false
+        - answer: Управление процессами через физическое вмешательство в оборудование
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_33:
+    label: Построение имитационных моделей СТС для динамических ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 899
+      parent_id: '870'
+    properties:
+      questions:
+      - question: Теоретико-множественная модель системы жизнеобеспечения ЭФК содержит…
+        difficulty: 1
+        answers:
+        - answer: модель объекта управления
+          correct: true
+        - answer: модель регулятора
+          correct: true
+        - answer: модель внутренних случайных возмущений
+          correct: true
+        - answer: множество контролируемых неуправляемых входов
+          correct: true
+        - answer: множество контролируемых управляемых входов
+          correct: true
+        - answer: множество случайных возмущений
+          correct: true
+        - answer: множество выходных параметров
+          correct: false
+        - answer: множество возможных состояний
+          correct: false
+        - answer: модель внешних воздействий
+          correct: false
+        - answer: модель системы управления
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Что включает в себя методика построения имитационной модели СТС
+          в инструментальной среде G2?
+        difficulty: 1
+        answers:
+        - answer: Анализ ПрО и выделение основных понятий ПрО
+          correct: true
+        - answer: Описание абстракции данных понятий в виде классов
+          correct: true
+        - answer: Построение схемы оборудования реальной СТС с помощью программных
+            объектов, экземпляров описанных классов
+          correct: true
+        - answer: Построение множеств модельных и временных событий
+          correct: true
+        - answer: Построение множеств действий, связанных с множеством событий
+          correct: true
+        - answer: Построение машины отслеживания событий
+          correct: true
+        - answer: Определение множеств начальных состояний
+          correct: true
+        - answer: Использование одного типа событий (модельных или временных)
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какие из следующих событий могут быть описаны в имитационной модели
+          системы жизнеобеспечения ЭФК?
+        difficulty: 1
+        answers:
+        - answer: Априорно заданное состояние (модельное событие)
+          correct: true
+        - answer: Реальное время (временное событие)
+          correct: true
+        - answer: Операция с ошибкой
+          correct: false
+        - answer: Перемещение объекта на рабочем пространстве
+          correct: false
+        - answer: Создание объекта класса
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_34:
+    label: Модель интеграции имитационных моделей с ядром экспертной системы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 900
+      parent_id: '870'
+    properties:
+      questions:
+      - question: Какие компоненты включены в модель интеграции имитационных моделей
+          с ядром экспертной системы для управления ЭФК?
+        difficulty: 3
+        answers:
+        - answer: База знаний (БЗ)
+          correct: true
+        - answer: Рабочая память (РП)
+          correct: true
+        - answer: Подсистема моделирования внешнего мира (ПМВМ)
+          correct: true
+        - answer: Библиотека математических функций (БМФ)
+          correct: true
+        - answer: Множество правил для описания экспертных знаний (R1)
+          correct: true
+        - answer: Множество правил отслеживания событий (R2)
+          correct: true
+        - answer: Множество действий в МИМ (A)
+          correct: true
+        - answer: Множество функций, используемых для решения задачи (F1)
+          correct: true
+        - answer: Множество функций, используемых для выполнения действий (F2)
+          correct: true
+        - answer: Геоинформационная система (ГИС)
+          correct: true
+        - answer: Множество временных событий
+          correct: false
+        - answer: ' Модуль управления состояниями'
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какую роль выполняет рабочая память (РП) в интеграции имитационных
+          моделей с ядром экспертной системы для управления ЭФК?
+        difficulty: 1
+        answers:
+        - answer: Хранит данные о текущем состоянии системы
+          correct: true
+        - answer: Описывает состояния объектов ПрО
+          correct: true
+        - answer: Использует функции используемых для решения задач (F1) для вывода
+            решений на основе экспертных знаний
+          correct: true
+        - answer: Выполняет математические вычисления для обработки данных
+          correct: false
+        - answer: Обрабатывает события, отслеживаемые с помощью правил отслеживания
+            события (R2)
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_35:
+    label: Основные подходы и принципы разработки МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 901
+      parent_id: '871'
+    properties:
+      questions:
+      - question: Дайте определение понятию организация?
+        difficulty: 1
+        answers:
+        - answer: предоставляет возможность структурировать группу агентов в целях
+            распределения задач и координации.
+          correct: true
+        - answer: 'определяет ограничения на взаимодействие между агентами, вид организации
+            и характер эволюции MAC. '
+          correct: false
+        - answer: зависит от выбранного протокола, который представляет собой множество
+            правил, определяющих, как синтезировать значимые и правильные сообщения.
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Дайте определение понятию управление?
+        difficulty: 1
+        answers:
+        - answer: предоставляет возможность структурировать группу агентов в целях
+            распределения задач и координации.
+          correct: false
+        - answer: 'определяет ограничения на взаимодействие между агентами, вид организации
+            и характер эволюции MAC. '
+          correct: true
+        - answer: зависит от выбранного протокола, который представляет собой множество
+            правил, определяющих, как синтезировать значимые и правильные сообщения.
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Дайте определение понятию коммуникация?
+        difficulty: 1
+        answers:
+        - answer: предоставляет возможность структурировать группу агентов в целях
+            распределения задач и координации.
+          correct: false
+        - answer: 'определяет ограничения на взаимодействие между агентами, вид организации
+            и характер эволюции MAC. '
+          correct: false
+        - answer: зависит от выбранного протокола, который представляет собой множество
+            правил, определяющих, как синтезировать значимые и правильные сообщения.
+          correct: true
+        - answer: нет правильного ответ
+          correct: false
+      - question: Что верно для распределенного ИИ?
+        difficulty: 1
+        answers:
+        - answer: идеология предполагает распределение знаний и ресурсов между агентами
+          correct: true
+        - answer: исходный объект исследования - общая сложная проблема, для решения
+            которой формируется группа агентов
+          correct: true
+        - answer: исходный объект исследования - общая сложная проблема, для решения
+            которой строится общая концептуальная модель
+          correct: true
+        - answer: исходный объект исследования - общая сложная проблема, для решения
+            которой вводятся глобальные критерии достижения цели
+          correct: true
+        - answer: агентам запрещено взаимодействовать друг с другом напрямую
+          correct: false
+        - answer: знания и ресурсы передаются одному агенту, который принимает решения
+            за всех
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Что верно для децентрализованного ИИ?
+        difficulty: 1
+        answers:
+        - answer: управление происходит только за счет локальных взаимодействий между
+            агентами
+          correct: true
+        - answer: исходный объект исследования - деятельность автономного агента в
+            динамическом многоагентном мире
+          correct: true
+        - answer: исходный объект исследования - координация деятельности различных
+            агентов
+          correct: true
+        - answer: координация агентов требует строгой иерархии и подчинения
+          correct: false
+        - answer: управление осуществляется только через центральный сервер, обрабатывающий
+            все запросы агентов
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_36:
+    label: Структура МАС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 902
+      parent_id: '871'
+    properties:
+      questions:
+      - question: Что входит в состав модели обобщенной МАС?
+        difficulty: 1
+        answers:
+        - answer: множество системных единиц
+          correct: true
+        - answer: множество решаемых задач
+          correct: true
+        - answer: некоторое пространство, в котором существуют агенты и объекты
+          correct: true
+        - answer: множество отношений между агентами
+          correct: true
+        - answer: множество действий агентов
+          correct: true
+        - answer: одно системное устройство, управляющее всеми агентами
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Что предполагает распределение задач в МАС?
+        difficulty: 1
+        answers:
+        - answer: назначение ролей каждому члену команды
+          correct: true
+        - answer: определение меры ответственности и требований к опыту каждого члена
+            команды
+          correct: true
+        - answer: каждый член команды выполняет одинаковую задачу без учета специфики
+            их компетенций
+          correct: false
+        - answer: все задачи распределяются случайным образом, без анализа текущих
+            требований
+          correct: false
+        - answer: процесс распределения задач выполняется исключительно одним центральным
+            агентом
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_37:
+    label: Определения и классификация агентов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 903
+      parent_id: '871'
+    properties:
+      questions:
+      - question: Какие существуют классификации определений агентов предложенные
+          М. Вулдридж и Н. Дженнингс?
+        difficulty: 1
+        answers:
+        - answer: слабые
+          correct: true
+        - answer: сильные
+          correct: true
+        - answer: программистские
+          correct: true
+        - answer: антропоморфные
+          correct: true
+        - answer: математические
+          correct: false
+        - answer: метафорические
+          correct: false
+        - answer: нет правильного ответа
+          correct: false
+      - question: Какими свойствами должен обладать агент?
+        difficulty: 2
+        answers:
+        - answer: автономность
+          correct: true
+        - answer: 'социальное поведение '
+          correct: true
+        - answer: реактивность
+          correct: true
+        - answer: активность
+          correct: true
+        - answer: базовые знания
+          correct: true
+        - answer: убеждения
+          correct: true
+        - answer: цели
+          correct: true
+        - answer: желания
+          correct: true
+        - answer: обязательства
+          correct: true
+        - answer: намерения
+          correct: true
+        - answer: зависимость
+          correct: false
+        - answer: изоляция
+          correct: false
+        - answer: хаотичность
+          correct: false
+        - answer: подчиненность
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какие определения агента верные?
+        difficulty: 2
+        answers:
+        - answer: Агент – это аппаратная или программная сущность, способная действовать
+            в интересах достижения целей, поставленных перед ним владельцем и/или
+            пользователем
+          correct: true
+        - answer: 'Агент – это программно или аппаратно реализованная система, обладающая
+            следующими свойствами: автономность, общественное поведение, реактивность,
+            про-активность'
+          correct: true
+        - answer: Агент – это некоторая сущность, которая воспринимает среду посредством
+            сенсоров и действует на нее посредством эффекторов
+          correct: true
+        - answer: Агенты – это компьютерные системы, функционирующие в сложной, динамической
+            среде, способные ощущать и автономно действовать на эту среду, и таким
+            образом выполнять множество задач, для которых они предназначены
+          correct: true
+        - answer: нет правильного ответ
+          correct: false
+  Topic_38:
+    label: Особенности архитектур интеллектуальных агентов
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 904
+      parent_id: '871'
+    properties:
+      questions:
+      - question: Какие базовые классы архитектур программных агентов обычно выделяют?
+        difficulty: 1
+        answers:
+        - answer: делиберативные архитектуры
+          correct: true
+        - answer: реактивные архитектуры
+          correct: true
+        - answer: гибридные архитектуры
+          correct: true
+        - answer: интерактивные архитектуры
+          correct: false
+        - answer: динамичные архитектуры
+          correct: false
+        - answer: поведенческие архитектуры
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Определение делиберативных архитектур
+        difficulty: 1
+        answers:
+        - answer: базируются на принципах и методах работы со знаниями
+          correct: true
+        - answer: определяются исключительно по жестким алгоритмам
+          correct: false
+        - answer: не включают в себя знание о среде
+          correct: false
+        - answer: основаны на реактивных механизмах
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Определение реактивных архитектур
+        difficulty: 1
+        answers:
+        - answer: основаны на поведенческих моделях типа "стимул-реакция"
+          correct: true
+        - answer: нет эксплицитно представленной модели мира
+          correct: true
+        - answer: функционирование отдельных агентов и всей системы осуществляется
+            по правилам типа "ситуация-действие"
+          correct: true
+        - answer: включают в себя глубокое планирование действий
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_39:
+    label: Пример архитектуры интеллектуального агента
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 905
+      parent_id: '871'
+    properties:
+      questions:
+      - question: Что входит в состав простейшей архитектуры интеллектуального агента
+          на основе продукционной СОЗ(ЭС)?
+        difficulty: 2
+        answers:
+        - answer: подсистема коммуникации с другими агентами
+          correct: true
+        - answer: база знаний
+          correct: true
+        - answer: решатель
+          correct: true
+        - answer: подсистема формирования целей и оценок ситуации
+          correct: true
+        - answer: рецепторы агента
+          correct: true
+        - answer: подсистема моделирования внешнего мира
+          correct: true
+        - answer: эффекторы агента
+          correct: true
+        - answer: компоненты для анализа данных
+          correct: false
+        - answer: операционная система
+          correct: false
+        - answer: устройство для обработки данных
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какие функции выполняют рецепторы в интеллектуальном агенте?
+        difficulty: 1
+        answers:
+        - answer: Ввод информации в базу фактов
+          correct: true
+        - answer: Восприятие воздействий среды
+          correct: true
+        - answer: Анализ данных и принятие решений
+          correct: false
+        - answer: ' Вывод информации'
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Какие функции выполняют эффекторы в интеллектуальном агенте?
+        difficulty: 1
+        answers:
+        - answer: Вывод информации
+          correct: true
+        - answer: Воздействие на среду
+          correct: true
+        - answer: Восприятие информации
+          correct: false
+        - answer: Обучение агента на основе поступающих данных
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_40:
+    label: Основные понятия и определения
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 906
+      parent_id: '872'
+    properties:
+      questions:
+      - question: Какие определения онтологии верны?
+        difficulty: 1
+        answers:
+        - answer: Онтология – это эксплицитная спецификация концептуализации
+          correct: true
+        - answer: Онтология – это знания, формально представленные на базе концептуализации
+          correct: true
+        - answer: Онтология – это учение о бытии, о сущем
+          correct: true
+        - answer: Онтология – это эксплицитная спецификация определенной темы
+          correct: true
+        - answer: Онтология – это база знаний специального типа, которые могут читаться
+            и пониматься, отчуждаться от разработчика или физически разделяться их
+            пользователями
+          correct: true
+        - answer: Онтология – это система классификаций для обработки данных в базе
+            данных
+          correct: false
+        - answer: Онтология – это описание физических объектов и их характеристик
+            в реальном мире
+          correct: false
+        - answer: ' нет правильного ответ'
+          correct: false
+      - question: 'Выберите верные суждения:'
+        difficulty: 1
+        answers:
+        - answer: одна концептуализация может быть основой разных онтологий
+          correct: true
+        - answer: одна концептуализация не может быть основой разных онтологий
+          correct: false
+        - answer: две различные ьазы знаний могут отражать одну онтологию
+          correct: true
+        - answer: две различные базы знаний не могут отражать одну онтологию
+          correct: false
+        - answer: ' нет правильного ответ'
+          correct: false
+      - question: Из чего, согласно Т. Груберу, формально состоит онтология?
+        difficulty: 1
+        answers:
+        - answer: термины
+          correct: true
+        - answer: определения терминов
+          correct: true
+        - answer: атрибуты терминов
+          correct: true
+        - answer: аксиомы
+          correct: true
+        - answer: правила вывода
+          correct: true
+        - answer: связи между объектами
+          correct: false
+        - answer: данные и метаданные
+          correct: false
+        - answer: ' нет правильного ответ'
+          correct: false
+  Topic_41:
+    label: Модель онтологии
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 907
+      parent_id: '872'
+    properties:
+      questions:
+      - question: Что должна обеспечивать модель онтологии?
+        difficulty: 1
+        answers:
+        - answer: представление множества понятий в виде сетевой структуры
+          correct: true
+        - answer: отображение значительного множества таксономических отношений
+          correct: true
+        - answer: отображение значительного множества отражающих специфику ПрО отношений
+          correct: true
+        - answer: использование декларативных и процедурных интерпретаций и отношений
+          correct: true
+        - answer: специфические функциональные отношения между объектами в онтологии
+          correct: false
+        - answer: строгую иерархическую структуру без учета контекста
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Из чего состоит формальная модель онтологии?
+        difficulty: 1
+        answers:
+        - answer: конечное множество концептов
+          correct: true
+        - answer: конечное множество отношений между концептами
+          correct: true
+        - answer: конечное множество функций интерпретации
+          correct: true
+        - answer: бесконечное множество концептов
+          correct: false
+        - answer: случайное множество связей между концептами
+          correct: false
+        - answer: динамически изменяющиеся функции интерпретации
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+      - question: Дайте определение таксономической структуры
+        difficulty: 1
+        answers:
+        - answer: иерархическая система понятий, связанных между собой отношением
+            типа "быть элементом класса"
+          correct: true
+        - answer: система, отображающая все возможные связи между концептами
+          correct: false
+        - answer: взаимосвязанная сетка понятий без четкой иерархии
+          correct: false
+        - answer: структура, в которой все элементы находятся на одном уровне
+          correct: false
+        - answer: нет правильного ответ
+          correct: false
+  Topic_42:
+    label: Классификации онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 961
+      parent_id: '872'
+  Topic_43:
+    label: Методы разработки онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 962
+      parent_id: '872'
+  Topic_44:
+    label: Языки описания онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 963
+      parent_id: '872'
+  Topic_45:
+    label: Применение онтологий
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 964
+      parent_id: '872'
+  Topic_46:
+    label: Общая характеристика функциональных возможностей системы G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1087
+      parent_id: '875'
+    properties:
+      questions:
+      - question: Что из перечисленного является основной характеристикой инструментальной
+          системы G2
+        difficulty: 1
+        answers:
+        - answer: Поддержка представления знаний с помощью естественного языка (ЕЯ)
+          correct: true
+        - answer: Объектно-ориентированная технология
+          correct: true
+        - answer: Возможности распределенной обработки на принципах архитектуры клиент-сервер
+          correct: true
+        - answer: Исключительная ориентация на статические экспертные системы
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какая из перечисленных характеристик НЕ относится к системе G2?
+        difficulty: 1
+        answers:
+        - answer: Автоматическое генерирование аппаратного обеспечения
+          correct: true
+        - answer: Поддержка распределенных приложений
+          correct: false
+        - answer: Объектно-ориентированная технология
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Поддерживает ли система G2 автоматическое преобразование экспертных
+          знаний в аппаратные схемы на ПЛИС?
+        difficulty: 1
+        answers:
+        - answer: Да, с помощью встроенного синтезатора VHDL
+          correct: false
+        - answer: Только через внешние CAD-системы
+          correct: false
+        - answer: Только для аналоговых схем
+          correct: false
+        - answer: Нет правильного ответа
+          correct: true
+  Topic_47:
+    label: Представление знаний и методы работы со знаниями средствами G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1088
+      parent_id: '875'
+    properties:
+      questions:
+      - question: Какие основные элементы входят в структуру базы знаний (БЗ) системы
+          G2?
+        difficulty: 1
+        answers:
+        - answer: Модули и рабочие пространства
+          correct: true
+        - answer: Классы, объекты и атрибуты
+          correct: true
+        - answer: Правила и процедуры
+          correct: true
+        - answer: Нейронные сети и генетические алгоритмы как базовые элементы
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Можно ли в G2 создавать правила, срабатывающие после завершения
+          временного интервала, используя ключевое слово after?
+        difficulty: 2
+        answers:
+        - answer: Да, это стандартная функция
+          correct: false
+        - answer: Только в комбинации с whenever
+          correct: false
+        - answer: Только для циклических процессов
+          correct: false
+        - answer: Нет правильного ответа
+          correct: true
+      - question: Какие типы правил поддерживаются в системе G2?
+        difficulty: 1
+        answers:
+        - answer: Правила типа if
+          correct: true
+        - answer: Правила типа when
+          correct: true
+        - answer: Правила типа whenever
+          correct: true
+        - answer: Правила типа after
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие механизмы вывода реализованы в системе G2?
+        difficulty: 2
+        answers:
+        - answer: Прямой вывод (forward chaining)
+          correct: true
+        - answer: Обратный вывод (backward chaining)
+          correct: true
+        - answer: Сканирование (scanning)
+          correct: true
+        - answer: Вывод на основе нечеткой логики (fuzzy inference)
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какой из элементов НЕ входит в структуру базы знаний G2?
+        difficulty: 1
+        answers:
+        - answer: Нейросетевые модули как базовый структурный элемент
+          correct: true
+        - answer: Рабочие пространства
+          correct: false
+        - answer: Классы и объекты
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие из перечисленных конструкций используются для работы с временными
+          задержками в процедурах G2?
+        difficulty: 2
+        answers:
+        - answer: Оператор wait for с указанием временного интервала
+          correct: true
+        - answer: Оператор wait until с логическим выражением
+          correct: true
+        - answer: Конструкция checking every для периодической проверки
+          correct: true
+        - answer: Оператор delay с указанием тактов процессора
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие из перечисленных типов данных поддерживаются в G2 для атрибутов?
+        difficulty: 1
+        answers:
+        - answer: integer (целочисленный)
+          correct: true
+        - answer: float (вещественный)
+          correct: true
+        - answer: symbol (символьный)
+          correct: true
+        - answer: complex (комплексный)
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие из перечисленных операторов используются в процедурах G2?
+        difficulty: 1
+        answers:
+        - answer: wait for
+          correct: true
+        - answer: if
+          correct: true
+        - answer: case
+          correct: true
+        - answer: quantum
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_48:
+    label: Среда разработчика в системе G2
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1089
+      parent_id: '875'
+    properties:
+      questions:
+      - question: Что из перечисленного входит в среду разработчика системы G2?
+        difficulty: 1
+        answers:
+        - answer: Естественно-языковый текстовый редактор
+          correct: true
+        - answer: Графический интерфейс с пользователем
+          correct: true
+        - answer: Средства инспекции и отладки
+          correct: true
+        - answer: Встроенный компилятор на язык ассемблера
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какой из перечисленных компонентов НЕ входит в среду разработчика
+          G2?
+        difficulty: 1
+        answers:
+        - answer: Система автоматического доказательства теорем
+          correct: true
+        - answer: Естественно-языковый текстовый редактор
+          correct: false
+        - answer: Средства инспекции и отладки
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Для чего в системе G2 используется действие focus?
+        difficulty: 2
+        answers:
+        - answer: Для концентрации на правилах, ассоциированных с определенными объектами
+          correct: true
+        - answer: Для инициирования правил через фокусировку
+          correct: true
+        - answer: Для изменения размера шрифта в текстовом редакторе
+          correct: false
+        - answer: Для немедленной остановки всех процессов в базе знаний
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие типы кнопок пользовательского интерфейса поддерживаются в
+          G2?
+        difficulty: 1
+        answers:
+        - answer: Action Button
+          correct: true
+        - answer: Check Box
+          correct: true
+        - answer: Slider
+          correct: true
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_49:
+    label: Интерфейс с внешним окружением
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1090
+      parent_id: '875'
+    properties:
+      questions:
+      - question: Что такое GSI (G2 Standard Interface) в контексте системы G2?
+        difficulty: 2
+        answers:
+        - answer: Независимый монитор транзакций для сетевого взаимодействия
+          correct: true
+        - answer: Интерфейс для создания связей с внешними системами и базами данных
+            (БД)
+          correct: true
+        - answer: Основной язык программирования для написания процедур в G2
+          correct: false
+        - answer: Встроенная система виртуальной реальности
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие из перечисленных протоколов и технологий поддерживаются G2
+          для взаимодействия с внешними системами?
+        difficulty: 2
+        answers:
+        - answer: TCP/IP для сетевого взаимодействия
+          correct: true
+        - answer: ODBC для доступа к реляционным базам данных
+          correct: true
+        - answer: OPC для связи с устройствами управления процессами
+          correct: true
+        - answer: Bluetooth LE для подключения к носимых устройствам
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: С какими из перечисленных систем может взаимодействовать G2 через
+          стандартные интерфейсы?
+        difficulty: 2
+        answers:
+        - answer: Реляционные базы данных через ODBC
+          correct: true
+        - answer: Внешние программы через GSI
+          correct: true
+        - answer: Сетевое оборудование через TCP/IP
+          correct: true
+        - answer: Квантовые компьютеры через специальный протокол
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие операционные системы поддерживаются для сервера G2?
+        difficulty: 1
+        answers:
+        - answer: Windows NT/2000/2003/XP и выше на базе процессоров Intel
+          correct: true
+        - answer: IBM AIX
+          correct: true
+        - answer: SUN Solaris
+          correct: true
+        - answer: HP HP-UX или HP Tru64 Unix
+          correct: true
+        - answer: Linux на базе процессоров Intel
+          correct: true
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_50:
+    label: G2 Optegrity
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1091
+      parent_id: '876'
+    properties:
+      questions:
+      - question: Какая из перечисленных функций НЕ относится к G2 Optegrity?
+        difficulty: 1
+        answers:
+        - answer: Генерирование виртуальной реальности для тренировки операторов
+          correct: true
+        - answer: Оптимизация бизнес-процессов
+          correct: false
+        - answer: Мониторинг производственных процессов
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_51:
+    label: G2 NeurOn-Line
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1092
+      parent_id: '876'
+    properties:
+      questions:
+      - question: Для решения каких задач предназначен G2 NeurOn-Line?
+        difficulty: 1
+        answers:
+        - answer: Многокритериального адаптивного управления
+          correct: true
+        - answer: Задач на базе методологии нейронных сетей
+          correct: true
+        - answer: Квантовых вычислений
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_52:
+    label: G2 ReThink
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1093
+      parent_id: '876'
+    properties:
+      questions:
+      - question: В какой области преимущественно применяется G2 ReThink?
+        difficulty: 1
+        answers:
+        - answer: Business Process Reengineering (BPR)
+          correct: true
+        - answer: Реинжиниринг бизнес-процессов
+          correct: true
+        - answer: Проектирование интегральных схем
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_53:
+    label: Integrity
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1094
+      parent_id: '876'
+    properties:
+      questions:
+      - question: Может ли Integrity использоваться для прогнозирования землетрясений
+          на основе анализа сейсмологических данных?
+        difficulty: 1
+        answers:
+        - answer: Да, это основная функция продукта
+          correct: false
+        - answer: Только в комбинации с G2 ReThink
+          correct: false
+        - answer: Только для статических нагрузок
+          correct: false
+        - answer: Нет правильного ответа
+          correct: true
+  Topic_54:
+    label: Общие сведения о комплексе АТ-ТЕХНОЛОГИЯ
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1095
+      parent_id: '877'
+    properties:
+      questions:
+      - question: Может ли комплекс АТ-ТЕХНОЛОГИЯ работать на квантовых компьютерах
+          без дополнительной адаптации?
+        difficulty: 1
+        answers:
+        - answer: Да, имеет встроенную поддержку
+          correct: false
+        - answer: Только через эмуляцию
+          correct: false
+        - answer: Только для конкретных моделей
+          correct: false
+        - answer: Нет правильного ответа
+          correct: true
+  Topic_55:
+    label: Развитие инструментальной базы комплекса АТ-ТЕХНОЛОГИЯ для построения динамических
+      ИЭС
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1096
+      parent_id: '877'
+    properties:
+      questions:
+      - question: Какое из утверждений о комплексе АТ-ТЕХНОЛОГИЯ является ВЕРНЫМ?
+        difficulty: 1
+        answers:
+        - answer: Это отечественная разработка
+          correct: true
+        - answer: Комплекс развивается до уровня современных инструментальных средств
+          correct: true
+        - answer: Комплекс предназначен исключительно для статических экспертных систем
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_56:
+    label: Общая характеристика инструментальных средств имитационного моделирования
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1097
+      parent_id: '878'
+    properties:
+      questions:
+      - question: Какие подходы к построению имитационных моделей существуют?
+        difficulty: 2
+        answers:
+        - answer: Дискретно-событийный подход
+          correct: true
+        - answer: Процессно-ориентированный подход
+          correct: true
+        - answer: Сканирование активностей
+          correct: true
+        - answer: Квантово-статистический подход
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_57:
+    label: Анализ текущей версии среды имитационного моделирования RAO-Studio
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1098
+      parent_id: '878'
+    properties:
+      questions:
+      - question: Для чего предназначена среда имитационного моделирования RAO-Studio?
+        difficulty: 1
+        answers:
+        - answer: Для имитационного моделирования сложных систем
+          correct: true
+        - answer: Для поддержки построения имитационных моделей
+          correct: true
+        - answer: Для разработки операционных систем реального времени
+          correct: false
+        - answer: Для создания графических интерфейсов пользователя
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_58:
+    label: Анализ зарубежных инструментальных средств
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1099
+      parent_id: '879'
+  Topic_59:
+    label: Система имитационного моделирования взаимодействия интеллектуальных агентов
+      (ИМВИА)
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1100
+      parent_id: '879'
+    properties:
+      questions:
+      - question: Что из себя представляет система ИМВИА?
+        difficulty: 2
+        answers:
+        - answer: Система имитационного моделирования взаимодействия интеллектуальных
+            агентов
+          correct: true
+        - answer: Отечественная разработка для моделирования многоагентных систем
+            (МАС)
+          correct: true
+        - answer: Зарубежный аналог системы AgentBuilder
+          correct: false
+        - answer: Система для моделирования квантовых вычислений
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие из перечисленных особенностей характеризуют систему ИМВИА?
+        difficulty: 2
+        answers:
+        - answer: Отечественная разработка для моделирования МАС
+          correct: true
+        - answer: Ориентирована на взаимодействие интеллектуальных агентов
+          correct: true
+        - answer: Основана на методах имитационного моделирования
+          correct: true
+        - answer: Использует исключительно зарубежные аналоги AgentBuilder
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Для каких целей предназначена система ИМВИА?
+        difficulty: 2
+        answers:
+        - answer: Имитационного моделирования взаимодействия интеллектуальных агентов
+          correct: true
+        - answer: Моделирования многоагентных систем
+          correct: true
+        - answer: Моделирования квантовых систем
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_60:
+    label: AgentBuilder
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1101
+      parent_id: '1099'
+    properties:
+      questions:
+      - question: Какие этапы создания МАС-приложения предусматривает инструментарий
+          AgentBuilder?
+        difficulty: 2
+        answers:
+        - answer: определение структуры МАС (состава агентов)
+          correct: true
+        - answer: реализация агентов (построение онтологии)
+          correct: true
+        - answer: ' определение протоколов взаимодействия агентов'
+          correct: true
+        - answer: генерация специального файла спецификации поведения  агентов
+          correct: true
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какова базовая структура правила поведения агента в языке RADL (Reticular
+          Agent Defini tion Language)?
+        difficulty: 1
+        answers:
+        - answer: WHEN-IF-THEN
+          correct: true
+        - answer: IF-THEN-ELSE
+          correct: false
+        - answer: FOR-EACH-DO
+          correct: false
+        - answer: SELECT-WHERE
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_61:
+    label: Bee-gent
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1102
+      parent_id: '1099'
+    properties:
+      questions:
+      - question: Какая характеристика НЕ соответствует системе Bee-gent?
+        difficulty: 2
+        answers:
+        - answer: Использует исключительно нейросетевые алгоритмы
+          correct: true
+        - answer: Является инструментальным средством проектирования агентов
+          correct: false
+        - answer: Разработана зарубежной компанией
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_62:
+    label: Прототип динамической ИЭС управления ядерным реактором «СУЗ ВВЭР-1000»
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1103
+      parent_id: '880'
+    properties:
+      questions:
+      - question: Для управления каким объектом был разработан прототип динамической
+          интегрированной экспертной системы (ИЭС) «СУЗ ВВЭР-1000»?
+        difficulty: 1
+        answers:
+        - answer: Ядерным реактором
+          correct: true
+        - answer: Нефтепроводом
+          correct: false
+        - answer: Системой городского освещения
+          correct: false
+        - answer: Биотехнологическим производством
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие основные функции выполняла динамическая ИЭС «СУЗ ВВЭР-1000»?
+        difficulty: 1
+        answers:
+        - answer: Управление ядерным реактором
+          correct: true
+        - answer: Защита ядерного реактора
+          correct: true
+        - answer: Управление финансовыми потоками АЭС
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_63:
+    label: Прототип динамической ИЭС управления локальной вычислительной сетью «умного
+      дома»
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1104
+      parent_id: '880'
+    properties:
+      questions:
+      - question: Для управления каким объектом был разработан прототип динамической
+          интегрированной экспертной системы (ИЭС) управления локальной вычислительной
+          сетью?
+        difficulty: 1
+        answers:
+        - answer: Локальной вычислительной сетью «умного дома»
+          correct: false
+        - answer: Глобальной телекоммуникационной сетью
+          correct: false
+        - answer: Системой спутниковой связи
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+      - question: Какие задачи решала динамическая ИЭС для «умного дома»?
+        difficulty: 1
+        answers:
+        - answer: Управление локальной вычислительной сетью
+          correct: false
+        - answer: Контроль и регулирование параметров домашней среды
+          correct: false
+        - answer: Прогнозирование рынка недвижимости
+          correct: false
+        - answer: Нет правильного ответа
+          correct: false
+  Topic_64:
+    label: Прототип МАС для решения задач контроля состояния  химически опасных объектов
+      города Москвы
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1105
+      parent_id: '881'
+  Topic_65:
+    label: Демонстрационный прототип МАС управления  силами и средствами объектовой
+      охраны
+    type: CourceDiscipline.vertex_types.CourseElement
+    metadata:
+      legacy_db_id: 1106
+      parent_id: '881'

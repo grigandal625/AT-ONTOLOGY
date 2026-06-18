@@ -1,0 +1,22 @@
+name: test-ontology
+description: Тестовая онтология
+
+imports:
+  - ./imports/course_types.yaml
+
+vertices:
+  Vertex1:
+    label: Тема 1
+    type: CourceDiscipline.vertex_types.CourseElement
+  Vertex2:
+    label: Тема 2
+    type: CourceDiscipline.vertex_types.CourseElement
+    properties:
+      questions:
+        - question: Вопрос 1
+          difficulty: 1
+          answers:
+            - answer: Ответ 1
+              correct: true
+            - answer: Ответ 2
+              correct: false
